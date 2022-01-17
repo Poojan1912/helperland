@@ -1,6 +1,12 @@
 import React from 'react';
 import Home from './pages/Home';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
+import Faq from './pages/Faq';
 
 function App() {
   const theme = createTheme({
@@ -30,7 +36,6 @@ function App() {
         fontSize: '18px',
         color: '#353548',
         fontWeight: '500'
-
       },
       h6: {
         fontSize: '0.67rem',
@@ -44,7 +49,7 @@ function App() {
         fontSize: '14px',
         color: '#8E8E8E'
       },
-      caption:{
+      caption: {
         color: '#A3A3A3',
         fontSize: 13
       }
@@ -74,7 +79,12 @@ function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Home />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/faq" element={<Faq />} />
+          </Routes>
+        </BrowserRouter>
       </ThemeProvider>
     </>
   );

@@ -14,7 +14,7 @@ import TextField from '@mui/material/TextField'
 import Navbar from '../components/Navbar'
 import PurpleButton from '../components/PurpleButton'
 import Footer from '../components/Footer'
-import OrangeButton from '../components/OrangeButton'
+import Newsletter from '../components/Newsletter'
 
 import experience from '../assets/group-21.png';
 import secure from '../assets/group-23.png'
@@ -354,11 +354,7 @@ const Home = () => {
                             </Card>
                         </Grid>
                     </Grid>
-                    <Typography mt={3} mb={1} textAlign="center" variant="h5" component="h5">GET OUR NEWSLETTER</Typography>
-                    <Box display={'flex'} justifyContent={'center'} pb={8} pt={2}>
-                        <InputComponent id="outlined-basic" placeholder='YOUR EMAIL' variant="outlined" sx={{ pr: 1 }} />
-                        <OrangeButton value="Submit" />
-                    </Box>
+                    <Newsletter/>
                 </Container>
             </div>
             <Footer />

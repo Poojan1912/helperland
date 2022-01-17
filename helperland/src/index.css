@@ -34,6 +34,61 @@
   padding-top: 5px;
 }
 
+.page-top {
+  text-align: center;
+}
+
+.page-top h1 {
+  font-size: 35.95px !important;
+  color: #4f4f4f;
+  padding: 10px 0;
+  font-weight: 500;
+}
+
+.page-top-data {
+  padding: 34px 0;
+}
+
+.page-top p {
+  color: #646464;
+  font-size: 18px;
+}
+
+.star-design {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+
+.star-design::after {
+  position: relative;
+  bottom: 12px;
+  left: 5px;
+  content: " ";
+  display: block;
+  border-bottom: 2px solid #dddddd;
+  width: 70px;
+}
+
+.star-design::before {
+  position: relative;
+  bottom: 12px;
+  right: 5px;
+  content: " ";
+  display: block;
+  border-bottom: 2px solid #dddddd;
+  width: 70px;
+}
+
+.header-navbar {
+  background-color: #525252e6;
+  padding: 5px 25px !important;
+}
+
+.link-header {
+  background-color: #29626d;
+}
+
 .arrow {
   margin-top: 20px;
 }
@@ -120,7 +175,7 @@
   padding-left: 10px;
 }
 
-.customer-feedback a::after{
+.customer-feedback a::after {
   content: "";
   display: block;
   width: 0;
@@ -129,7 +184,7 @@
   transition: width 250ms;
 }
 
-.customer-feedback a:hover::after{
+.customer-feedback a:hover::after {
   width: 100%;
 }
 
@@ -208,7 +263,8 @@
   transition: color 250ms;
 }
 
-.footer-links a:hover,:focus {
+.footer-links a:hover,
+:focus {
   color: #1d7a8c;
 }
 
@@ -231,6 +287,26 @@
 .footer ul li {
   padding: 0 10px;
 }
+
+/* faq starts here */
+.faq-banner {
+  width: 100%;
+}
+
+.accordion-details {
+  color: #646464;
+  padding: 0 56px 0 28px;
+}
+
+.accordion-summery {
+  color: #646464;
+  font-weight: bold;
+}
+
+.accordion {
+  padding-left: 6%;
+}
+/* faq completes here */
 
 @media screen and (max-width: 1140px) {
   .navbar .logo {
@@ -295,12 +371,12 @@
     margin: 0 auto;
   }
 
-  .features p{
+  .features p {
     margin-top: 0;
     margin-bottom: 30px;
   }
 
-  .features h3{
+  .features h3 {
     margin-top: 5px;
   }
 
@@ -354,11 +430,24 @@
   }
 }
 
-/* @media screen and (max-width: 425px){
-  .sideMenu{
-    width: ;
+@media screen and (max-width: 425px) {
+  .accordion-details {
+    padding: 0;
   }
-} */
+
+  .accordion {
+    padding-left: 0;
+  }
+
+  .newsletter{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .newsletter button {
+    margin-top: 20px;
+  }
+}
 
 /*
 ------------------------------------------------------------
