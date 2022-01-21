@@ -10,7 +10,7 @@ import accordionArrow from "../assets/right-arrow-accordion.png";
 
 const Accordion = styled((props: AccordionProps) => (
     <MuiAccordion disableGutters elevation={0} square {...props} />
-))(({ theme }) => ({
+))(() => ({
     '&.MuiAccordion-root::before':
     {
         display: 'none'
@@ -38,19 +38,21 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 type accordionProps = {
     summery: string,
     details: string,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     expandValue: any
 }
 
 const CustomAccordion = (props: accordionProps) => {
 
-    const expandValue = (props.expandValue === "false"? false: props.expandValue);
-    
+    const expandValue = (props.expandValue === "false" ? false : props.expandValue);
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [expanded, setExpanded] = React.useState<string | false>(expandValue);
 
     const handleChangeAccordion =
-      (panel: any) => (event: React.SyntheticEvent, newExpanded: boolean) => {
-        setExpanded(newExpanded ? panel : false);
-      };
+        (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
+            setExpanded(newExpanded ? panel : false);
+        };
 
     return (
         <Accordion className="accordion" onChange={handleChangeAccordion(expandValue)}>

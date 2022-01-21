@@ -1,5 +1,4 @@
 import React from 'react'
-import Menu from './Menu'
 
 const SideMenuForHeader = () => {
     return (
@@ -12,7 +11,7 @@ const SideMenuForHeader = () => {
                 <li><a href="#">Blog</a> </li>
                 <li><a href="#">Contact</a> </li>
                 <li ><a href="#" className='link-navItem link-header'>Login</a> </li>
-                <li> <a href="#" className='link-navItem link-header'>Become a Helper</a> </li>                
+                <li> <a href="#" className='link-navItem link-header'>Become a Helper</a> </li>
             </ul>
         </div>
     )

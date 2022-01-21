@@ -7,6 +7,7 @@ import {
   Route
 } from "react-router-dom";
 import Faq from './pages/Faq';
+import Prices from './pages/Prices';
 
 function App() {
   const theme = createTheme({
@@ -83,6 +84,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/faq" element={<Faq />} />
+            <Route path="/prices" element={<Prices />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>

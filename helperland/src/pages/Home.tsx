@@ -1,15 +1,11 @@
 import React from 'react'
-import Link from 'react-router-dom'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
 import Container from '@mui/material/Container'
 import Box from '@mui/material/Box'
-import { styled } from '@mui/system'
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia'
-import TextField from '@mui/material/TextField'
 
 import Navbar from '../components/Navbar'
 import PurpleButton from '../components/PurpleButton'
@@ -37,28 +33,6 @@ import group32 from '../assets/group-32.png'
 import group33 from '../assets/group-33.png'
 
 const Home = () => {
-
-    const InputComponent = styled(TextField)({
-        '& .MuiOutlinedInput-root':
-        {
-            borderRadius: '20px',
-            height: '40px',
-            width: '233px'
-        },
-        '& .MuiOutlinedInput-notchedOutline':
-        {
-            border: '1px solid #565656',
-        },
-        'input':
-        {
-            '&::placeholder':
-            {
-                color: '#565656',
-                opacity: 1,
-            }
-        }
-    })
-
     return (
         <>
             <div className="book-cleaner">
@@ -354,7 +328,7 @@ const Home = () => {
                             </Card>
                         </Grid>
                     </Grid>
-                    <Newsletter/>
+                    <Newsletter />
                 </Container>
             </div>
             <Footer />

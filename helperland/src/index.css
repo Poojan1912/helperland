@@ -36,6 +36,7 @@
 
 .page-top {
   text-align: center;
+  padding: 32px 0;
 }
 
 .page-top h1 {
@@ -308,10 +309,173 @@
 }
 /* faq completes here */
 
+/* Prices start here */
+.prices-card-container {
+  max-width: 531px;
+  padding: 32px 0;
+  margin: 0 auto;
+}
+
+.prices-card {
+  border: 1px solid #b0c9ce;
+  text-align: center;
+}
+
+.prices-card h1 {
+  background-color: #1d7a8c;
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  padding: 12px 0 13px 0;
+}
+
+.prices-card h2 {
+  color: #646464;
+  font-size: 48px;
+  padding-top: 18px;
+}
+
+.prices-card h2 span {
+  font-size: 30px;
+  font-weight: 400;
+  display: inline-block;
+}
+
+.prices-card h2 .euro {
+  font-size: 48px;
+}
+
+.prices-card ul {
+  list-style-type: none;
+  text-align: left;
+  padding: 15px 0 22.5px 0;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.prices-card ul li {
+  padding: 9.5px 0;
+  color: #646464;
+  display: flex;
+  align-items: center;
+}
+
+.prices-hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+.extra-services {
+  padding: 39px 0 36px;
+}
+
+.extra-services-item div {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 108px;
+  height: 108px;
+  border-radius: 50%;
+  border: 1px solid #b0c9ce;
+}
+
+.extra-services .service-name {
+  color: #646464;
+  padding-top: 14px;
+}
+
+.extra-services .service-time {
+  color: #1d7a8c;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 5px 0 20px 0;
+}
+
+.cleaning {
+  padding-top: 41px;
+  background-color: #f6f6f6;
+}
+
+.included-in-cleaning {
+  display: flex;
+  justify-content: space-between;
+}
+
+.included-in-cleaning h4 {
+  padding: 20px 0 13px 0;
+}
+
+.included-in-cleaning ul {
+  padding-bottom: 81px;
+}
+
+.included-in-cleaning li::before {
+  content: url("../src/assets/right-arrow-grey.png");
+  position: relative;
+  top: 5px;
+}
+
+.included-in-cleaning li {
+  padding: 4px 0 7px 0;
+  color: #4f4f4f;
+}
+
+.included-in-cleaning-item {
+  max-width: 360px !important;
+  justify-content: space-between;
+}
+
+.why-helperland {
+  padding-bottom: 50px;
+}
+
+.why-helperland .left {
+  text-align: right;
+}
+
+.why-helperland .left p {
+  display: inline-block;
+}
+
+.why-helperland .right p {
+  display: inline-block;
+}
+
+.why-helperland p {
+  color: #646464;
+  font-size: 14px;
+  max-width: 290px;
+  padding-bottom: 30px;
+}
+
+.why-helperland h4 {
+  color: #646464;
+  padding-bottom: 9.5px;
+}
+
+.why-helperland .right {
+  text-align: left;
+}
+
+.why-helperland .center-img {
+  text-align: center;
+}
+
+/* Prices complete here */
+
 @media screen and (max-width: 1140px) {
   .navbar .logo {
     width: 73px;
     height: 54px;
+  }
+
+  .included-in-cleaning img {
+    max-width: 95%;
   }
 }
 
@@ -428,6 +592,28 @@
   .listing h1 {
     font-size: 34px;
   }
+
+  .included-in-cleaning img {
+    max-width: 95%;
+  }
+
+  .included-in-cleaning-item {
+    margin: 0 auto !important;
+    max-width: 360px !important;
+    justify-content: space-between;
+  }
+
+  .included-in-cleaning img {
+    max-width: 100%;
+  }
+
+  .why-helperland .left {
+    text-align: center;
+  }
+
+  .why-helperland .right {
+    text-align: center;
+  }
 }
 
 @media screen and (max-width: 425px) {
@@ -439,13 +625,17 @@
     padding-left: 0;
   }
 
-  .newsletter{
+  .newsletter {
     flex-direction: column;
     align-items: center;
   }
 
   .newsletter button {
     margin-top: 20px;
+  }
+
+  .extra-services .service-time {
+    padding-bottom: 25px;
   }
 }
 

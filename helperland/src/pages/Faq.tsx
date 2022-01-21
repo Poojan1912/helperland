@@ -10,9 +10,8 @@ import Tab from '@mui/material/Tab'
 import Tabs from '@mui/material/Tabs'
 import { styled } from '@mui/material/styles'
 
-import faqBanner from '../assets/faq-banner.png'
+import faqBanner from "../assets/faq-banner.png";
 import star from "../assets/forma-1-copy-5.png";
-import accordionArrow from "../assets/right-arrow-accordion.png";
 
 import CustomAccordion from '../components/CustomAccordion'
 
@@ -56,7 +55,7 @@ const Faq = () => {
         setValue(newValue);
     };
 
-    const StyledTab = styled(Tab)(props => ({
+    const StyledTab = styled(Tab)(({ theme }) => ({
         width: '50%',
         maxWidth: '472px',
         backgroundColor: '#F6F6F6',
@@ -70,22 +69,22 @@ const Faq = () => {
             backgroundColor: '#1D7A8C',
             color: '#F6F6F6'
         },
-        
-        [props.theme.breakpoints.up("xs")]: {
+
+        [theme.breakpoints.up("xs")]: {
             '&.MuiTab-root':
             {
                 fontSize: '18px',
             }
         },
-        
-        [props.theme.breakpoints.up("sm")]: {
+
+        [theme.breakpoints.up("sm")]: {
             '&.MuiTab-root':
             {
                 fontSize: '24px',
             }
         }
     }))
-    
+
     const StyledTabs = styled(Tabs)({
         '& .MuiTabs-flexContainer':
         {

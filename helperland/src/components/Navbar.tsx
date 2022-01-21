@@ -7,18 +7,6 @@ import logo from '../assets/logo-large.png';
 
 
 const Navbar = () => {
-    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-    const open = Boolean(anchorEl);
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-        setAnchorEl(event.currentTarget);
-    };
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-
-    const hamburger = document.querySelector(".hamburger");
-    const navMenu = document.querySelector(".nav-menu");
-
     const toggleNavbar = () => {
         document.body.classList.toggle('sideBar')
     }
@@ -41,7 +29,7 @@ const Navbar = () => {
                     </li>
                 </ul>
             </div>
-            <div className="hamburger"  onClick={toggleNavbar}>
+            <div className="hamburger" onClick={toggleNavbar}>
                 <span className="bar"></span>
                 <span className="bar"></span>
                 <span className="bar"></span>
