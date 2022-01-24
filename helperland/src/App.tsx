@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Faq from './pages/Faq';
 import Prices from './pages/Prices';
+import Contact from './pages/Contact';
 
 function App() {
   const theme = createTheme({
@@ -85,6 +86,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/faq" element={<Faq />} />
             <Route path="/prices" element={<Prices />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>

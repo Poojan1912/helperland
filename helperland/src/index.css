@@ -139,6 +139,19 @@
   transition-duration: 250ms;
 }
 
+.normal-link {
+  border: none;
+}
+
+.normal-link:hover a {
+  margin: -1px;
+}
+
+.normal-link:hover {
+  border: 1px solid #ffffff80;
+  border-radius: 20px;
+}
+
 .link-navItem:hover {
   background-color: #ffffff;
   color: #1d7a8c;
@@ -468,6 +481,24 @@
 
 /* Prices complete here */
 
+/* Contact starts here */
+/* .contact-us {
+  padding-bottom: 60px;
+} */
+
+.contact-us p {
+  color: #4f4f4f;
+}
+
+.contact-us img {
+  padding-bottom: 20px;
+}
+
+.contact-us-email {
+  padding-top: 9px;
+}
+/* Contact completes here */
+
 @media screen and (max-width: 1140px) {
   .navbar .logo {
     width: 73px;
@@ -783,6 +814,7 @@ table {
 --------------------------------------------------------------------------------------------------------*/
 * {
   outline: none !important;
+  box-sizing: border-box;
 }
 html,
 body {
