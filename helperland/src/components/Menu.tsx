@@ -3,8 +3,7 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
-import flag from '../assets/ic-flag - Copy.png'
-import arrow from '../assets/forma-1.png'
+import { icFlagCopy, forma1 } from '../assets/images';
 
 export default function BasicMenu() {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -25,8 +24,8 @@ export default function BasicMenu() {
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleClick}
             >
-                <img src={flag} alt="Drop-down" />
-                <img src={arrow} height={7} width={12} />
+                <img src={icFlagCopy} alt="Drop-down" />
+                <img src={forma1} height={7} width={12} />
             </Button>
             <Menu
                 id="basic-menu"

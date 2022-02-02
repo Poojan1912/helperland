@@ -10,8 +10,8 @@ import Tab from '@mui/material/Tab'
 import Tabs from '@mui/material/Tabs'
 import { styled } from '@mui/material/styles'
 
-import faqBanner from "../assets/faq-banner.png";
-import star from "../assets/forma-1-copy-5.png";
+import { faqBanner, forma1Copy5 } from '../assets/images'
+
 
 import CustomAccordion from '../components/CustomAccordion'
 
@@ -105,7 +105,7 @@ const Faq = () => {
                 <div className='page-top'>
                     <Typography component="h1" variant="h1">FAQs</Typography>
                     <div className='star-design'>
-                        <img src={star} alt="star" />
+                        <img src={forma1Copy5} alt="star" />
                     </div>
                     <div className='page-top-data'>
                         <p>Whether you are Customer or Service provider, </p>

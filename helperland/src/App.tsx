@@ -9,6 +9,8 @@ import {
 import Faq from './pages/Faq';
 import Prices from './pages/Prices';
 import Contact from './pages/Contact';
+import About from './pages/About';
+import BecomeAPro from './pages/BecomeAPro';
 
 function App() {
   const theme = createTheme({
@@ -87,6 +89,8 @@ function App() {
             <Route path="/faq" element={<Faq />} />
             <Route path="/prices" element={<Prices />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/sp-sign-up" element={<BecomeAPro />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>

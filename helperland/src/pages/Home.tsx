@@ -12,25 +12,26 @@ import PurpleButton from '../components/PurpleButton'
 import Footer from '../components/Footer'
 import Newsletter from '../components/Newsletter'
 
-import experience from '../assets/group-21.png';
-import secure from '../assets/group-23.png'
-import dedicated from '../assets/group-24.png'
-import icCheck from '../assets/ic-check.png'
-import step1 from '../assets/step-1.png'
-import step2 from '../assets/step-2.png'
-import step3 from '../assets/step-3.png'
-import step4 from '../assets/step-4.png'
-import arrow1 from '../assets/step-arrow-1.png'
-import arrow2 from '../assets/step-arrow-1-copy.png'
-import downArrow from '../assets/group-18_5.png'
-import group36 from '../assets/group-36.png'
-import group28 from '../assets/group-28.png'
-import group29 from '../assets/group-29.png'
-import group30 from '../assets/group-30.png'
-import rightArrow from '../assets/right-arrow.png'
-import group31 from '../assets/group-31.png'
-import group32 from '../assets/group-32.png'
-import group33 from '../assets/group-33.png'
+// import experience from '../assets/group-21.png';
+// import secure from '../assets/group-23.png'
+// import dedicated from '../assets/group-24.png'
+// import icCheck from '../assets/ic-check.png'
+// import step1 from '../assets/step-1.png'
+// import step2 from '../assets/step-2.png'
+// import step3 from '../assets/step-3.png'
+// import step4 from '../assets/step-4.png'
+// import arrow1 from '../assets/step-arrow-1.png'
+// import arrow2 from '../assets/step-arrow-1-copy.png'
+// import downArrow from '../assets/group-18_5.png'
+// import group36 from '../assets/group-36.png'
+// import group28 from '../assets/group-28.png'
+// import group29 from '../assets/group-29.png'
+// import group30 from '../assets/group-30.png'
+// import rightArrow from '../assets/right-arrow.png'
+// import group31 from '../assets/group-31.png'
+// import group32 from '../assets/group-32.png'
+// import group33 from '../assets/group-33.png'
+import { group18_5, group21, group23, group24, group28, group29, group30, group31, group32, group33, group36, icCheck, rightArrow, step1, step2, step3, step4, stepArrow1, stepArrow1Copy } from '../assets/images'
 
 const Home = () => {
     return (
@@ -56,7 +57,7 @@ const Home = () => {
                             <p>Enter your postcode</p>
                         </div>
                         <div>
-                            <img src={arrow1} className='arrow' width="85" height="23" alt="arrow" />
+                            <img src={stepArrow1} className='arrow' width="85" height="23" alt="arrow" />
                         </div>
 
                         <div>
@@ -64,7 +65,7 @@ const Home = () => {
                             <p>Select your plan</p>
                         </div>
                         <div>
-                            <img src={arrow2} className='arrow' width="85" height="23" alt="arrow" />
+                            <img src={stepArrow1Copy} className='arrow' width="85" height="23" alt="arrow" />
                         </div>
 
 
@@ -73,7 +74,7 @@ const Home = () => {
                             <p>Pay securely online</p>
                         </div>
                         <div>
-                            <img src={arrow1} className='arrow' width="85" height="23" alt="arrow" />
+                            <img src={stepArrow1} className='arrow' width="85" height="23" alt="arrow" />
                         </div>
 
                         <div>
@@ -83,7 +84,7 @@ const Home = () => {
                     </div>
 
                     <Box sx={{ pt: 5, pb: 4 }} textAlign="center">
-                        <img src={downArrow} alt="Down-arrow" />
+                        <img src={group18_5} alt="Down-arrow" />
                     </Box>
                 </Container>
             </div>
@@ -96,7 +97,7 @@ const Home = () => {
                             <Card sx={{ maxWidth: 320, boxShadow: 'none', marginX: 'auto' }}>
                                 <CardMedia
                                     component="img"
-                                    image={experience}
+                                    image={group21}
                                     alt="group-21"
                                 />
                                 <CardContent sx={{ p: 0 }}>
@@ -113,7 +114,7 @@ const Home = () => {
                             <Card sx={{ maxWidth: 320, boxShadow: 'none', marginX: 'auto' }}>
                                 <CardMedia
                                     component="img"
-                                    image={secure}
+                                    image={group23}
                                     alt="group-22"
                                 />
                                 <CardContent sx={{ p: 0 }}>
@@ -130,7 +131,7 @@ const Home = () => {
                             <Card sx={{ maxWidth: 320, boxShadow: 'none', marginX: 'auto' }}>
                                 <CardMedia
                                     component="img"
-                                    image={dedicated}
+                                    image={group24}
                                     alt="group-23"
                                 />
                                 <CardContent sx={{ p: 0 }}>

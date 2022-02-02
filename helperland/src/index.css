@@ -55,6 +55,10 @@
   font-size: 18px;
 }
 
+.page-top .about-page-top {
+  font-size: 16px;
+}
+
 .star-design {
   display: flex;
   justify-content: center;
@@ -95,7 +99,7 @@
 }
 
 .book-cleaner {
-  background-image: url("./assets/Landing-Page-background-image.png");
+  background-image: url("./assets/images/Landing-Page-background-image.png");
   color: #ffffff;
 }
 
@@ -170,7 +174,7 @@
 }
 
 .customer-item {
-  background-image: url("./assets/message.png");
+  background-image: url("./assets/images/message.png");
   background-repeat: no-repeat;
   background-position: 300px 20px;
 }
@@ -234,8 +238,8 @@
 }
 
 .blog-section {
-  background-image: url("./assets/blog-left-bg.png"),
-    url("./assets/blog-right-bg.png");
+  background-image: url("./assets/images/blog-left-bg.png"),
+    url("./assets/images/blog-right-bg.png");
   background-position: left, right;
   background-repeat: no-repeat;
 }
@@ -428,7 +432,7 @@
 }
 
 .included-in-cleaning li::before {
-  content: url("../src/assets/right-arrow-grey.png");
+  content: url("../src/assets/images/right-arrow-grey.png");
   position: relative;
   top: 5px;
 }
@@ -498,6 +502,110 @@
   padding-top: 9px;
 }
 /* Contact completes here */
+
+/* Become A pro starts here */
+.become-cleaner-top {
+  background-image: url("../src/assets/images/become-a-pro-banner.png");
+}
+
+.sp-registration {
+  max-width: 430px;
+  background-color: #ffffff;
+  text-align: center;
+  margin-top: 29px !important;
+  margin: 0 auto;
+  padding: 19px 0 19px 0;
+}
+
+.sp-registration h4 {
+  font-size: 24px;
+  padding-bottom: 17.5px;
+}
+
+.sp-registration img {
+  padding-left: 8px;
+}
+
+.registration-checkbox {
+  /* display: flex; */
+  /* flex-direction: column; */
+  text-align: start;
+  padding-left: 35px;
+  padding-top: 5px;
+  padding-bottom: 15px;
+}
+
+.registration-checkbox input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+}
+
+.registration-checkbox div {
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.registration-checkbox input[type="checkbox"]:not(:checked),
+input[type="checkbox"]:checked {
+  cursor: pointer;
+}
+
+.registration-checkbox label {
+  color: #4f4f4f;
+  cursor: pointer;
+}
+
+.registration-checkbox span {
+  background-color: yellow;
+}
+
+.registration-checkbox a {
+  color: #1fb6ff;
+}
+
+.registration-checkbox a:hover {
+  color: #1790ca;
+  text-decoration: underline;
+}
+
+.how-it-works {
+  background-image: url("../src/assets/images/blog-left-bg.png"),
+    url("../src/assets/images/blog-right-bg.png");
+  background-position: left, right;
+  background-repeat: no-repeat;
+  padding-top: 61px;
+}
+
+.how-it-works a {
+  color: #4f4f4f;
+  font-size: 18px;
+}
+
+.how-it-works a::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2.5px;
+  background: #4f4f4f;
+  transition: width 250ms;
+}
+
+.how-it-works a:hover::after {
+  width: 35%;
+}
+
+.how-it-works h3 {
+  color: #4f4f4f;
+  padding-bottom: 15px;
+}
+
+.how-it-works p {
+  color: #4f4f4f;
+  font-size: 18px;
+  padding-bottom: 40px;
+}
+/* Become A pro completes here */
 
 @media screen and (max-width: 1140px) {
   .navbar .logo {
@@ -644,6 +752,21 @@
 
   .why-helperland .right {
     text-align: center;
+  }
+
+  .how-it-works h3,
+  p,
+  a {
+    text-align: center;
+  }
+
+  .how-it-works img {
+    text-align: center;
+  }
+
+  .how-it-works p {
+    text-align: center;
+    padding-bottom: 0;
   }
 }
 

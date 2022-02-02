@@ -1,8 +1,6 @@
 import React from 'react'
 
-import footerLogo from '../assets/footer-logo.png'
-import facebookLogo from '../assets/ic-facebook.png'
-import instaLogo from '../assets/ic-instagram.png'
+import { footerLogo, icFacebook, icInstagram } from '../assets/images/index'
 
 const Footer = () => {
     return (
@@ -22,8 +20,8 @@ const Footer = () => {
                     </ul>
 
                     <ul className='social-links'>
-                        <a href=""><img src={facebookLogo} alt="Facebook Logo" /></a>
-                        <a href=""><img src={instaLogo} alt="Instagram Logo" /></a>
+                        <a href=""><img src={icFacebook} alt="Facebook Logo" /></a>
+                        <a href=""><img src={icInstagram} alt="Instagram Logo" /></a>
                     </ul>
                 </div>
                 <hr color='#424242' />

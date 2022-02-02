@@ -6,7 +6,7 @@ import MuiAccordionSummary, {
 } from '@mui/material/AccordionSummary'
 import MuiAccordionDetails from '@mui/material/AccordionDetails'
 
-import accordionArrow from "../assets/right-arrow-accordion.png";
+import { rightArrowAccordion } from '../assets/images/index'
 
 const Accordion = styled((props: AccordionProps) => (
     <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -56,7 +56,7 @@ const CustomAccordion = (props: accordionProps) => {
 
     return (
         <Accordion className="accordion" onChange={handleChangeAccordion(expandValue)}>
-            <AccordionSummary expandIcon={<img src={accordionArrow} alt="arrow" />}>
+            <AccordionSummary expandIcon={<img src={rightArrowAccordion} alt="arrow" />}>
                 <p className='accordion-summery'>{props.summery}</p>
             </AccordionSummary>
             <AccordionDetails>

@@ -3,7 +3,7 @@ import React from 'react'
 import Menu from './Menu'
 import SideMenu from './SideMenu';
 
-import logo from '../assets/logo-large.png';
+import { logoLarge } from '../assets/images';
 
 
 const Navbar = () => {
@@ -14,7 +14,7 @@ const Navbar = () => {
 
     return (
         <nav className='navbar'>
-            <img className='logo' src={logo} alt="Helperland" />
+            <img className='logo' src={logoLarge} alt="Helperland" />
             <div>
                 <ul className='navbar-list'>
                     <li> <a href="#" className='link-navItem'>Book a Cleaner</a> </li>

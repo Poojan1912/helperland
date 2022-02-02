@@ -4,7 +4,8 @@ import SideMenuForHeader from './SideMenuForHeader';
 import Button from '@mui/material/Button'
 import { styled } from '@mui/system'
 
-import logo from '../assets/logo-large.png';
+// import logo from '../assets/logo-large.png';
+import { logoLarge } from '../assets/images/index'
 
 
 const Header = () => {
@@ -31,7 +32,7 @@ const Header = () => {
 
     return (
         <nav className='navbar header-navbar'>
-            <img className='logo' src={logo} width={73} height={54} alt="Helperland" />
+            <img className='logo' src={logoLarge} width={73} height={54} alt="Helperland" />
             <div>
                 <ul className='navbar-list'>
                     <li> <StyledButton>Book now</StyledButton></li>

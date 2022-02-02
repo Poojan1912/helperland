@@ -4,13 +4,9 @@ import ImageBanner from '../components/ImageBanner';
 import Newsletter from '../components/Newsletter';
 import Footer from '../components/Footer';
 
-import contactBanner from '../assets/group-16_2.png'
-import contactBottomBanner from '../assets/group-16.png'
-import star from "../assets/forma-1-copy-5.png";
-import phone from '../assets/phone-call.png'
-import email from '../assets/vector-smart-object.png'
-import location from '../assets/forma-1_2.png'
-import downArrow from '../assets/admin-arrow.png'
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { adminArrow, forma1Copy5, forma1_2, group16, group16_2, phoneCall, vectorSmartObject } from '../assets/images';
+
 
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
@@ -77,34 +73,33 @@ const Contact = () => {
     return (
         <div>
             <Header />
-            <ImageBanner alt='image banner' address={contactBanner} />
+            <ImageBanner alt='image banner' address={group16_2} />
             <div className='page-top'>
                 <Typography component="h1" variant="h1">Contact us</Typography>
                 <div className='star-design'>
-                    <img src={star} alt="star" />
+                    <img src={forma1Copy5} alt="star" />
                 </div>
             </div>
             <Container maxWidth='xl'>
                 <Grid container className='contact-us'>
                     <Grid item lg={4} xs={12} display='flex' flexDirection='column' alignItems='center' pb={8}>
-                        <img src={location} alt="location icon" />
+                        <img src={forma1_2} alt="location icon" />
                         <p>1111 Lorem ipsum text 100, </p>
                         <p>Lorem ipsum AB</p>
                     </Grid>
                     <Grid item lg={4} xs={12} display='flex' flexDirection='column' alignItems='center' pb={8}>
-                        <img src={phone} alt="phone icon" />
+                        <img src={phoneCall} alt="phone icon" />
                         <a href="tel:+4940123567890"> <p>+49 (40) 123 56 7890</p> </a>
                         <a href="tel:+4940987560000"> <p>+49 (40) 987 56 0000</p> </a>
                     </Grid>
                     <Grid item lg={4} xs={12} display='flex' flexDirection='column' alignItems='center' pb={8}>
-                        <img src={email} alt="email icon" />
+                        <img src={vectorSmartObject} alt="email icon" />
                         <a className='contact-us-email' href="mailto:info@helperland.com"> <p>info@helperland.com</p> </a>
                     </Grid>
                 </Grid>
                 <hr className='prices-hr' />
 
                 <Typography pt={9} pb={3} variant='h3' component='h3' textAlign='center' fontSize='28px' color='#4F4F4F'>Get in touch with us</Typography>
-                {/* <Container > */}
 
                 <Grid container maxWidth='614px' spacing={1} pr={2} mx='auto'>
                     <Grid item lg={6} xs={12}>
@@ -125,7 +120,7 @@ const Contact = () => {
                     </Grid>
                     <Grid item lg={12} xs={12}>
                         {/* <StyledTextField fullWidth id="outlined-basic" placeholder='Subject' variant="outlined" /> */}
-                        {/* <img src={downArrow} alt="Down Arrow" /> */}
+                        {/* <img src={adminArrow} alt="Down Arrow" /> */}
 
                         <FormControl fullWidth>
                             <StyledInputLabel id="demo-simple-select-helper-label">Subject</StyledInputLabel>
@@ -134,7 +129,7 @@ const Contact = () => {
                                 id="demo-simple-select-helper"
                                 value={subject}
                                 label="Subject"
-                                // IconComponent={() => <KeyboardArrowDownIcon htmlColor="#646464" />}
+                                IconComponent={() => <img src={adminArrow} />}
                                 onChange={handleChange}
                             >
                                 <MenuItem value={10}>Meeting</MenuItem>
@@ -151,7 +146,7 @@ const Contact = () => {
                     </Grid>
                 </Grid>
             </Container>
-            <ImageBanner alt='map image' address={contactBottomBanner} />
+            <ImageBanner alt='map image' address={group16} />
             <Newsletter />
             <Footer />
         </div>
