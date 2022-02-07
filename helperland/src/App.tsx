@@ -11,6 +11,7 @@ import Prices from './pages/Prices';
 import Contact from './pages/Contact';
 import About from './pages/About';
 import BecomeAPro from './pages/BecomeAPro';
+import ServiceProvider from './pages/ServiceProvider';
 
 function App() {
   const theme = createTheme({
@@ -91,6 +92,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/about" element={<About />} />
             <Route path="/sp-sign-up" element={<BecomeAPro />} />
+            <Route path="/service-provider" element={<ServiceProvider />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>

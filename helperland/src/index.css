@@ -607,6 +607,92 @@ input[type="checkbox"]:checked {
 }
 /* Become A pro completes here */
 
+/* Upcoming Service starts here */
+.admin-user {
+  padding-right: 7px;
+}
+
+.icon-notification {
+  border-right: 1px solid #ffffff;
+  border-left: 1px solid #ffffff;
+}
+
+.icon-notification a {
+  padding-bottom: 5px !important;
+}
+
+.welcome-msg {
+  color: #4f4f4f;
+  border-bottom: 1px solid #e8dada;
+  text-align: center;
+  font-size: 30px;
+  padding: 43px 0 43px 0;
+  background-color: #f9f9f9;
+  font-weight: normal;
+  margin-bottom: 31px;
+}
+
+.welcome-msg span {
+  font-weight: bold;
+}
+
+.service-date {
+  display: flex;
+  font-weight: bold;
+  padding-bottom: 7px;
+  color: #646464;
+}
+
+.service-time {
+  display: flex;
+  align-items: center;
+  color: #646464;
+}
+
+.customer-address {
+  display: flex;
+  align-items: end;
+}
+
+.service-sidebar {
+  background-color: #1d7a8c;
+  color: #ffffff;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 262px;
+  max-width: 262px;
+  margin-bottom: 31px;
+  font-size: 18px;
+}
+
+.service-sidebar li {
+  padding: 15px 0 15px 15px;
+  border-bottom: 0.5px solid #4995a4;
+  cursor: pointer;
+}
+
+.service-sidebar li:hover {
+  background-color: #1c6f80;
+}
+
+.service-table {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: calc(100% - 293px);
+  max-width: calc(100% - 293px);
+  margin-bottom: 31px;
+  margin-left: 31px;
+}
+
+.service-row {
+  display: flex;
+}
+
+.service-select {
+  display: none;
+}
+/* Upcoming Service completes here */
+
 @media screen and (max-width: 1140px) {
   .navbar .logo {
     width: 73px;
@@ -654,7 +740,7 @@ input[type="checkbox"]:checked {
     top: 0;
     width: 45%;
     background-color: #565656;
-    z-index: 1;
+    z-index: 2;
     height: 100%;
   }
 
@@ -768,6 +854,47 @@ input[type="checkbox"]:checked {
     text-align: center;
     padding-bottom: 0;
   }
+
+  .service-sidebar {
+    position: absolute;
+    top: 117px;
+    z-index: 1;
+    max-width: 100%;
+    left: 0;
+    width: 100%;
+  }
+
+  .service-table {
+    max-width: 100%;
+    flex-basis: 100%;
+    margin-left: 0;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  .service-select {
+    display: block;
+  }
+
+  .service-select li {
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+    border: none;
+    font-size: 18px;
+    padding: 15px 0 15px 15px;
+    margin: auto 0;
+    background-color: #1d7a8c;
+    color: #ffffff;
+    height: 52px;
+  }
+
+  .service-select li span {
+    position: absolute;
+    right: 25px;
+  }
 }
 
 @media screen and (max-width: 425px) {
@@ -790,6 +917,15 @@ input[type="checkbox"]:checked {
 
   .extra-services .service-time {
     padding-bottom: 25px;
+  }
+
+  .side-menu-for-service {
+    text-align: center;
+  }
+
+  .side-menu-for-service a {
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 }
 
