@@ -4,7 +4,6 @@ import SideMenuForHeader from './SideMenuForHeader';
 import Button from '@mui/material/Button'
 import { styled } from '@mui/system'
 
-// import logo from '../assets/logo-large.png';
 import { logoLarge } from '../assets/images/index'
 
 

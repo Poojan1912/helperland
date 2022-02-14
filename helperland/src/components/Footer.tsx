@@ -20,12 +20,12 @@ const Footer = () => {
                     </ul>
 
                     <ul className='social-links'>
-                        <a href=""><img src={icFacebook} alt="Facebook Logo" /></a>
-                        <a href=""><img src={icInstagram} alt="Instagram Logo" /></a>
+                        <a href="#"><img src={icFacebook} alt="Facebook Logo" /></a>
+                        <a href="#"><img src={icInstagram} alt="Instagram Logo" /></a>
                     </ul>
                 </div>
                 <hr color='#424242' />
-                <p>©2018 Helperland. All rights reserved. Terms and Conditions | Privacy Policy</p>
+                <p>©2018 Helperland. All rights reserved. <a href="#">Terms and Conditions</a> | <a href="#">Privacy Policy</a></p>
             </div>
 
 

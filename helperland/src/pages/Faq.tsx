@@ -67,7 +67,7 @@ const Faq = () => {
         '&.Mui-selected':
         {
             backgroundColor: '#1D7A8C',
-            color: '#F6F6F6'
+            color: '#FFFFFF'
         },
 
         [theme.breakpoints.up("xs")]: {
@@ -86,9 +86,11 @@ const Faq = () => {
     }))
 
     const StyledTabs = styled(Tabs)({
+        marginBottom: '9px',
         '& .MuiTabs-flexContainer':
         {
             justifyContent: 'center',
+            height: '66px'
         },
 
         '& .MuiTabs-indicator':
@@ -96,6 +98,14 @@ const Faq = () => {
             height: '0px'
         }
     })
+
+    const StyledBox = styled(Box)(({ theme }) => ({
+        [theme.breakpoints.down("md")]: {
+            '& .MuiBox-root': {
+                padding: '24px 5px'
+            }
+        }
+    }))
 
     return (
         <div>
@@ -114,12 +124,12 @@ const Faq = () => {
                 </div>
                 <Box>
                     <Box>
-                        <StyledTabs value={value} onChange={handleChange} aria-label="basic tabs example">
+                        <StyledTabs value={value} onChange={handleChange} aria-label="basic tabs example" className='styled-tabs'>
                             <StyledTab label="For Customer" {...a11yProps(0)} className='tab' />
-                            <StyledTab label="For Service Provider" {...a11yProps(1)} />
+                            <StyledTab label="For Service Provider" {...a11yProps(1)} className='tab' />
                         </StyledTabs>
                     </Box>
-                    <Box display={'flex'} justifyContent={'center'}>
+                    <StyledBox display={'flex'} justifyContent={'center'}>
                         <TabPanel value={value} index={0}>
                             <CustomAccordion
                                 expandValue="panel1"
@@ -164,14 +174,14 @@ const Faq = () => {
 
                                 details="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum." />
                         </TabPanel>
-                    </Box>
+                    </StyledBox>
 
                 </Box>
                 <Newsletter />
             </Container>
 
             <Footer />
-        </div>
+        </div >
     )
 }
 

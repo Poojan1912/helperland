@@ -17,8 +17,8 @@ import Select, { SelectChangeEvent } from '@mui/material/Select'
 import FormControl from '@mui/material/FormControl'
 import MenuItem from '@mui/material/MenuItem';
 import { styled } from '@mui/system';
-import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
+import { OutlinedInput } from '@mui/material';
 
 const StyledInputAdornment = styled(InputAdornment)({
 
@@ -31,12 +31,6 @@ const StyledInputAdornment = styled(InputAdornment)({
         backgroundColor: '#f3f3f3',
         borderRight: '1px solid #C8C8C8'
     },
-})
-
-const StyledInputLabel = styled(InputLabel)({
-    '&.MuiInputLabel-root': {
-        color: '#A0A0A0'
-    }
 })
 
 const StyledTextField = styled(TextField)({
@@ -63,11 +57,19 @@ const StyledButton = styled(Button)({
     }
 })
 
+const values = [
+    "Meeting",
+    "Pricing",
+    "Others"
+];
+
 const Contact = () => {
     const [subject, setSubject] = React.useState('');
 
-    const handleChange = (event: SelectChangeEvent) => {
-        setSubject(event.target.value);
+    const handleChange = (event: SelectChangeEvent<typeof subject>) => {
+        setSubject(
+            event.target.value
+        );
     };
 
     return (
@@ -119,22 +121,30 @@ const Contact = () => {
                         <StyledTextField fullWidth id="outlined-basic" placeholder='Email address' variant="outlined" />
                     </Grid>
                     <Grid item lg={12} xs={12}>
-                        {/* <StyledTextField fullWidth id="outlined-basic" placeholder='Subject' variant="outlined" /> */}
-                        {/* <img src={adminArrow} alt="Down Arrow" /> */}
-
                         <FormControl fullWidth>
-                            <StyledInputLabel id="demo-simple-select-helper-label">Subject</StyledInputLabel>
                             <Select
-                                labelId="demo-simple-select-helper-label"
-                                id="demo-simple-select-helper"
+                                displayEmpty
                                 value={subject}
-                                label="Subject"
-                                IconComponent={() => <img src={adminArrow} />}
+                                input={<OutlinedInput />}
+                                placeholder="Subject"
                                 onChange={handleChange}
+                                inputProps={{ 'aria-label': 'Without label' }}
+                                renderValue={(selected) => {
+                                    if (selected.length === 0) {
+                                        return <p style={{ color: '#A0A0A0' }}>Subject</p>;
+                                    }
+
+                                    return selected
+                                }}
                             >
-                                <MenuItem value={10}>Meeting</MenuItem>
-                                <MenuItem value={20}>Pricing</MenuItem>
-                                <MenuItem value={30}>Others</MenuItem>
+                                {values.map((data) => (
+                                    <MenuItem
+                                        key={data}
+                                        value={data}
+                                    >
+                                        {data}
+                                    </MenuItem>
+                                ))}
                             </Select>
                         </FormControl>
                     </Grid>

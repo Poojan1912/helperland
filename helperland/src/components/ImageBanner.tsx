@@ -5,11 +5,11 @@ type imgProps = {
     address: string
 }
 
-const ImageBanner = (props: imgProps) => {    
+const ImageBanner = (props: imgProps) => {
     return (
-        <div>
-            <img src={props.address} style={{width: '100%'}} alt={props.alt} />
-        </div>
+        <>
+            <div className='image-banner' style={{ backgroundImage: `url(${props.address})` }}></div>
+        </>
     )
 }
 

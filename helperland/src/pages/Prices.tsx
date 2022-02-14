@@ -5,22 +5,10 @@ import Grid from '@mui/material/Grid'
 
 import Header from '../components/Header'
 import ImageBanner from '../components/ImageBanner'
-// import group18 from '../assets/group-18.png'
 import Newsletter from '../components/Newsletter'
 import Footer from '../components/Footer';
 
-// import star from "../assets/forma-1-copy-5.png";
-// import img1 from "../assets/1.png";
-// import img2 from "../assets/2.png";
-// import img3 from "../assets/3.png";
-// import img4 from "../assets/4.png";
-// import img5 from "../assets/5.png";
-// import tick from "../assets/forma-1_5.png";
-// import bedroom from '../assets/group-18_3.png';
-// import bathroom from '../assets/group-18_4.png';
-// import kitchen from '../assets/group-18_2.png';
-// import bestImg from '../assets/the-best-img-1.png';
-import { five, forma1Copy5, forma1_5, four, group18, group18_2, group18_3, group18_4, one, theBestImg1, three, two } from '../assets/images'
+import { five, forma1Copy, forma1Copy5, forma1_5, four, group18, group18_2, group18_3, group18_4, layer598, one, theBestImg1, three, two } from '../assets/images'
 
 
 
@@ -65,35 +53,35 @@ const Prices = () => {
                                 <img src={three} alt="cabinet" />
                             </div>
                             <p className='service-name'>Inside cabinets</p>
-                            <p className='service-time'>30 minutes</p>
+                            <p className='service-duration'>30 minutes</p>
                         </Grid>
                         <Grid item xl={2.4} lg={2.4} xs={12} md={6} className='extra-services-item'>
                             <div>
                                 <img src={five} alt="fridge" />
                             </div>
                             <p className='service-name'>Inside fridge</p>
-                            <p className='service-time'>30 minutes</p>
+                            <p className='service-duration'>30 minutes</p>
                         </Grid>
                         <Grid item lg={2.4} xs={12} md={6} className='extra-services-item'>
                             <div>
                                 <img src={four} alt="oven" />
                             </div>
                             <p className='service-name'>Inside oven</p>
-                            <p className='service-time'>30 minutes</p>
+                            <p className='service-duration'>30 minutes</p>
                         </Grid>
                         <Grid item lg={2.4} xs={12} md={6} className='extra-services-item'>
                             <div>
                                 <img src={two} alt="washing-machine" />
                             </div>
                             <p className='service-name'>Laundry wash & dry</p>
-                            <p className='service-time'>30 minutes</p>
+                            <p className='service-duration'>30 minutes</p>
                         </Grid>
                         <Grid item lg={2.4} xs={12} md={12} className='extra-services-item'>
                             <div>
                                 <img src={one} alt="window" />
                             </div>
                             <p className='service-name'>Inside windows</p>
-                            <p className='service-time'>30 minutes</p>
+                            <p className='service-duration'>30 minutes</p>
                         </Grid>
 
                     </Grid>
@@ -180,6 +168,12 @@ const Prices = () => {
                 </Grid>
             </Container>
             <Newsletter />
+            <img className='chat-with-us' src={layer598} alt="chat-with-us-icon" />
+            <a href="#">
+                <div className='go-to-top'>
+                    <img src={forma1Copy} alt="go-to-top-icon" />
+                </div>
+            </a>
             <Footer />
         </div>
     )

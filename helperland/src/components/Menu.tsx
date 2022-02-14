@@ -22,10 +22,13 @@ export default function BasicMenu() {
                 aria-controls={open ? 'basic-menu' : undefined}
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
+                disableFocusRipple
+                disableRipple
                 onClick={handleClick}
+                className='navbar-menu'
             >
-                <img src={icFlagCopy} alt="Drop-down" />
-                <img src={forma1} height={7} width={12} />
+                <img src={icFlagCopy} className='navbar-flag' alt="language-flag" />
+                <img src={forma1} height={7} width={12} alt="drop-down" />
             </Button>
             <Menu
                 id="basic-menu"

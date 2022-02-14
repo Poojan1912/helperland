@@ -1,5 +1,5 @@
 import React from 'react'
-import {styled} from '@mui/material/styles'
+import { styled } from '@mui/material/styles'
 import Button from '@mui/material/Button'
 
 type nameProps = {
@@ -14,8 +14,8 @@ const StyledButton = styled(Button)({
     borderRadius: 27,
     boxShadow: 'none',
     border: '1px solid #ffffff',
-    height: 40,
-    width: 88,
+    height: '40px',
+    width: '88px',
     '&:hover': {
         backgroundColor: '#dc5b4d',
         boxShadow: 'none',

@@ -111,15 +111,6 @@ const ServiceProvider = () => {
         }
     }))
 
-
-
-    // const StyledTableRow = styled(TableRow)({
-    //     border: '1px solid #e8dada',
-    //     '& .MuiTableCell-root': {
-    //         color: '#646464'
-    //     }
-    // })
-
     const StyledTableRowHeader = styled(TableRow)({
         border: '1px solid #e8dada',
         '& .MuiTableCell-root': {

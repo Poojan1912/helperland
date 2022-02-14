@@ -10,11 +10,19 @@ import { rightArrowAccordion } from '../assets/images/index'
 
 const Accordion = styled((props: AccordionProps) => (
     <MuiAccordion disableGutters elevation={0} square {...props} />
-))(() => ({
+))(({ theme }) => ({
+    paddingBottom: '16px',
     '&.MuiAccordion-root::before':
     {
         display: 'none'
-    }
+    },
+
+    [theme.breakpoints.down("lg")]: {
+        '&.MuiPaper-root': {
+            paddingLeft: '0'
+        }
+    },
+
 }));
 
 const AccordionSummary = styled((props: AccordionSummaryProps) => (
@@ -29,11 +37,18 @@ const AccordionSummary = styled((props: AccordionSummaryProps) => (
     '& .MuiAccordionSummary-content': {
         marginLeft: theme.spacing(1),
     },
+
+    [theme.breakpoints.down("lg")]: {
+        alignItems: 'flex-start',
+        '& .MuiAccordionSummary-content': {
+            marginTop: '0'
+        },
+    },
 }));
 
-const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
-    padding: theme.spacing(2),
-}));
+const AccordionDetails = styled(MuiAccordionDetails)({
+    paddingTop: '6px'
+});
 
 type accordionProps = {
     summery: string,

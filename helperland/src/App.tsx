@@ -12,6 +12,7 @@ import Contact from './pages/Contact';
 import About from './pages/About';
 import BecomeAPro from './pages/BecomeAPro';
 import ServiceProvider from './pages/ServiceProvider';
+import ServiceHistory from './pages/ServiceHistory'
 
 function App() {
   const theme = createTheme({
@@ -91,8 +92,9 @@ function App() {
             <Route path="/prices" element={<Prices />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/about" element={<About />} />
-            <Route path="/sp-sign-up" element={<BecomeAPro />} />
+            <Route path="/become-a-pro" element={<BecomeAPro />} />
             <Route path="/service-provider" element={<ServiceProvider />} />
+            <Route path="/service-history" element={<ServiceHistory />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>

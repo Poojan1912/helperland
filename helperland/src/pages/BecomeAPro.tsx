@@ -45,20 +45,20 @@ const StyledButton = styled(Button)({
     }
 })
 
-const StyledFormControlLabel = styled(FormControlLabel)({
-    '& .MuiTypography-root': {
-        color: '#4F4F4F',
-    }
-})
+// const StyledFormControlLabel = styled(FormControlLabel)({
+//     '& .MuiTypography-root': {
+//         color: '#4F4F4F',
+//     }
+// })
 
-const StyledCheckbox = styled(Checkbox)({
-    '&.MuiCheckbox-root': {
-        color: '#C8C8C8'
-    },
-    '&.Mui-checked': {
-        color: '#1D798C'
-    }
-})
+// const StyledCheckbox = styled(Checkbox)({
+//     '&.MuiCheckbox-root': {
+//         color: '#C8C8C8'
+//     },
+//     '&.Mui-checked': {
+//         color: '#1D798C'
+//     }
+// })
 
 const StyledTextField = styled(TextField)({
     '& .MuiInputBase-root': {
@@ -159,7 +159,7 @@ const BecomeAPro = () => {
                         <StyledButton >Get Started <img src={arrowWhite} alt="white arrow" /></StyledButton>
                     </Box>
                 </div>
-                <Box sx={{ pt: 5, pb: 4 }} textAlign="center">
+                <Box sx={{ pt: 5.5, pb: 3.75 }} textAlign="center">
                     <img src={group18_5} alt="Down-arrow" />
                 </Box>
             </div>

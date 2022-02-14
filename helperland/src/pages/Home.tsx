@@ -12,28 +12,12 @@ import PurpleButton from '../components/PurpleButton'
 import Footer from '../components/Footer'
 import Newsletter from '../components/Newsletter'
 
-// import experience from '../assets/group-21.png';
-// import secure from '../assets/group-23.png'
-// import dedicated from '../assets/group-24.png'
-// import icCheck from '../assets/ic-check.png'
-// import step1 from '../assets/step-1.png'
-// import step2 from '../assets/step-2.png'
-// import step3 from '../assets/step-3.png'
-// import step4 from '../assets/step-4.png'
-// import arrow1 from '../assets/step-arrow-1.png'
-// import arrow2 from '../assets/step-arrow-1-copy.png'
-// import downArrow from '../assets/group-18_5.png'
-// import group36 from '../assets/group-36.png'
-// import group28 from '../assets/group-28.png'
-// import group29 from '../assets/group-29.png'
-// import group30 from '../assets/group-30.png'
-// import rightArrow from '../assets/right-arrow.png'
-// import group31 from '../assets/group-31.png'
-// import group32 from '../assets/group-32.png'
-// import group33 from '../assets/group-33.png'
-import { group18_5, group21, group23, group24, group28, group29, group30, group31, group32, group33, group36, icCheck, rightArrow, step1, step2, step3, step4, stepArrow1, stepArrow1Copy } from '../assets/images'
+import { forma1Copy, group18_5, group21, group23, group24, group28, group29, group30, group31, group32, group33, group36, icCheck, layer598, rightArrow, step1, step2, step3, step4, stepArrow1, stepArrow1Copy } from '../assets/images'
+
+
 
 const Home = () => {
+
     return (
         <>
             <div className="book-cleaner">
@@ -90,27 +74,28 @@ const Home = () => {
             </div>
 
             <div className="features" id="features">
-                <Container maxWidth="xl" sx={{ mb: 20 }}>
+                <Container maxWidth="xl" sx={{ mb: { lg: 13.3, xs: 5 } }}>
                     <Typography sx={{ my: 10 }} component="h2" textAlign="center" variant="h2">Why Helperland</Typography>
                     <Grid container>
-                        <Grid item xs={12} lg={4} textAlign="center">
+                        <Grid item xs={12} lg={4} textAlign='center'>
                             <Card sx={{ maxWidth: 320, boxShadow: 'none', marginX: 'auto' }}>
                                 <CardMedia
                                     component="img"
                                     image={group21}
                                     alt="group-21"
+
                                 />
                                 <CardContent sx={{ p: 0 }}>
-                                    <Typography gutterBottom variant="h3" component="h3" mt={3}>
+                                    <Typography gutterBottom variant="h3" component="h3" mt={4} mb={0}>
                                         Experience & Vetted Professionals
                                     </Typography>
-                                    <Typography variant="body1" mt={4}>
+                                    <Typography variant="body1" mt={3.6} fontSize='17px'>
                                         dominate the industry in scale and scope with an adaptable, extensive network that consistently delivers exceptional results.
                                     </Typography>
                                 </CardContent>
                             </Card>
                         </Grid>
-                        <Grid item xs={12} lg={4} textAlign={'center'}>
+                        <Grid item xs={12} lg={4} textAlign='center'>
                             <Card sx={{ maxWidth: 320, boxShadow: 'none', marginX: 'auto' }}>
                                 <CardMedia
                                     component="img"
@@ -118,16 +103,16 @@ const Home = () => {
                                     alt="group-22"
                                 />
                                 <CardContent sx={{ p: 0 }}>
-                                    <Typography gutterBottom variant="h3" component="h3" mt={4}>
+                                    <Typography gutterBottom variant="h3" component="h3" mt={5.8} mb={0}>
                                         Secure Online Payment
                                     </Typography>
-                                    <Typography variant="body1" mt={7}>
+                                    <Typography variant="body1" mt={6.25} fontSize='17px'>
                                         Payment is processed securely online. Customers pay safely online and manage the booking.
                                     </Typography>
                                 </CardContent>
                             </Card>
                         </Grid>
-                        <Grid item xs={12} lg={4} textAlign={'center'}>
+                        <Grid item xs={12} lg={4} textAlign='center'>
                             <Card sx={{ maxWidth: 320, boxShadow: 'none', marginX: 'auto' }}>
                                 <CardMedia
                                     component="img"
@@ -135,10 +120,10 @@ const Home = () => {
                                     alt="group-23"
                                 />
                                 <CardContent sx={{ p: 0 }}>
-                                    <Typography gutterBottom variant="h3" component="h3" mt={4}>
+                                    <Typography gutterBottom variant="h3" component="h3" mt={4} mb={0}>
                                         Dedicated Customer Service
                                     </Typography>
-                                    <Typography variant="body1" mt={3}>
+                                    <Typography variant="body1" mt={3.3} fontSize='17px'>
                                         to our customers and are guided in all we do by their needs. The team is always happy to support you and offer all the information.
                                     </Typography>
                                 </CardContent>
@@ -151,7 +136,7 @@ const Home = () => {
             <div className="blog-section">
                 <Container maxWidth="xl">
                     <Grid container sx={{ px: 0, display: 'flex', alignItems: 'center' }}>
-                        <Grid item xs={12} lg={7} sx={{ px: 'auto' }}>
+                        <Grid item xs={12} lg={7} order={{ lg: 1, xs: 2 }} sx={{ px: 'auto' }} className='happy-customer'>
                             <Typography variant="h3" component="h3">
                                 Lorem ipsum dolor sit amet, consectetur
                             </Typography>
@@ -168,7 +153,7 @@ const Home = () => {
                             </Typography>
                         </Grid>
 
-                        <Grid item xs={12} lg={5} textAlign={'center'}>
+                        <Grid item xs={12} lg={5} order={{ lg: 2, xs: 1 }} textAlign={'center'}>
                             <img src={group36} alt="family" className='family' />
                         </Grid>
                     </Grid>
@@ -181,14 +166,14 @@ const Home = () => {
                         <Typography textAlign="center" component="h2" variant="h2">Our Blog</Typography>
                         <Grid container className='blog-items'>
                             <Grid item lg={4} xs={12}>
-                                <Card sx={{ maxWidth: 357, mb: 6, mx: 'auto' }}>
+                                <Card sx={{ maxWidth: 357, mb: 5.5, mx: 'auto', boxShadow: '0 0 30px #e4ebf0' }}>
                                     <CardMedia
                                         component="img"
 
                                         image={group28}
                                         alt="blog-1"
                                     />
-                                    <CardContent sx={{ pl: 2.5, pt: 2 }}>
+                                    <CardContent sx={{ pl: 2.5, pt: 2, pb: 3.25 }}>
                                         <Typography gutterBottom variant="h4" sx={{ mb: 0 }} component="h4" color="#3D4046">
                                             Lorem ipsum dolor sit amet
                                         </Typography>
@@ -201,7 +186,7 @@ const Home = () => {
                                 </Card>
                             </Grid>
                             <Grid item lg={4} xs={12}>
-                                <Card sx={{ maxWidth: 357, mb: 6, mx: 'auto' }}>
+                                <Card sx={{ maxWidth: 357, mb: 5.5, mx: 'auto', boxShadow: '0 0 30px #e4ebf0' }}>
                                     <CardMedia
                                         component="img"
 
@@ -221,7 +206,7 @@ const Home = () => {
                                 </Card>
                             </Grid>
                             <Grid item lg={4} xs={12}>
-                                <Card sx={{ maxWidth: 357, mb: 6, mx: 'auto' }}>
+                                <Card sx={{ maxWidth: 357, mb: 5.5, mx: 'auto', boxShadow: '0 0 30px #e4ebf0' }}>
                                     <CardMedia
                                         component="img"
 
@@ -245,18 +230,16 @@ const Home = () => {
                 </div>
             </div>
 
-
-
             <div className='customer-feedback'>
                 <Container maxWidth="xl">
                     <Typography textAlign="center" component="h2" variant="h2">What our Customers say</Typography>
                     <Grid container>
                         <Grid item lg={4} xs={12}>
-                            <Card className="card customer-item" sx={{ maxWidth: 357, borderLeft: 4, borderColor: '#006072', mx: 'auto', mb: 6 }}>
+                            <Card className="card customer-item" sx={{ maxWidth: 357, borderLeft: 4, borderColor: '#006072', mx: 'auto', mb: 3, boxShadow: 'none' }}>
                                 <Box display="flex" alignItems="center" >
-                                    <img src={group31} style={{ paddingLeft: '10px' }} alt="" />
+                                    <img className='customer-photo' src={group31} alt="customer-photo" />
                                     <Box flexDirection="column">
-                                        <Typography gutterBottom variant="h4" component="h4" sx={{ mb: 0 }}>
+                                        <Typography gutterBottom variant="h4" component="h4">
                                             Larry Watson
                                         </Typography>
                                         <Typography variant="body2" sx={{ fontSize: 14, color: '#8E8E8E' }} gutterBottom>
@@ -264,8 +247,8 @@ const Home = () => {
                                         </Typography>
                                     </Box>
                                 </Box>
-                                <CardContent>
-                                    <Typography variant="body1" sx={{ paddingLeft: '10px' }}>
+                                <CardContent className='customer-feedback-content'>
+                                    <Typography variant="body1" sx={{ paddingLeft: '22px', paddingRight: '5px' }}>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing
                                         elit. Sed
                                         fermentum metus pulvinar aliquet consequat. Praesent nec malesuada nibh. <br /> <br />
@@ -277,9 +260,9 @@ const Home = () => {
                             </Card>
                         </Grid>
                         <Grid item lg={4} xs={12}>
-                            <Card className="card customer-item" sx={{ maxWidth: 357, borderLeft: 4, borderColor: '#006072', mx: 'auto', mb: 6 }}>
+                            <Card className="card customer-item" sx={{ maxWidth: 357, borderLeft: 4, borderColor: '#006072', mx: 'auto', mb: 3, boxShadow: 'none' }}>
                                 <Box display="flex" alignItems="center" >
-                                    <img src={group32} style={{ paddingLeft: '10px' }} alt="" />
+                                    <img className='customer-photo' src={group32} alt="customer-photo" />
                                     <Box>
                                         <Typography gutterBottom variant="h4" component="h4" sx={{ mb: 0 }}>
                                             John Smith
@@ -290,8 +273,8 @@ const Home = () => {
                                     </Box>
 
                                 </Box>
-                                <CardContent>
-                                    <Typography variant="body1" sx={{ paddingLeft: '10px' }}>
+                                <CardContent className='customer-feedback-content'>
+                                    <Typography variant="body1" sx={{ paddingLeft: '22px', paddingRight: '5px' }}>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing
                                         elit. Sed
                                         fermentum metus pulvinar aliquet consequat. Praesent nec malesuada nibh. <br /> <br />
@@ -303,9 +286,9 @@ const Home = () => {
                             </Card>
                         </Grid>
                         <Grid item lg={4} xs={12}>
-                            <Card className="card customer-item" sx={{ maxWidth: 357, borderLeft: 4, borderColor: '#006072', mx: 'auto', mb: 6 }}>
+                            <Card className="card customer-item" sx={{ maxWidth: 357, borderLeft: 4, borderColor: '#006072', mx: 'auto', mb: 3, boxShadow: 'none' }}>
                                 <Box display="flex" alignItems="center" >
-                                    <img src={group33} style={{ paddingLeft: '10px' }} alt="" />
+                                    <img className='customer-photo' src={group33} alt="customer-photo" />
                                     <Box>
                                         <Typography gutterBottom variant="h4" component="h4" sx={{ mb: 0 }}>
                                             Lars Johnson
@@ -316,8 +299,8 @@ const Home = () => {
                                     </Box>
 
                                 </Box>
-                                <CardContent>
-                                    <Typography variant="body1" sx={{ paddingLeft: '10px' }}>
+                                <CardContent className='customer-feedback-content'>
+                                    <Typography variant="body1" sx={{ paddingLeft: '22px', paddingRight: '5px' }}>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing
                                         elit. Sed
                                         fermentum metus pulvinar aliquet consequat. Praesent nec malesuada nibh. <br /> <br />
@@ -331,6 +314,12 @@ const Home = () => {
                     </Grid>
                     <Newsletter />
                 </Container>
+                <img className='chat-with-us' src={layer598} alt="chat-with-us-icon" />
+                <a href="#">
+                    <div className='go-to-top'>
+                        <img src={forma1Copy} alt="go-to-top-icon" />
+                    </div>
+                </a>
             </div>
             <Footer />
         </>
