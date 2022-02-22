@@ -56,7 +56,7 @@ const Navbar = () => {
             <div>
                 <ul className='navbar-list'>
                     <li> <Link to='' className='link-navItem'>Book a Cleaner</Link> </li>
-                    <li> <Link to='/Prices' className='normal-navItem'>Prices</Link> </li>
+                    <li> <Link to='/prices' className='normal-navItem'>Prices</Link> </li>
                     <li> <Link to='/' className='normal-navItem'>Our Guarantee</Link> </li>
                     <li> <Link to='/' className='normal-navItem'>Blog</Link> </li>
                     <li><Link to='/contact' className='normal-navItem'>Contact us</Link> </li>

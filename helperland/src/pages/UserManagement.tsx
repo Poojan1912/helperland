@@ -219,8 +219,8 @@ const ZipCode = styled(TextField)({
         color: '#A0A0A0'
     },
 
-    '& .MuiOutlinedInput-root .Mui-focused': {
-        borderColor: '#DEDDDD !important'
+    '& .MuiOutlinedInput-root.Mui-focused fieldset': {
+        borderColor: '#DEDDDD'
     },
 
     '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
@@ -244,9 +244,11 @@ const StyledTextField = styled(TextField)({
 
     '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
         borderColor: '#DEDDDD',
-        '& .Mui-focused': {
-            borderColor: '#DEDDDD'
-        }
+
+    },
+
+    '& .MuiOutlinedInput-root.Mui-focused fieldset': {
+        borderColor: '#DEDDDD'
     },
 
     '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline': {
