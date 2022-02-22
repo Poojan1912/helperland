@@ -4,6 +4,7 @@ import MenuProfile from './MenuProfile'
 import SideMenuForService from './SideMenuForService';
 
 import { logoLarge, iconNotification } from '../assets/images';
+import { Link } from 'react-router-dom';
 
 const HeaderService = () => {
     const toggleNavbar = () => {
@@ -15,11 +16,11 @@ const HeaderService = () => {
             <img className='logo' src={logoLarge} width={73} height={54} alt="Helperland" />
             <div>
                 <ul className='navbar-list'>
-                    <li className='normal-link'> <a href="#">Prices & services</a> </li>
-                    <li className='normal-link'> <a href="#">Warranty</a> </li>
-                    <li className='normal-link'> <a href="#">Blog</a> </li>
-                    <li className='normal-link'> <a href="#">Contact</a> </li>
-                    <li className='icon-notification'> <a href="#"><img width="27" height="30" src={iconNotification} alt="Notification Icon" /></a> </li>
+                    <li className='normal-link'> <Link to="/prices">Prices & services</Link> </li>
+                    <li className='normal-link'> <Link to="/">Warranty</Link> </li>
+                    <li className='normal-link'> <Link to="/">Blog</Link> </li>
+                    <li className='normal-link'> <Link to="/contact">Contact</Link> </li>
+                    <li className='icon-notification'> <Link to="/"><img width="27" height="30" src={iconNotification} alt="Notification Icon" /></Link> </li>
                     <li>
                         <MenuProfile />
                     </li>

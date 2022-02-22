@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import { footerLogo, icFacebook, icInstagram } from '../assets/images/index'
 
@@ -11,12 +12,12 @@ const Footer = () => {
 
 
                     <ul className='footer-links'>
-                        <li> <a href="#">HOME</a> </li>
-                        <li> <a href="#">ABOUT</a> </li>
-                        <li> <a href="#">TESTIMONIALS</a> </li>
-                        <li> <a href="#">FAQS</a> </li>
-                        <li> <a href="#">INSURANCE POLICY</a> </li>
-                        <li> <a href="#">IMPRESSUM</a> </li>
+                        <li> <Link to="/">HOME</Link> </li>
+                        <li> <Link to="/about">ABOUT</Link> </li>
+                        <li> <Link to="/">TESTIMONIALS</Link> </li>
+                        <li> <Link to="/faq">FAQS</Link> </li>
+                        <li> <Link to="/">INSURANCE POLICY</Link> </li>
+                        <li> <Link to="/">IMPRESSUM</Link> </li>
                     </ul>
 
                     <ul className='social-links'>
@@ -25,8 +26,11 @@ const Footer = () => {
                     </ul>
                 </div>
                 <hr color='#424242' />
-                <p>©2018 Helperland. All rights reserved. <a href="#">Terms and Conditions</a> | <a href="#">Privacy Policy</a></p>
-            </div>
+                <div className='footer-line'>
+                    <p>©2018 Helperland. All rights reserved.</p>
+                    <p><a href="#">Terms and Conditions</a> | <a href="#">Privacy Policy</a></p>
+                </div>
+            </div >
 
 
         </>

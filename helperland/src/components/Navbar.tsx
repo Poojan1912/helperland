@@ -6,6 +6,8 @@ import SideMenu from './SideMenu';
 import { logoLarge } from '../assets/images';
 import Button from '@mui/material/Button';
 
+import { Link } from 'react-router-dom';
+
 import { styled } from '@mui/system'
 
 
@@ -53,16 +55,18 @@ const Navbar = () => {
             <img className='logo' src={logoLarge} alt="Helperland" />
             <div>
                 <ul className='navbar-list'>
-                    <li> <a href="#" className='link-navItem'>Book a Cleaner</a> </li>
-                    <li> <a href="#" className='normal-navItem'>Prices</a> </li>
-                    <li> <a href="#" className='normal-navItem'>Our Guarantee</a> </li>
-                    <li> <a href="#" className='normal-navItem'>Blog</a> </li>
-                    <li><a href="#" className='normal-navItem'>Contact us</a> </li>
+                    <li> <Link to='' className='link-navItem'>Book a Cleaner</Link> </li>
+                    <li> <Link to='/Prices' className='normal-navItem'>Prices</Link> </li>
+                    <li> <Link to='/' className='normal-navItem'>Our Guarantee</Link> </li>
+                    <li> <Link to='/' className='normal-navItem'>Blog</Link> </li>
+                    <li><Link to='/contact' className='normal-navItem'>Contact us</Link> </li>
                     <li>
                         <LoginButton>Login</LoginButton>
                     </li>
                     <li>
-                        <HelperButton>Become a Helper</HelperButton>
+                        <Link to='/become-a-pro' className='helper-button'>
+                            <HelperButton>Become a Helper</HelperButton>
+                        </Link>
                     </li>
                     <li>
                         <Menu />

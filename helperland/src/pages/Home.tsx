@@ -6,6 +6,8 @@ import Box from '@mui/material/Box'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia'
+import Button from '@mui/material/Button'
+import { styled } from '@mui/system';
 
 import Navbar from '../components/Navbar'
 import PurpleButton from '../components/PurpleButton'
@@ -17,6 +19,29 @@ import { forma1Copy, group18_5, group21, group23, group24, group28, group29, gro
 
 
 const Home = () => {
+
+    const PrivacyButton = styled(Button)({
+        backgroundColor: '#EED507',
+        color: '#4F4F4F',
+        borderRadius: '20px',
+        width: '99px',
+        height: '40px',
+        fontWeight: 'medium',
+
+        '&:hover': {
+            backgroundColor: '#cab50b'
+        },
+
+        '&:focus': {
+            backgroundColor: '#cab50b'
+        }
+    })
+
+    const handleClick = () => {
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        const element = document.getElementById('privacy-policy')!
+        element.classList.add("hide-privacy-policy")
+    }
 
     return (
         <>
@@ -40,25 +65,24 @@ const Home = () => {
                             <img src={step1} alt="step-1" />
                             <p>Enter your postcode</p>
                         </div>
-                        <div>
-                            <img src={stepArrow1} className='arrow' width="85" height="23" alt="arrow" />
+                        <div className='arrow'>
+                            <img src={stepArrow1} width="85" height="23" alt="arrow" />
                         </div>
 
                         <div>
                             <img src={step2} alt="step-2" />
                             <p>Select your plan</p>
                         </div>
-                        <div>
+                        <div className='arrow'>
                             <img src={stepArrow1Copy} className='arrow' width="85" height="23" alt="arrow" />
                         </div>
-
 
                         <div>
                             <img src={step3} alt="step-3" />
                             <p>Pay securely online</p>
                         </div>
-                        <div>
-                            <img src={stepArrow1} className='arrow' width="85" height="23" alt="arrow" />
+                        <div className='arrow'>
+                            <img src={stepArrow1} width="85" height="23" alt="arrow" />
                         </div>
 
                         <div>
@@ -68,7 +92,9 @@ const Home = () => {
                     </div>
 
                     <Box sx={{ pt: 5, pb: 4 }} textAlign="center">
-                        <img src={group18_5} alt="Down-arrow" />
+                        <Button>
+                            <img src={group18_5} alt="Down-arrow" />
+                        </Button>
                     </Box>
                 </Container>
             </div>
@@ -320,6 +346,12 @@ const Home = () => {
                         <img src={forma1Copy} alt="go-to-top-icon" />
                     </div>
                 </a>
+            </div>
+            <div className='privacy-policy' id="privacy-policy">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut feugiat nunc libero, ac malesuada ligula aliquam ac.   <a href="#">Privacy Policy</a></p>
+                <div>
+                    <PrivacyButton onClick={handleClick}>ok!</PrivacyButton>
+                </div>
             </div>
             <Footer />
         </>

@@ -71,6 +71,7 @@ const Faq = () => {
         },
 
         [theme.breakpoints.up("xs")]: {
+            padding: '12px 10px 8px',
             '&.MuiTab-root':
             {
                 fontSize: '18px',
@@ -129,7 +130,7 @@ const Faq = () => {
                             <StyledTab label="For Service Provider" {...a11yProps(1)} className='tab' />
                         </StyledTabs>
                     </Box>
-                    <StyledBox display={'flex'} justifyContent={'center'}>
+                    <StyledBox display='flex' justifyContent='center'>
                         <TabPanel value={value} index={0}>
                             <CustomAccordion
                                 expandValue="panel1"

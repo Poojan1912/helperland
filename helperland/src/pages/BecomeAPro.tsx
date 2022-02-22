@@ -60,7 +60,7 @@ const StyledButton = styled(Button)({
 //     }
 // })
 
-const StyledTextField = styled(TextField)({
+const StyledTextField = styled(TextField)(({ theme }) => ({
     '& .MuiInputBase-root': {
         marginTop: '7.5px',
         marginBottom: '7.5px'
@@ -72,8 +72,18 @@ const StyledTextField = styled(TextField)({
 
     '& .MuiOutlinedInput-root': {
         paddingLeft: '0'
-    }
-})
+    },
+
+    '&.MuiTextField-root': {
+        padding: '0 35px'
+    },
+
+    [theme.breakpoints.down("sm")]: {
+        '&.MuiTextField-root': {
+            padding: '0 16px'
+        },
+    },
+}))
 
 const StyledGridItem = styled(Grid)(({ theme }) => ({
     [theme.breakpoints.up("xs")]: {
@@ -115,10 +125,10 @@ const BecomeAPro = () => {
                 <div className='sp-registration'>
                     <Typography component="h4" variant="h4">Register Now!</Typography>
                     <Box
-                        component="form"
-                        sx={{
+                        component="form">
+                        {/* sx={{
                             '& .MuiTextField-root': { px: 4.4 },
-                        }}>
+                        }}> */}
                         <StyledTextField fullWidth id="outlined-basic" placeholder='First name' variant="outlined" />
                         <StyledTextField fullWidth id="outlined-basic" placeholder='Last name' variant="outlined" />
                         <StyledTextField fullWidth id="outlined-basic" placeholder='Email Address' variant="outlined" />
@@ -140,8 +150,6 @@ const BecomeAPro = () => {
                             type="password"
                             variant="outlined" />
                         <div className='registration-checkbox'>
-                            {/* <StyledFormControlLabel control={<StyledCheckbox />} label="Send me newsletters from Helperland" />
-                            <StyledFormControlLabel control={<StyledCheckbox />} label="I accept terms and conditions & privacy policy" /> */}
                             <div>
                                 <input type="checkbox" id="send" />
                                 <label htmlFor='send'>
@@ -160,7 +168,9 @@ const BecomeAPro = () => {
                     </Box>
                 </div>
                 <Box sx={{ pt: 5.5, pb: 3.75 }} textAlign="center">
-                    <img src={group18_5} alt="Down-arrow" />
+                    <Button>
+                        <img src={group18_5} alt="Down-arrow" />
+                    </Button>
                 </Box>
             </div>
             <div className='how-it-works'>

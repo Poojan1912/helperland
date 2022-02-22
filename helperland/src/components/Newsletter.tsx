@@ -12,6 +12,7 @@ const Newsletter = () => {
             borderRadius: '20px',
             height: '40px',
             width: '233px',
+            padding: '14px 9px'
 
         },
 
@@ -25,21 +26,16 @@ const Newsletter = () => {
             {
                 color: '#565656',
                 opacity: 1,
-                fontSize: '14px',
-                paddingLeft: '7px'
-            },
-
-            // '&:focus:': {
-            //     bordercolor: '#000'
-            // }
-        },
+                fontSize: '14px'
+            }
+        }
     })
 
 
     return (
         <div>
             <Typography mt={3} textAlign="center" variant="h5" component="h5">GET OUR NEWSLETTER</Typography>
-            <Box display={'flex'} justifyContent={'center'} className='newsletter' pb={6.6} pt={2}>
+            <Box display='flex' justifyContent='center' className='newsletter' pb={6.6} pt={2}>
                 <InputComponent id="outlined-basic" placeholder='YOUR EMAIL' variant="outlined" sx={{ pr: 1 }} />
                 <OrangeButton value="Submit" />
             </Box>

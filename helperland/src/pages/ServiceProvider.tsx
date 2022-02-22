@@ -49,13 +49,16 @@ const ServiceProvider = () => {
     const closeMenu = () => {
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         const element = document.getElementById('serviceSidebar')!
+        const bodyTag = document.getElementsByTagName('body')[0]
         if (isMenuOpen) {
             setIsMenuOpen(false)
-            element.classList.add("menu-toggle")
+            element.classList.add("menu-toggle");
+            bodyTag.classList.remove("overflow-class")
         }
         else {
             setIsMenuOpen(true)
             element.classList.remove("menu-toggle")
+            bodyTag.classList.add("overflow-class")
         }
     }
 
@@ -120,19 +123,9 @@ const ServiceProvider = () => {
     })
 
     const StyledTableCell = styled(TableCell)(({ theme }) => ({
-        [theme.breakpoints.down("md")]: {
-            '&.MuiTableCell-root': {
-                paddingLeft: '4px',
-                paddingRight: '4px'
-            }
-        },
-
-        [theme.breakpoints.up("lg")]: {
-            '&.MuiTableCell-root': {
-                paddingLeft: '10px',
-                paddingRight: '10px'
-            }
-        },
+        fontSize: '16px',
+        paddingTop: '9px',
+        paddingBottom: '9px',
 
         '&.MuiTableCell-root': {
             borderBottom: 'none'
@@ -159,6 +152,7 @@ const ServiceProvider = () => {
                             <li onClick={() => handleChange(sidebarData[3])}>{sidebarData[3]}</li>
                             <li onClick={() => handleChange(sidebarData[4])}>{sidebarData[4]}</li>
                             <li onClick={() => handleChange(sidebarData[5])}>{sidebarData[5]}</li>
+                            <li onClick={() => handleChange(sidebarData[6])}>{sidebarData[6]}</li>
                         </ul>
                     </div>
 
@@ -167,11 +161,11 @@ const ServiceProvider = () => {
                             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                                 <StyledTableHead>
                                     <StyledTableRowHeader>
-                                        <StyledTableCell align="left">Service ID &nbsp;<img src={sort} alt="sort icon" /></StyledTableCell>
-                                        <StyledTableCell align="left">Service date &nbsp;<img src={sort} alt="sort icon" /></StyledTableCell>
-                                        <StyledTableCell align="left">Customer details &nbsp;<img src={sort} alt="sort icon" /></StyledTableCell>
-                                        <StyledTableCell align="center">Distance &nbsp;<img src={sort} alt="sort icon" /></StyledTableCell>
-                                        <StyledTableCell align="center">Actions</StyledTableCell>
+                                        <StyledTableCell sx={{ paddingTop: '12px', paddingBottom: '12px' }} align="left">Service ID &nbsp;<img src={sort} alt="sort icon" /></StyledTableCell>
+                                        <StyledTableCell sx={{ paddingTop: '12px', paddingBottom: '12px' }} align="left">Service date &nbsp;<img src={sort} alt="sort icon" /></StyledTableCell>
+                                        <StyledTableCell sx={{ paddingTop: '12px', paddingBottom: '12px' }} align="left">Customer details &nbsp;<img src={sort} alt="sort icon" /></StyledTableCell>
+                                        <StyledTableCell sx={{ paddingTop: '12px', paddingBottom: '12px' }} align="center">Distance &nbsp;<img src={sort} alt="sort icon" /></StyledTableCell>
+                                        <StyledTableCell sx={{ paddingTop: '12px', paddingBottom: '12px' }} align="center">Actions</StyledTableCell>
                                     </StyledTableRowHeader>
                                 </StyledTableHead>
                                 <StyledTableBody>
@@ -183,17 +177,19 @@ const ServiceProvider = () => {
                                             <StyledTableCell align="left">{row.serviceId}</StyledTableCell>
                                             <StyledTableCell align="left">
                                                 <div className='service-date'>
-                                                    <img src={calender2} alt="Calender icon" />&nbsp;{row.serviceDate}
+                                                    <img src={calender2} alt="Calender icon" />
+                                                    <p>&nbsp;{row.serviceDate}</p>
                                                 </div>
                                                 <div className='service-time'>
-                                                    <img width='17' height='17' src={layer14} alt="clock icon" />&nbsp;{row.serviceTime}
+                                                    <img width='17' height='17' src={layer14} alt="clock icon" />
+                                                    <p> {row.serviceTime}</p>
                                                 </div>
                                             </StyledTableCell>
                                             <StyledTableCell align="left">
                                                 {row.customerName}
                                                 <div className='customer-address'>
                                                     <img src={layer15} alt="house icon" />
-                                                    &nbsp;{row.customerAddress}
+                                                    <p>{row.customerAddress}</p>
                                                 </div>
                                             </StyledTableCell>
                                             <StyledTableCell align="center">{row.distance}&nbsp;km</StyledTableCell>

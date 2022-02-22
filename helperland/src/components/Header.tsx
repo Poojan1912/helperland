@@ -5,6 +5,7 @@ import Button from '@mui/material/Button'
 import { styled } from '@mui/system'
 
 import { logoLarge } from '../assets/images/index'
+import { Link } from 'react-router-dom';
 
 
 const Header = () => {
@@ -35,12 +36,12 @@ const Header = () => {
             <div>
                 <ul className='navbar-list'>
                     <li> <StyledButton>Book now</StyledButton></li>
-                    <li className='normal-link'> <a href="#">Prices & services</a> </li>
-                    <li className='normal-link'> <a href="#">Warranty</a> </li>
-                    <li className='normal-link'> <a href="#">Blog</a> </li>
-                    <li className='normal-link'> <a href="#">Contact</a> </li>
+                    <li className='normal-link'> <Link to='/prices'>Prices & services</Link> </li>
+                    <li className='normal-link'> <Link to='#'>Warranty</Link> </li>
+                    <li className='normal-link'> <Link to='/#'>Blog</Link> </li>
+                    <li className='normal-link'> <Link to='/contact'>Contact</Link> </li>
                     <li><StyledButton>Login</StyledButton> </li>
-                    <li><StyledButton>Become a Helper</StyledButton></li>
+                    <li><Link to='/become-a-pro' style={{ padding: '0' }}> <StyledButton>Become a Helper</StyledButton></Link></li>
                 </ul>
             </div>
             <div className="hamburger" onClick={toggleNavbar}>

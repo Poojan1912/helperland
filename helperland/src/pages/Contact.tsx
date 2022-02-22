@@ -16,9 +16,20 @@ import Button from '@mui/material/Button'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
 import FormControl from '@mui/material/FormControl'
 import MenuItem from '@mui/material/MenuItem';
-import { styled } from '@mui/system';
 import InputAdornment from '@mui/material/InputAdornment';
 import { OutlinedInput } from '@mui/material';
+import { styled } from '@mui/material/styles'
+
+const style = () => ({
+    notchedOutline: {
+        borderColor: '#FFFFFF',
+        borderWidth: 1,
+        '&:hover': {
+            borderColor: '#FFFFFF',
+            borderWidth: 2
+        },
+    }
+})
 
 const StyledInputAdornment = styled(InputAdornment)({
 
@@ -103,7 +114,7 @@ const Contact = () => {
 
                 <Typography pt={9} pb={3} variant='h3' component='h3' textAlign='center' fontSize='28px' color='#4F4F4F'>Get in touch with us</Typography>
 
-                <Grid container maxWidth='614px' spacing={1} pr={2} mx='auto'>
+                <Grid container maxWidth='614px' spacing={1.87} pr={2} mx='auto'>
                     <Grid item lg={6} xs={12}>
                         <StyledTextField fullWidth id="outlined-basic" placeholder='First Name' variant="outlined" />
                     </Grid>
@@ -123,6 +134,7 @@ const Contact = () => {
                     <Grid item lg={12} xs={12}>
                         <FormControl fullWidth>
                             <Select
+                                sx={{ height: '46px' }}
                                 displayEmpty
                                 value={subject}
                                 input={<OutlinedInput />}
@@ -133,7 +145,6 @@ const Contact = () => {
                                     if (selected.length === 0) {
                                         return <p style={{ color: '#A0A0A0' }}>Subject</p>;
                                     }
-
                                     return selected
                                 }}
                             >

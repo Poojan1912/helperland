@@ -1,11 +1,11 @@
 import React from 'react';
-import Home from './pages/Home';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {
   BrowserRouter,
   Routes,
   Route
 } from "react-router-dom";
+import Home from './pages/Home';
 import Faq from './pages/Faq';
 import Prices from './pages/Prices';
 import Contact from './pages/Contact';
@@ -13,6 +13,7 @@ import About from './pages/About';
 import BecomeAPro from './pages/BecomeAPro';
 import ServiceProvider from './pages/ServiceProvider';
 import ServiceHistory from './pages/ServiceHistory'
+import UserManagement from './pages/UserManagement';
 
 function App() {
   const theme = createTheme({
@@ -95,6 +96,7 @@ function App() {
             <Route path="/become-a-pro" element={<BecomeAPro />} />
             <Route path="/service-provider" element={<ServiceProvider />} />
             <Route path="/service-history" element={<ServiceHistory />} />
+            <Route path="/user-management" element={<UserManagement />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>
