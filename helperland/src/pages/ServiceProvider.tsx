@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import Footer from '../components/Footer';
 import HeaderService from '../components/HeaderService';
 import TableContainer from '@mui/material/TableContainer';
@@ -124,7 +123,7 @@ const ServiceProvider = () => {
         }
     })
 
-    const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    const StyledTableCell = styled(TableCell)({
         fontSize: '16px',
         paddingTop: '9px',
         paddingBottom: '9px',
@@ -132,8 +131,7 @@ const ServiceProvider = () => {
         '&.MuiTableCell-root': {
             borderBottom: 'none'
         }
-
-    }))
+    })
 
     return (
         <div>

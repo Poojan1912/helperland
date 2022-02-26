@@ -4,6 +4,22 @@
   overflow: hidden;
 }
 
+.white-space-wrap {
+  white-space: nowrap;
+}
+
+.overlay .cover {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  z-index: 10;
+  transition: all 250ms;
+}
+
 .steps {
   font-size: 20px;
   display: flex;
@@ -870,6 +886,30 @@ input[type="checkbox"]:checked {
   align-items: center;
 }
 
+.service-status-pending {
+  background-color: #1fb6ff;
+  color: #ffffff;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center !important;
+  font-size: 13px;
+  width: 62px;
+  height: 24px;
+}
+
+.service-status-new {
+  background-color: #f2bb37;
+  width: 45px;
+  height: 24px;
+  margin: 0 auto;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+}
+
 .service-table h4 {
   font-size: 22px;
   color: #646464;
@@ -950,7 +990,6 @@ input[type="checkbox"]:checked {
   justify-content: space-between;
   align-items: center;
   padding-left: 15px;
-  padding-right: 18px;
 }
 
 .admin-profile {
@@ -964,7 +1003,6 @@ input[type="checkbox"]:checked {
 }
 
 .admin-profile p {
-  padding-right: 17px;
   color: #ffffff;
 }
 
@@ -973,13 +1011,13 @@ input[type="checkbox"]:checked {
   flex-basis: 273px;
   flex-grow: 0;
   flex-shrink: 0;
-  max-width: 273px;
+  width: 273px;
   color: #646464;
-  z-index: 5;
+  z-index: 50;
 }
 
 .admin-sidebar li {
-  cursor: pointer;
+  color: #646464 !important;
   border-bottom: 0.5px solid #2c29291a;
   padding: 13px 0 13px 13px;
 }
@@ -1010,7 +1048,10 @@ input[type="checkbox"]:checked {
 
 .admin-table {
   background-color: #f3f4f6;
-  width: 100%;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: calc(100% - 273px);
+  max-width: calc(100% - 273px);
   padding: 24px 20px 22px 20px;
 }
 
@@ -1037,14 +1078,24 @@ input[type="checkbox"]:checked {
 }
 
 .admin-filter {
-  display: flex;
-  height: 86px;
-  align-items: center;
-  justify-content: center;
-  gap: 25px;
+  /* display: flex; */
+  /* height: 86px; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* gap: 25px; */
   border: 1px solid #e1e1e1;
+  padding: 20px 21px 20px 15px;
   margin-bottom: 20px;
   background-color: #ffffff;
+}
+
+.sidebar-accordion {
+  padding: 0 !important;
+}
+
+.sidebar-accordion-details p {
+  padding-bottom: 10px;
+  color: #646464;
 }
 
 .admin-copyright {
@@ -1079,7 +1130,17 @@ input[type="checkbox"]:checked {
   align-items: center;
 }
 
+.admin-toggle {
+  display: none;
+}
+
 /* User Management completes here */
+
+/* Service Request starts here */
+.date-picker {
+  height: 46px;
+}
+/* Service Request completes here */
 
 @media screen and (max-width: 1140px) {
   .navbar .logo {
@@ -1354,6 +1415,41 @@ input[type="checkbox"]:checked {
     position: absolute;
     right: 25px;
   }
+
+  .admin-sidebar {
+    margin-left: -273px;
+    position: absolute;
+    height: 100%;
+    background-color: white;
+    top: 0;
+    transition: margin-left 250ms ease-in;
+    z-index: 50000;
+  }
+
+  .admin-toggle {
+    display: block;
+  }
+
+  .admin-table {
+    max-width: 100%;
+    flex-basis: 100%;
+  }
+
+  .admin-sidebar-toggle {
+    transition: margin-left 250ms ease-in;
+    margin-left: 0;
+    overflow-y: auto;
+    flex-direction: column;
+    max-width: 273px;
+    position: absolute;
+    top: 0;
+    z-index: 500000;
+    background-color: white;
+  }
+
+  .admin-profile p {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -1413,6 +1509,20 @@ input[type="checkbox"]:checked {
   .sp-registration {
     max-width: 90%;
   }
+
+  .admin-pagination {
+    flex-direction: column;
+    height: fit-content;
+    padding: 10px 0;
+  }
+
+  .admin-pagination div {
+    padding: 5px 0;
+  }
+
+  .admin-title h4 {
+    font-size: 18px;
+  }
 }
 
 @media screen and (max-width: 425px) {
@@ -1469,6 +1579,10 @@ input[type="checkbox"]:checked {
 
   .steps {
     font-size: 16px;
+  }
+
+  .admin-logo-helperland {
+    width: 50% !important;
   }
 }
 

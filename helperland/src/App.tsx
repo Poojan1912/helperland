@@ -14,6 +14,7 @@ import BecomeAPro from './pages/BecomeAPro';
 import ServiceProvider from './pages/ServiceProvider';
 import ServiceHistory from './pages/ServiceHistory'
 import UserManagement from './pages/UserManagement';
+import ServiceRequest from './pages/ServiceRequest';
 
 function App() {
   const theme = createTheme({
@@ -97,6 +98,7 @@ function App() {
             <Route path="/service-provider" element={<ServiceProvider />} />
             <Route path="/service-history" element={<ServiceHistory />} />
             <Route path="/user-management" element={<UserManagement />} />
+            <Route path="/service-request" element={<ServiceRequest />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>

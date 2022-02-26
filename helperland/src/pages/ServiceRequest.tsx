@@ -1,6 +1,6 @@
 import React from 'react'
 import Typography from '@mui/material/Typography'
-import { add, adminUser, group38, helperland, logout, sort } from '../assets/images'
+import { add, adminCalenderBlue, adminUser, calender2, forma1Copy19, group38, helperland, layer14, layer15, logout, sort, star1, star2 } from '../assets/images'
 import TableContainer from '@mui/material/TableContainer';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -9,7 +9,6 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { styled } from '@mui/system';
 import Button from '@mui/material/Button';
-import InputAdornment from '@mui/material/InputAdornment';
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import OutlinedInput from '@mui/material/OutlinedInput';
@@ -26,30 +25,33 @@ import { Link } from 'react-router-dom';
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 // import Person from '@material-ui/icons/Person';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import { DatePicker, DesktopDatePicker } from '@mui/lab';
 
 function createData(
-    userName: string,
-    userType: string,
-    role: string,
-    postalCode: number,
-    city: string,
-    radius: number,
-    userStatus: string,
+    serviceId: number,
+    serviceDate: string,
+    serviceTime: string,
+    customerName: string,
+    customerAddress: string,
+    serviceProviderName: string,
+    status: string
 ) {
-    return { userName, userType, role, postalCode, city, radius, userStatus };
+    return { serviceId, serviceDate, serviceTime, customerName, customerAddress, serviceProviderName, status };
 }
 
 const tableRows = [
-    createData("Lyum Watson", "Call Center", "Inquiry Manager", 123456, "Berlin", 0, "Active"),
-    createData("John Smith", "Service provider", "", 123456, "Berlin", 10, "Active"),
-    createData("John Smith", "Call Center", "Inquiry Manager", 123456, "Berlin", 0, "Active"),
-    createData("John Smith", "Customer", "", 123456, "Berlin", 0, "Active"),
-    createData("John Smith", "Call Center", "Content Manager", 123456, "Berlin", 0, "Active"),
-    createData("John Smith", "Customer", "", 123456, "Berlin", 0, "Inactive"),
-    createData("John Smith", "Service Provider", "", 123456, "Berlin", 20, "Active"),
-    createData("John Smith", "Call Center", "Finance Manager", 123456, "Berlin", 0, "Active"),
-    createData("John Smith", "Customer", "", 123456, "Berlin", 0, "Active"),
-    createData("John Smith", "Customer", "", 123456, "Berlin", 0, "Active")
+    createData(323436, "09/04/2018", "12:00 - 18:00", "David Bough", "Musterstrabe 5,12345 Bonn", "", "New"),
+    createData(323436, "09/04/2018", "12:00 - 18:00", "David Bough", "Musterstrabe 5,12345 Bonn", "", "New"),
+    createData(323436, "09/04/2018", "12:00 - 18:00", "David Bough", "Musterstrabe 5,12345 Bonn", "Lyum Watson", "Pending"),
+    createData(323436, "09/04/2018", "12:00 - 18:00", "David Bough", "Musterstrabe 5,12345 Bonn", "Lyum Watson", "Pending"),
+    createData(323436, "09/04/2018", "12:00 - 18:00", "David Bough", "Musterstrabe 5,12345 Bonn", "Lyum Watson", "Completed"),
+    createData(323436, "09/04/2018", "12:00 - 18:00", "David Bough", "Musterstrabe 5,12345 Bonn", "Lyum Watson", "Completed"),
+    createData(323436, "09/04/2018", "12:00 - 18:00", "David Bough", "Musterstrabe 5,12345 Bonn", "Lyum Watson", "Cancelled"),
+    createData(323436, "09/04/2018", "12:00 - 18:00", "David Bough", "Musterstrabe 5,12345 Bonn", "Lyum Watson", "Completed"),
+    createData(323436, "09/04/2018", "12:00 - 18:00", "David Bough", "Musterstrabe 5,12345 Bonn", "Lyum Watson", "Cancelled"),
+    createData(323436, "09/04/2018", "12:00 - 18:00", "David Bough", "Musterstrabe 5,12345 Bonn", "Lyum Watson", "Completed")
 ]
 
 const rows = {
@@ -76,6 +78,14 @@ const rows = {
         blog: 'Blog',
         faqs: 'FAQs'
     }
+}
+
+const toggleSidebar = () => {
+    const element = document.getElementById('sidebar')
+    const bodyTag = document.getElementsByTagName('body')[0]
+    element?.classList.toggle('admin-sidebar-toggle')
+    bodyTag.classList.toggle("overlay")
+    bodyTag.classList.toggle("overflow-class")
 }
 
 const Accordion = styled((props: AccordionProps) => (
@@ -159,7 +169,7 @@ const StyledPagination = styled(Pagination)({
         borderRight: 'none',
         borderTop: '1px solid #D6D6D6',
         borderBottom: '1px solid #D6D6D6',
-        borderLeft: '1px solid #D6D6D6',
+        borderLeft: '1px solid #D6D6D6'
     },
     '& .MuiButtonBase-root': {
         '&.Mui-selected': {
@@ -188,27 +198,22 @@ const StyledButton = styled(Button)({
     }
 })
 
-const StyledInputAdornment = styled(InputAdornment)({
-    '&.MuiInputAdornment-root': {
-        width: '57px',
-        paddingLeft: '15px',
-        paddingRight: '15px',
-        height: '46px',
-        maxHeight: 'none',
-        backgroundColor: '#f3f3f3',
-        borderTopLeftRadius: '4px',
-        borderBottomLeftRadius: '4px',
-        borderRight: '1px solid #DEDDDD'
-    },
-})
-
 const StyledTableCell = styled(TableCell)({
     fontSize: '16px',
-
+    paddingTop: '7px',
+    paddingBottom: '7px',
     '&.MuiTableCell-root': {
         borderBottom: 'none'
     }
+})
 
+const StyledTableCellHeader = styled(TableCell)({
+    fontSize: '16px',
+    paddingTop: '20px',
+    paddingBottom: '20px',
+    '&.MuiTableCell-root': {
+        borderBottom: 'none'
+    }
 })
 
 const StyledTableBody = styled(TableBody)({
@@ -222,12 +227,26 @@ const StyledTableHead = styled(TableHead)({
     backgroundColor: '#F9F9F9'
 })
 
-const StyledTableRow = styled(TableRow)({
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
     border: '1px solid #e8dada',
     '& .MuiTableCell-root': {
         color: '#646464'
+    },
+
+    [theme.breakpoints.down("lg")]: {
+        '& .MuiTableCell-root': {
+            paddingLeft: '10px',
+            paddingRight: '10px'
+        }
+    },
+
+    [theme.breakpoints.down("md")]: {
+        '& .MuiTableCell-root': {
+            paddingLeft: '5px',
+            paddingRight: '5px'
+        }
     }
-})
+}))
 
 
 const StyledMenu = styled(Menu)({
@@ -237,8 +256,7 @@ const StyledMenu = styled(Menu)({
     }
 })
 
-const ZipCode = styled(TextField)({
-    // width: '140px',
+const ServiceID = styled(TextField)({
     '& .MuiOutlinedInput-root': {
         height: '46px',
         color: '#0009'
@@ -251,47 +269,6 @@ const ZipCode = styled(TextField)({
     '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
         borderColor: '#DEDDDD'
     },
-    '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline': {
-        borderColor: '#DEDDDD'
-    },
-
-    'input':
-    {
-        '&::placeholder':
-        {
-            color: '#A0A0A0',
-            opacity: 1
-        }
-    }
-})
-
-const toggleSidebar = () => {
-    const element = document.getElementById('sidebar')
-    const bodyTag = document.getElementsByTagName('body')[0]
-    element?.classList.toggle('admin-sidebar-toggle')
-    bodyTag.classList.toggle("overlay")
-    bodyTag.classList.toggle("overflow-class")
-}
-
-const StyledTextField = styled(TextField)({
-    '& .MuiOutlinedInput-input': {
-        height: '13px'
-    },
-
-    '& .MuiOutlinedInput-root': {
-        color: '#0009',
-        paddingLeft: '0',
-    },
-
-    '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
-        borderColor: '#DEDDDD',
-
-    },
-
-    '& .MuiOutlinedInput-root.Mui-focused fieldset': {
-        borderColor: '#DEDDDD'
-    },
-
     '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline': {
         borderColor: '#DEDDDD'
     },
@@ -338,30 +315,43 @@ const StyledTableRowHeader = styled(TableRow)({
     }
 })
 
-const userNameValues = [
-    "Lyum Watson",
+const CustomTextField = styled(TextField)({
+    '& .MuiOutlinedInput-root': {
+        height: '46px',
+    },
+    width: '100%'
+})
+
+const customerNameValues = [
+    "David Bough",
     "John Smith"
 ];
 
-const userRoleValues = [
-    "Inquiry Manager",
-    "Content Manager",
-    "Finance Manager"
+const serviceProviderValues = [
+    "Lyum Watson",
+    "Peter Smith"
 ]
 
-const UserManagement = () => {
+const statusValues = [
+    "New",
+    "Pending",
+    "Cancelled",
+    "Completed"
+]
 
+const ServiceRequest = () => {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-    const [userName, setUserName] = React.useState('');
-    const [userRole, setUserRole] = React.useState('');
+    const [customerName, setCustomerName] = React.useState('');
+    const [serviceProvider, setServiceProvider] = React.useState('');
+    const [status, setStatus] = React.useState('');
     const [paginationValue, SetPaginationValue] = React.useState(10);
     const open = Boolean(anchorEl);
+    const [date, setDate] = React.useState<Date | null>(new Date());
     const [expanded, setExpanded] = React.useState<string | false>('');
 
-    const handleChangeAccordion =
-        (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
-            setExpanded(newExpanded ? panel : false);
-        };
+    const handleChangeAccordion = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
+        setExpanded(newExpanded ? panel : false);
+    };
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
@@ -377,14 +367,20 @@ const UserManagement = () => {
         SetPaginationValue(value);
     }
 
-    const handleChange = (event: SelectChangeEvent<typeof userName>) => {
-        setUserName(
+    const handleChange = (event: SelectChangeEvent<typeof customerName>) => {
+        setCustomerName(
             event.target.value
         );
     };
 
-    const handleChangeRoles = (event: SelectChangeEvent<typeof userRole>) => {
-        setUserRole(
+    const handleChangeProvider = (event: SelectChangeEvent<typeof serviceProvider>) => {
+        setServiceProvider(
+            event.target.value
+        );
+    };
+
+    const handleChangeStatus = (event: SelectChangeEvent<typeof status>) => {
+        setStatus(
             event.target.value
         );
     };
@@ -413,7 +409,7 @@ const UserManagement = () => {
             </div>
 
             <div className='user-management-row'>
-                <ul className='admin-sidebar' id='sidebar'>
+                <ul className='admin-sidebar' id="sidebar">
                     <Link to="#"><li>{rows.serviceManagement}</li></Link>
                     <Link to="#"><li>{rows.roleManagement}</li></Link>
                     <li className='sidebar-accordion'>
@@ -463,7 +459,7 @@ const UserManagement = () => {
                 <div className='admin-table'>
                     <div className='admin-title'>
                         <Typography component="h4" variant="h4">
-                            User Management
+                            Service Requests
                         </Typography>
                         <StyledButton className='add-user-button'>
                             <img src={add} alt="add icon" />
@@ -472,57 +468,29 @@ const UserManagement = () => {
                     </div>
 
                     <Grid container className='admin-filter'>
-                        <Grid item xs={12} xl={5}>
+                        <Grid item xs={12} xl={3}>
                             <Grid container>
-                                <Grid item sm={6} xs={12} pr={{ sm: 2, xs: 0 }}>
+                                <Grid item pr={{ sm: 2, xs: 0 }} sm={6} xl={5} xs={12}>
+                                    <ServiceID fullWidth id="outlined-basic" placeholder='Service ID' variant="outlined" />
+                                </Grid>
+                                <Grid item pr={{ xl: 2, xs: 0 }} pt={{ xs: 2, sm: 0 }} sm={6} xl={7} xs={12}>
                                     <Select
                                         sx={{ height: '46px' }}
                                         displayEmpty
                                         fullWidth
-                                        value={userName}
+                                        value={customerName}
                                         input={<OutlinedInput />}
-                                        placeholder="User name"
                                         IconComponent={KeyboardArrowDownIcon}
                                         onChange={handleChange}
                                         inputProps={{ 'aria-label': 'Without label' }}
                                         renderValue={(selected) => {
                                             if (selected.length === 0) {
-                                                return <p style={{ color: '#A0A0A0' }}>User name</p>;
+                                                return <p style={{ color: '#A0A0A0' }}>Customer</p>;
                                             }
                                             return selected
                                         }}
                                     >
-                                        {userNameValues.map((data) => (
-                                            <MenuItem
-                                                key={data}
-                                                value={data}
-                                            >
-                                                {data}
-                                            </MenuItem>
-                                        ))}
-                                    </Select>
-                                </Grid>
-
-                                <Grid item sm={6} xs={12} pr={{ lg: 2, xs: 0 }} pt={{ xs: 2, sm: 0 }}>
-                                    <Select
-                                        fullWidth
-                                        sx={{ height: '46px' }}
-                                        displayEmpty
-                                        id='user-role'
-                                        value={userRole}
-                                        input={<OutlinedInput />}
-                                        placeholder="User role"
-                                        IconComponent={KeyboardArrowDownIcon}
-                                        onChange={handleChangeRoles}
-                                        inputProps={{ 'aria-label': 'Without label' }}
-                                        renderValue={(selected) => {
-                                            if (selected.length === 0) {
-                                                return <p style={{ color: '#A0A0A0' }}>User role</p>;
-                                            }
-                                            return selected
-                                        }}
-                                    >
-                                        {userRoleValues.map((data) => (
+                                        {customerNameValues.map((data) => (
                                             <MenuItem
                                                 key={data}
                                                 value={data}
@@ -535,20 +503,102 @@ const UserManagement = () => {
                             </Grid>
                         </Grid>
 
-                        <Grid item xs={12} xl={5}>
+                        <Grid item xs={12} xl={4}>
                             <Grid container>
-                                <Grid item sm={6} xs={12} xl={8} pr={{ sm: 2, xs: 0 }} pt={{ xs: 2, xl: 0 }}>
-                                    <StyledTextField
-                                        InputProps={{
-                                            startAdornment: <StyledInputAdornment position="start">+49</StyledInputAdornment>,
+                                <Grid item pr={{ sm: 2, xs: 0 }} pt={{ xl: 0, xs: 2 }} sm={6} xl={7.5} xs={12}>
+                                    <Select
+                                        sx={{ height: '46px' }}
+                                        displayEmpty
+                                        fullWidth
+                                        id='service-provider'
+                                        value={serviceProvider}
+                                        input={<OutlinedInput />}
+                                        IconComponent={KeyboardArrowDownIcon}
+                                        onChange={handleChangeProvider}
+                                        inputProps={{ 'aria-label': 'Without label' }}
+                                        renderValue={(selected) => {
+                                            if (selected.length === 0) {
+                                                return <p style={{ color: '#A0A0A0' }}>Service Provider</p>;
+                                            }
+                                            return selected
                                         }}
-                                        fullWidth id="outlined-basic" placeholder='Phone number' variant="outlined" />
+                                    >
+                                        {serviceProviderValues.map((data) => (
+                                            <MenuItem
+                                                key={data}
+                                                value={data}
+                                            >
+                                                {data}
+                                            </MenuItem>
+                                        ))}
+                                    </Select>
                                 </Grid>
-                                <Grid item sm={6} xs={12} xl={4} pr={{ lg: 2, xs: 0 }} pt={{ xs: 2, xl: 0 }}>
-                                    <ZipCode fullWidth id="outlined-basic" placeholder='Zipcode' variant="outlined" />
+
+                                <Grid item pr={{ xl: 2, xs: 0 }} pt={{ xl: 0, xs: 2 }} sm={6} xl={4.5} xs={12}>
+                                    <Select
+                                        sx={{ height: '46px' }}
+                                        displayEmpty
+                                        fullWidth
+                                        value={status}
+                                        input={<OutlinedInput />}
+                                        IconComponent={KeyboardArrowDownIcon}
+                                        onChange={handleChangeStatus}
+                                        inputProps={{ 'aria-label': 'Without label' }}
+                                        renderValue={(selected) => {
+                                            if (selected.length === 0) {
+                                                return <p style={{ color: '#A0A0A0' }}>Status</p>;
+                                            }
+                                            return selected
+                                        }}
+                                    >
+                                        {statusValues.map((data) => (
+                                            <MenuItem
+                                                key={data}
+                                                value={data}
+                                            >
+                                                {data}
+                                            </MenuItem>
+                                        ))}
+                                    </Select>
                                 </Grid>
                             </Grid>
+                        </Grid>
 
+                        <Grid item xs={12} xl={3}>
+                            <Grid container>
+                                <Grid item pr={{ sm: 2, xs: 0 }} pt={{ xl: 0, xs: 2 }} xl={6.5} sm={6} xs={12}>
+                                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                                        <DesktopDatePicker
+                                            value={date}
+                                            onChange={value => setDate(value)}
+                                            renderInput={(params) => <CustomTextField {...params} inputProps={{ placeholder: "From Date" }} />}
+                                            InputAdornmentProps={{
+                                                position: 'start'
+                                            }}
+                                            components={{
+                                                OpenPickerIcon: () => <img src={adminCalenderBlue} alt="calender-icon" />
+                                            }}
+                                        />
+                                    </LocalizationProvider>
+                                </Grid>
+
+
+                                <Grid item pr={{ xl: 2, xs: 0 }} pt={{ xl: 0, xs: 2 }} xl={5.5} sm={6} xs={12}>
+                                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                                        <DatePicker
+                                            value={date}
+                                            onChange={(value) => setDate(value)}
+                                            renderInput={(params) => <CustomTextField {...params} inputProps={{ placeholder: "To Date" }} />}
+                                            InputAdornmentProps={{
+                                                position: 'start'
+                                            }}
+                                            components={{
+                                                OpenPickerIcon: () => <img src={adminCalenderBlue} alt="calender-icon" />
+                                            }}
+                                        />
+                                    </LocalizationProvider>
+                                </Grid>
+                            </Grid>
                         </Grid>
 
                         <Grid item lg={3} sx={{ margin: '0 auto' }} xl={2}>
@@ -572,14 +622,12 @@ const UserManagement = () => {
                         <Table sx={{ minWidth: 650 }} aria-label="simple table">
                             <StyledTableHead>
                                 <StyledTableRowHeader>
-                                    <StyledTableCell className='white-space-wrap' align="left">User Name &nbsp;<img src={sort} alt="sort icon" /></StyledTableCell>
-                                    <StyledTableCell className='white-space-wrap' align="left">User Type</StyledTableCell>
-                                    <StyledTableCell className='white-space-wrap' align="left">Role</StyledTableCell>
-                                    <StyledTableCell className='white-space-wrap' align="left">Postal Code &nbsp;<img src={sort} alt="sort icon" /></StyledTableCell>
-                                    <StyledTableCell className='white-space-wrap' align="left">City</StyledTableCell>
-                                    <StyledTableCell className='white-space-wrap' align="left">Radius&nbsp;<img src={sort} alt="sort icon" /></StyledTableCell>
-                                    <StyledTableCell className='white-space-wrap' align="left">User Status&nbsp;<img src={sort} alt="sort icon" /></StyledTableCell>
-                                    <StyledTableCell className='white-space-wrap' align="center">Actions</StyledTableCell>
+                                    <StyledTableCellHeader className='white-space-wrap' align="left">Service ID &nbsp;<img src={sort} alt="sort icon" /></StyledTableCellHeader>
+                                    <StyledTableCellHeader className='white-space-wrap' align="left">Service date &nbsp;<img src={sort} alt="sort icon" /></StyledTableCellHeader>
+                                    <StyledTableCellHeader className='white-space-wrap' align="left">Customer details&nbsp;<img src={sort} alt="sort icon" /></StyledTableCellHeader>
+                                    <StyledTableCellHeader className='white-space-wrap' align="left">Service Provider &nbsp;<img src={sort} alt="sort icon" /></StyledTableCellHeader>
+                                    <StyledTableCellHeader className='white-space-wrap' align="center">Status&nbsp;<img src={sort} alt="sort icon" /></StyledTableCellHeader>
+                                    <StyledTableCell align="center">Actions</StyledTableCell>
                                 </StyledTableRowHeader>
                             </StyledTableHead>
                             <StyledTableBody>
@@ -588,34 +636,63 @@ const UserManagement = () => {
                                         key={index}
                                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                     >
-                                        <StyledTableCell className='white-space-wrap' align="left">
-                                            {row.userName}
+                                        <StyledTableCell align="left">
+                                            {row.serviceId}
                                         </StyledTableCell>
                                         <StyledTableCell align="left">
-                                            {row.userType}
+                                            <div className='service-date'>
+                                                <img src={calender2} alt="Calender icon" />
+                                                <p>&nbsp;{row.serviceDate}</p>
+                                            </div>
+                                            <div className='service-time'>
+                                                <img width='17' height='17' src={layer14} alt="clock icon" />
+                                                <p> {row.serviceTime}</p>
+                                            </div>
                                         </StyledTableCell>
-                                        <StyledTableCell>
-                                            {row.role}
+                                        <StyledTableCell align="left">
+                                            {row.customerName}
+                                            <div className='customer-address'>
+                                                <img src={layer15} alt="house icon" />
+                                                <p>{row.customerAddress}</p>
+                                            </div>
                                         </StyledTableCell>
-                                        <StyledTableCell className='white-space-wrap'>
-                                            {row.postalCode}
-                                        </StyledTableCell>
-                                        <StyledTableCell className='white-space-wrap'>
-                                            {row.city}
-                                        </StyledTableCell >
-                                        <StyledTableCell className='white-space-wrap'>
-                                            {row.radius !== 0 &&
-                                                <p>{row.radius} km</p>
-                                            }
-                                        </StyledTableCell>
-                                        <StyledTableCell align="center">
-                                            {row.userStatus === "Active" &&
-                                                <p className='user-status'>Active</p>
-                                            }
-                                            {row.userStatus === "Inactive" &&
-                                                <p className='user-status user-inactive-status'>Inactive</p>
-                                            }
+                                        <StyledTableCell align="left">
+                                            {row.serviceProviderName && <div className='history-service-provider'>
+                                                <div className='hat'>
+                                                    <img src={forma1Copy19} alt="hat icon" />
+                                                </div>
 
+                                                <div className='star-rating'>
+                                                    {row.serviceProviderName}
+                                                    <div>
+                                                        <img src={star1} alt="star-rated" />
+                                                        <img src={star1} alt="star-rated" />
+                                                        <img src={star1} alt="star-rated" />
+                                                        <img src={star1} alt="star-rated" />
+                                                        <img src={star2} alt="star-not-rated" />
+                                                        <p>&nbsp;4</p>
+                                                    </div>
+                                                </div>
+                                            </div>}
+                                        </StyledTableCell>
+                                        <StyledTableCell align="left">
+                                            {row.status === "Completed" &&
+                                                <p className="service-status">
+                                                    {row.status}
+                                                </p>}
+                                            {row.status === "Pending" &&
+                                                <p className="service-status-pending">
+                                                    {row.status}
+                                                </p>}
+                                            {row.status === "New" &&
+                                                <p className="service-status-new">
+                                                    {row.status}
+                                                </p>}
+
+                                            {row.status === "Cancelled" &&
+                                                <p className="service-status-cancelled">
+                                                    {row.status}
+                                                </p>}
                                         </StyledTableCell>
                                         <StyledTableCell align="center">
                                             <Button
@@ -631,6 +708,7 @@ const UserManagement = () => {
                                                 <img src={group38} alt="kebab-menu" />
                                             </Button>
                                             <StyledMenu
+                                                id="basic-menu"
                                                 anchorOrigin={{
                                                     vertical: 'bottom',
                                                     horizontal: 'right',
@@ -639,7 +717,6 @@ const UserManagement = () => {
                                                     vertical: 'top',
                                                     horizontal: 'right',
                                                 }}
-                                                id="basic-menu"
                                                 anchorEl={anchorEl}
                                                 open={open}
                                                 onClose={handleClose}
@@ -647,8 +724,13 @@ const UserManagement = () => {
                                                     'aria-labelledby': 'basic-button',
                                                 }}
                                             >
-                                                <MenuItem onClick={handleClose}>Edit</MenuItem>
-                                                <MenuItem onClick={handleClose}>Deactivate</MenuItem>
+                                                <MenuItem onClick={handleClose}>Edit & Reschedule</MenuItem>
+                                                <MenuItem onClick={handleClose}>Refund</MenuItem>
+                                                <MenuItem onClick={handleClose}>Cancel</MenuItem>
+                                                <MenuItem onClick={handleClose}>Change SP</MenuItem>
+                                                <MenuItem onClick={handleClose}>Escalate</MenuItem>
+                                                <MenuItem onClick={handleClose}>History Log</MenuItem>
+                                                <MenuItem onClick={handleClose}>Download Invoice</MenuItem>
                                             </StyledMenu>
                                         </StyledTableCell>
                                     </StyledTableRow>
@@ -656,6 +738,7 @@ const UserManagement = () => {
                             </StyledTableBody>
                         </Table>
                     </TableContainer>
+
                     <div className="admin-pagination">
                         <div>
                             <p>Show</p>
@@ -672,6 +755,7 @@ const UserManagement = () => {
                         </div>
                         <StyledPagination count={5} variant="outlined" />
                     </div>
+
                     <p className='admin-copyright'>©2018 Helperland. All rights reserved.</p>
                 </div>
             </div>
@@ -679,4 +763,4 @@ const UserManagement = () => {
     )
 }
 
-export default UserManagement
+export default ServiceRequest

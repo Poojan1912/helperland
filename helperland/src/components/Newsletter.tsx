@@ -12,13 +12,21 @@ const Newsletter = () => {
             borderRadius: '20px',
             height: '40px',
             width: '233px',
-            padding: '14px 9px'
+            padding: '14px 9px',
+            backgroundColor: '#F4F5F8'
 
+        },
+
+        '& .MuiInputBase-root .MuiOutlinedInput-notchedOutline fieldset': {
+            '& .Mui-focused': {
+                border: 'none'
+            }
         },
 
         '& .MuiOutlinedInput-notchedOutline':
         {
             border: '1px solid #565656',
+
         },
         'input':
         {
