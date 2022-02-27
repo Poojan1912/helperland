@@ -1142,6 +1142,151 @@ input[type="checkbox"]:checked {
 }
 /* Service Request completes here */
 
+/* Book service starts here */
+.book-service-left h5 {
+  color: #4f4f4f;
+  padding-bottom: 10px;
+  font-weight: bold;
+}
+
+.room-count {
+  padding-bottom: 24px;
+}
+
+.cleaner-timing {
+  padding-top: 20px;
+}
+
+.more-help {
+  color: #1d7a8c !important;
+  font-weight: bold;
+  margin-top: 18px !important;
+  transition: color 250ms;
+}
+
+.more-help:hover,
+.more-help:focus {
+  color: #176270 !important;
+}
+
+.questions h5 {
+  color: #4f4f4f;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  padding-top: 26px;
+}
+
+.continue-button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.pet-checkbox {
+  display: flex;
+  align-items: center;
+  padding-bottom: 14px;
+  padding-top: 9px;
+}
+
+.service-center {
+  text-align: center;
+}
+
+.payment-summery {
+  box-shadow: 0px 0px 7px #00000059;
+}
+
+.payment-summery-details {
+  color: #4f4f4f;
+}
+
+.payment-summery-details h5 {
+  color: #646464;
+}
+
+.room-details {
+  padding: 28px 22px 5px 18px;
+}
+
+.payment-summery-title {
+  background-color: #1d7a8c;
+  color: #ffffff;
+  font-size: 18px;
+  padding-left: 22px;
+  padding-top: 21px;
+  padding-bottom: 24px;
+}
+
+.payment-duration {
+  padding: 10px 22px 8px 18px;
+}
+
+.payment-duration-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.per-cleaning-discount {
+  padding-left: 20px;
+  padding-right: 21px;
+}
+
+.payment-pricing {
+  color: #646464;
+  font-weight: bold;
+}
+
+.total-payment {
+  align-items: center;
+  padding-left: 21px;
+  padding-right: 18px;
+}
+
+.total-payment h4 {
+  color: #1d7a8c !important;
+  align-items: center;
+}
+
+.pay-title {
+  font-weight: normal !important;
+}
+
+.pay {
+  font-size: 42px !important;
+}
+
+.effective-price {
+  padding: 0 19px 12.5px 23px;
+  align-items: center;
+}
+
+.discount-line {
+  padding-left: 23px;
+  color: #646464;
+  padding-bottom: 18px;
+}
+
+.payment-footer {
+  background-color: #f3f3f3;
+  color: #8d8d8d;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  padding: 15px 0 14px 20px;
+}
+
+.payment-footer img {
+  padding-right: 8px;
+}
+
+.payment-duration-total {
+  color: #4f4f4f;
+  font-weight: bold;
+}
+
+/* Book service completes here */
+
 @media screen and (max-width: 1140px) {
   .navbar .logo {
     width: 73px;
@@ -1477,6 +1622,11 @@ input[type="checkbox"]:checked {
     max-width: 300px;
     text-align: center;
     margin: 0 auto;
+  }
+
+  .continue-button {
+    justify-content: center;
+    padding-bottom: 30px;
   }
 }
 

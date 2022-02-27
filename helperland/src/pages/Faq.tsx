@@ -125,7 +125,7 @@ const Faq = () => {
                 </div>
                 <Box>
                     <Box>
-                        <StyledTabs value={value} onChange={handleChange} aria-label="basic tabs example" className='styled-tabs'>
+                        <StyledTabs value={value} onChange={handleChange} aria-label="basic tabs example">
                             <StyledTab label="For Customer" {...a11yProps(0)} className='tab' />
                             <StyledTab label="For Service Provider" {...a11yProps(1)} className='tab' />
                         </StyledTabs>
