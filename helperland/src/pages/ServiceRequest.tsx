@@ -27,6 +27,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { DatePicker, DesktopDatePicker } from '@mui/lab';
+import { Helmet } from 'react-helmet';
 
 function createData(
     serviceId: number,
@@ -386,6 +387,9 @@ const ServiceRequest = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Service Request - Helperland</title>
+            </Helmet>
             <div className='cover' onClick={toggleSidebar}></div>
             <div className='admin-nav'>
                 <div>

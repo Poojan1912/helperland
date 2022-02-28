@@ -1,5 +1,5 @@
 import React from 'react'
-import { arrowWhite, bookServiceBanner, calenderBookService, details, five, forma1Copy5, four, keyboardRightArrowButton, keyboardRightArrowButton2, one, payment, scheduleWhite, setupService, smiley, three, two } from '../assets/images'
+import { bookServiceBanner, calenderBookService, details, forma1Copy5, keyboardRightArrowButton2, payment, scheduleWhite, setupService, smiley } from '../assets/images'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import ImageBanner from '../components/ImageBanner'
@@ -21,6 +21,7 @@ import TextField from '@mui/material/TextField'
 import MuiAccordion, { AccordionProps } from '@mui/material/Accordion';
 import MuiAccordionSummary, { AccordionSummaryProps } from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
+import { Helmet } from "react-helmet";
 
 import AdapterDateFns from '@mui/lab/AdapterDateFns'
 import { Link } from 'react-router-dom'
@@ -85,7 +86,7 @@ const BookService = () => {
         paddingLeft: '0',
         paddingRight: '0',
         '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
-            transform: 'rotate(90deg)',
+            transform: 'rotate(90deg)'
         },
 
         '& .MuiAccordionSummary-content': {
@@ -121,11 +122,7 @@ const BookService = () => {
         },
 
         [theme.breakpoints.down("md")]: {
-            fontSize: '16px',
-            fontWeight: '600',
-            whiteSpace: 'wrap',
-            // maxWidth: '25%',
-            // padding: '0 !important',            
+            fontSize: '0',
         },
     }))
 
@@ -152,7 +149,7 @@ const BookService = () => {
     })
 
     const CustomCheckbox = styled(Checkbox)({
-
+        padding: '0'
     })
 
     const SelectedCheck = styled(Check)({
@@ -245,6 +242,22 @@ const BookService = () => {
         }
     })
 
+    const Comments = styled(TextField)({
+        '& .MuiOutlinedInput-root': {
+            color: '#646464'
+        },
+        '& .MuiOutlinedInput-root.Mui-focused fieldset': {
+            borderColor: '#C8C8C8'
+        },
+
+        '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+            borderColor: '#C8C8C8'
+        },
+        '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline': {
+            borderColor: '#C8C8C8'
+        },
+    })
+
     const CustomTimeSelect = styled(Select)({
         fontSize: '14px',
         color: '#646464',
@@ -310,6 +323,9 @@ const BookService = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Book Service - Helperland</title>
+            </Helmet>
             <Header />
             <ImageBanner address={bookServiceBanner} alt="book-service-banner" />
             <div className='page-top'>
@@ -321,13 +337,13 @@ const BookService = () => {
 
             <Container maxWidth='xl'>
                 <Grid container pt={7}>
-                    <Grid item sm={12} xl={8}>
+                    <Grid item xs={12} xl={8}>
                         <div style={{ maxWidth: '750px', margin: '0 auto' }}>
                             <StyledTabs value={value} onChange={handleChange} aria-label="basic tabs example">
                                 <StyledTab icon={<img src={setupService} />} iconPosition='start' label="Setup Service" {...a11yProps(0)} className='tab' />
                                 <StyledTab icon={<img src={scheduleWhite} />} iconPosition='start' label="Schedule & Plan" {...a11yProps(1)} className='tab' />
-                                <StyledTab icon={<img src={details} />} iconPosition='start' label="Your Details" {...a11yProps(1)} className='tab' />
-                                <StyledTab icon={<img src={payment} />} iconPosition='start' label="Make Payment" {...a11yProps(1)} className='tab' />
+                                <StyledTab icon={<img src={details} />} iconPosition='start' label="Your Details" {...a11yProps(2)} className='tab' />
+                                <StyledTab icon={<img src={payment} />} iconPosition='start' label="Make Payment" {...a11yProps(3)} className='tab' />
                             </StyledTabs>
 
                             <div className='book-service-left'>
@@ -357,7 +373,7 @@ const BookService = () => {
                                 <hr className='prices-hr' />
                                 <div className='cleaner-timing'>
                                     <Grid container>
-                                        <Grid item lg={5}>
+                                        <Grid item lg={5} pb={3}>
                                             <Typography component='h5' variant='h5'>
                                                 When do you need the cleaner?
                                             </Typography>
@@ -401,39 +417,49 @@ const BookService = () => {
                                     </Grid>
                                 </div>
                                 <hr className='prices-hr' />
-                                <Typography component='h5' variant='h5'>
+                                <Typography component='h5' variant='h5' pt={3}>
                                     Extra Services
                                 </Typography>
-                                <Grid container className='extra-services service-center'>
-                                    <Grid item lg={2.4} xs={12} md={4} className='extra-services-item'>
-                                        <div>
-                                            <img src={three} alt="cabinet" />
-                                        </div>
+                                <Grid container className='extra-services service-center' pt={1} pb={1.5}>
+                                    <Grid item lg={2.4} xs={12} md={4} className='extra-services-item cabinet-checkbox'>
+                                        <input type="checkbox" name="cabinet" id="cabinet" />
+                                        <label className='cabinet-label' htmlFor="cabinet">
+                                            <div>
+                                            </div>
+                                        </label>
                                         <p className='service-name'>Inside cabinets</p>
                                     </Grid>
-                                    <Grid item xl={2.4} lg={2.4} xs={12} md={4} className='extra-services-item'>
-                                        <div>
-                                            <img src={five} alt="fridge" />
-                                        </div>
+                                    <Grid item xl={2.4} lg={2.4} xs={12} md={4} className='extra-services-item fridge-checkbox'>
+                                        <input type="checkbox" name="fridge" id="fridge" />
+                                        <label className='fridge-label' htmlFor="fridge">
+                                            <div>
+                                            </div>
+                                        </label>
                                         <p className='service-name'>Inside fridge</p>
                                     </Grid>
-                                    <Grid item lg={2.4} xs={12} md={4} className='extra-services-item'>
-                                        <div>
-                                            <img src={four} alt="oven" />
-                                        </div>
+                                    <Grid item lg={2.4} xs={12} md={4} className='extra-services-item oven-checkbox'>
+                                        <input type="checkbox" name="oven" id="oven" />
+                                        <label className='oven-label' htmlFor="oven">
+                                            <div>
+                                            </div>
+                                        </label>
                                         <p className='service-name'>Inside oven</p>
                                     </Grid>
-                                    <Grid item lg={2.4} xs={12} md={6} className='extra-services-item'>
-                                        <div>
-                                            <img src={two} alt="washing-machine" />
-                                        </div>
-                                        <p className='service-name'>Laundry wash & dry</p>
+                                    <Grid item lg={2.4} xs={12} md={6} className='extra-services-item machine-checkbox'>
+                                        <input type="checkbox" name="machine" id="machine" />
+                                        <label className='machine-label' htmlFor="machine">
+                                            <div>
+                                            </div>
+                                        </label>
+                                        <p className='service-name laundry-wash'>Laundry wash & dry</p>
                                     </Grid>
-                                    <Grid item lg={2.4} xs={12} md={6} className='extra-services-item'>
-                                        <div>
-                                            <img src={one} alt="window" />
-                                        </div>
-                                        <p className='service-name'>Inside windows</p>
+                                    <Grid item lg={2.4} xs={12} md={6} className='extra-services-item window-checkbox'>
+                                        <input type="checkbox" name="window" id="window" />
+                                        <label className='window-label' htmlFor="window">
+                                            <div>
+                                            </div>
+                                        </label>
+                                        <p className='service-name interior-windows'>Interior windows</p>
                                     </Grid>
 
                                 </Grid>
@@ -444,15 +470,13 @@ const BookService = () => {
                                     <Typography component='h5' variant='h5'>
                                         Comments
                                     </Typography>
-                                    <TextField
+                                    <Comments
                                         id="outlined-multiline-flexible"
                                         fullWidth
                                         multiline
                                         minRows={2}
                                     />
-                                    {/* <div className='pet-checkbox'> */}
-                                    <CustomFormControlLabel sx={{ marginTop: 2 }} control={<CustomCheckbox icon={<Check />} checkedIcon={<SelectedCheck />} defaultChecked />} label="I have pets at home" />
-                                    {/* </div> */}
+                                    <CustomFormControlLabel sx={{ marginTop: 2, marginBottom: 3 }} control={<CustomCheckbox icon={<Check />} checkedIcon={<SelectedCheck />} defaultChecked />} label="I have pets at home" />
                                 </div>
 
                                 <hr className='prices-hr' />
@@ -465,7 +489,7 @@ const BookService = () => {
                         </div>
                     </Grid>
 
-                    <Grid item sm={12} xl={4}>
+                    <Grid item xs={12} xl={4}>
                         <div style={{ maxWidth: '360px', margin: '0 auto' }}>
                             <div className='payment-summery'>
                                 <div className='payment-summery-title'>
@@ -534,7 +558,7 @@ const BookService = () => {
                                     </Accordion>
 
                                     <Accordion expanded={expanded === 'panel2'} onChange={handleChangeAccordion('panel2')} >
-                                        <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
+                                        <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
                                             <p>Which Helperland professional will come to my place?</p>
                                         </AccordionSummary>
                                         <AccordionDetails className='sidebar-accordion-details'>
@@ -542,7 +566,7 @@ const BookService = () => {
                                         </AccordionDetails>
                                     </Accordion>
                                     <Accordion expanded={expanded === 'panel3'} onChange={handleChangeAccordion('panel3')} >
-                                        <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
+                                        <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
                                             <p>Which Helperland professional will come to my place?</p>
                                         </AccordionSummary>
                                         <AccordionDetails className='sidebar-accordion-details'>
@@ -550,7 +574,7 @@ const BookService = () => {
                                         </AccordionDetails>
                                     </Accordion>
                                     <Accordion expanded={expanded === 'panel4'} onChange={handleChangeAccordion('panel4')} >
-                                        <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
+                                        <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">
                                             <p>Which Helperland professional will come to my place?</p>
                                         </AccordionSummary>
                                         <AccordionDetails className='sidebar-accordion-details'>
@@ -558,7 +582,7 @@ const BookService = () => {
                                         </AccordionDetails>
                                     </Accordion>
                                     <Accordion expanded={expanded === 'panel5'} onChange={handleChangeAccordion('panel5')} >
-                                        <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
+                                        <AccordionSummary aria-controls="panel5d-content" id="panel5d-header">
                                             <p>Which Helperland professional will come to my place?</p>
                                         </AccordionSummary>
                                         <AccordionDetails className='sidebar-accordion-details'>
@@ -566,7 +590,7 @@ const BookService = () => {
                                         </AccordionDetails>
                                     </Accordion>
                                     <Accordion expanded={expanded === 'panel6'} onChange={handleChangeAccordion('panel6')} >
-                                        <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
+                                        <AccordionSummary aria-controls="panel6d-content" id="panel6d-header">
                                             <p>Which Helperland professional will come to my place?</p>
                                         </AccordionSummary>
                                         <AccordionDetails className='sidebar-accordion-details'>

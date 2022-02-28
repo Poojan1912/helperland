@@ -1285,6 +1285,121 @@ input[type="checkbox"]:checked {
   font-weight: bold;
 }
 
+.interior-windows {
+  max-width: 64px;
+  margin: 0 auto;
+}
+
+.laundry-wash {
+  max-width: 78px;
+  margin: 0 auto;
+}
+
+.cabinet-label div {
+  cursor: pointer;
+  display: block;
+  background-repeat: no-repeat;
+  background-position: 33px;
+  background-image: url("./assets/images/3.png");
+}
+
+.cabinet-checkbox input[type="checkbox"] {
+  display: none;
+}
+
+.cabinet-checkbox input:checked + label div {
+  cursor: pointer;
+  display: block;
+  background-repeat: no-repeat;
+  background-position: 22.5px;
+  background-image: url("./assets/images/3-green.png");
+  border: 3px solid #1d7a8c;
+}
+
+.fridge-label div {
+  cursor: pointer;
+  display: block;
+  background-repeat: no-repeat;
+  background-position: 38px;
+  background-image: url("./assets/images/5.png");
+}
+
+.fridge-checkbox input[type="checkbox"] {
+  display: none;
+}
+
+.fridge-checkbox input:checked + label div {
+  display: block;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: 22.5px;
+  background-image: url("./assets/images/5-green.png");
+  border: 3px solid #1d7a8c;
+}
+
+.oven-label div {
+  display: block;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: 27px;
+  background-image: url("./assets/images/4.png");
+}
+
+.oven-checkbox input[type="checkbox"] {
+  display: none;
+}
+
+.oven-checkbox input:checked + label div {
+  display: block;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: 23px;
+  background-image: url("./assets/images/4-green.png");
+  border: 3px solid #1d7a8c;
+}
+
+.machine-label div {
+  display: block;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: 33px;
+  background-image: url("./assets/images/2.png");
+}
+
+.machine-checkbox input[type="checkbox"] {
+  display: none;
+}
+
+.machine-checkbox input:checked + label div {
+  display: block;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: 23px;
+  background-image: url("./assets/images/2-green.png");
+  border: 3px solid #1d7a8c;
+}
+
+.window-label div {
+  cursor: pointer;
+  display: block;
+  background-repeat: no-repeat;
+  background-position: 29px;
+  background-image: url("./assets/images/1.png");
+}
+
+.window-checkbox input[type="checkbox"] {
+  display: none;
+}
+
+.window-checkbox input:checked + label div {
+  cursor: pointer;
+  display: block;
+  background-repeat: no-repeat;
+  background-position: 23px;
+  background-image: url("./assets/images/1-green.png");
+  border: 3px solid #1d7a8c;
+}
+
 /* Book service completes here */
 
 @media screen and (max-width: 1140px) {
@@ -1672,6 +1787,10 @@ input[type="checkbox"]:checked {
 
   .admin-title h4 {
     font-size: 18px;
+  }
+
+  .page-top h1 {
+    font-size: 22px !important;
   }
 }
 

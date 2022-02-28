@@ -18,6 +18,7 @@ import Footer from '../components/Footer'
 
 import { FaCaretDown } from "react-icons/fa";
 import { sort, calendar, star2, star1, forma1Copy19 } from '../assets/images';
+import { Helmet } from 'react-helmet';
 
 
 function createData(
@@ -221,6 +222,9 @@ const ServiceHistory = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Service History - Helperland</title>
+            </Helmet>
             <HeaderService />
             <ul className='service-select'>
                 <li onClick={() => (closeMenu())}>{service} <span><FaCaretDown /></span> </li>

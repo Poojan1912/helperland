@@ -9,6 +9,7 @@ import Newsletter from '../components/Newsletter'
 import Footer from '../components/Footer';
 
 import { five, forma1Copy, forma1Copy5, forma1_5, four, group18, group18_2, group18_3, group18_4, layer598, one, rightArrowGrey, theBestImg1, three, two } from '../assets/images'
+import { Helmet } from 'react-helmet'
 
 
 
@@ -16,6 +17,9 @@ import { five, forma1Copy, forma1Copy5, forma1_5, four, group18, group18_2, grou
 const Prices = () => {
     return (
         <div>
+            <Helmet>
+                <title>Prices - Helperland</title>
+            </Helmet>
             <Header />
             <ImageBanner address={group18} alt='working-professional' />
             <div className='page-top'>

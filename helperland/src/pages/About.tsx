@@ -8,10 +8,14 @@ import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 
 import { heroBannerImg, forma1Copy5 } from '../assets/images';
+import { Helmet } from 'react-helmet';
 
 const About = () => {
     return (
         <div>
+            <Helmet>
+                <title>About us - Helperland</title>
+            </Helmet>
             <Header />
             <ImageBanner address={heroBannerImg} alt="about-banner" />
             <Container maxWidth='xl'>

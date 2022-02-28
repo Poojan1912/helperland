@@ -12,6 +12,7 @@ import Button from '@mui/material/Button';
 import { calender2, layer14, layer15, sort } from '../assets/images';
 import { FaCaretDown } from "react-icons/fa";
 import { styled } from '@mui/system';
+import { Helmet } from 'react-helmet';
 
 function createData(
     serviceId: number,
@@ -135,6 +136,9 @@ const ServiceProvider = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Service Provider - Helperland</title>
+            </Helmet>
             <HeaderService />
             <ul className='service-select'>
                 <li onClick={() => (closeMenu())}>{service} <span><FaCaretDown /></span> </li>

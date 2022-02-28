@@ -19,6 +19,7 @@ import MenuItem from '@mui/material/MenuItem';
 import InputAdornment from '@mui/material/InputAdornment';
 import { OutlinedInput } from '@mui/material';
 import { styled } from '@mui/material/styles'
+import { Helmet } from 'react-helmet';
 
 const style = () => ({
     notchedOutline: {
@@ -85,6 +86,9 @@ const Contact = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Contact us - Helperland</title>
+            </Helmet>
             <Header />
             <ImageBanner alt='image banner' address={group16_2} />
             <div className='page-top'>

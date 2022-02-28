@@ -15,6 +15,7 @@ import Checkbox from '@mui/material/Checkbox'
 import { styled } from '@mui/system';
 
 import { group18_5, arrowWhite, registerYourself, getServiceRequest, completeService, rightArrow } from '../assets/images';
+import { Helmet } from 'react-helmet';
 
 
 
@@ -120,6 +121,9 @@ const StyledMiddleGrid = styled(Grid)(({ theme }) => ({
 const BecomeAPro = () => {
     return (
         <div>
+            <Helmet>
+                <title>Become a Provider - Helperland</title>
+            </Helmet>
             <div className='become-cleaner-top'>
                 <Navbar />
                 <div className='sp-registration'>

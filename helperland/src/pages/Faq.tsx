@@ -14,6 +14,7 @@ import { faqBanner, forma1Copy5 } from '../assets/images'
 
 
 import CustomAccordion from '../components/CustomAccordion'
+import { Helmet } from 'react-helmet'
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -110,6 +111,9 @@ const Faq = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Faq - Helperland</title>
+            </Helmet>
             <Header />
             <ImageBanner address={faqBanner} alt="faq-banner" />
             <Container maxWidth='xl'>

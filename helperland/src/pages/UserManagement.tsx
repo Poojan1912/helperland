@@ -26,6 +26,7 @@ import { Link } from 'react-router-dom';
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 // import Person from '@material-ui/icons/Person';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { Helmet } from 'react-helmet';
 
 function createData(
     userName: string,
@@ -391,6 +392,9 @@ const UserManagement = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Service Request - Helperland</title>
+            </Helmet>
             <div className='cover' onClick={toggleSidebar}></div>
             <div className='admin-nav'>
                 <div>
