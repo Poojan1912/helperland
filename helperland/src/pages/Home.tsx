@@ -48,22 +48,24 @@ const Home = () => {
             <div className="book-cleaner">
                 <Navbar />
                 <div className='listing'>
-                    <Typography component="h1" variant="h1">Lorem ipsum text</Typography>
+                    <Typography component="h1" variant="h1">Do not feel like housework?</Typography>
                     <ul>
-                        <li><img src={icCheck} />&nbsp;&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing</li>
-                        <li><img src={icCheck} />&nbsp;&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing</li>
-                        <li><img src={icCheck} />&nbsp;&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing</li>
+                        <li>Great! Book now for Helperland and enjoy the benefits</li>
+                        <li><img src={icCheck} />&nbsp;&nbsp;certified & insured helper</li>
+                        <li><img src={icCheck} />&nbsp;&nbsp;easy booking procedure</li>
+                        <li><img src={icCheck} />&nbsp;&nbsp;friendly customer service</li>
+                        <li><img src={icCheck} />&nbsp;&nbsp;secure online payment method</li>
                     </ul>
                 </div>
 
                 <Box textAlign="center">
-                    <PurpleButton value="Let's Book a Cleaner" />
+                    <PurpleButton value="Book a helper!" />
                 </Box>
                 <Container sx={{ mt: 20 }} maxWidth="xl">
                     <div className='steps'>
                         <div>
                             <img src={step1} alt="step-1" />
-                            <p>Enter your postcode</p>
+                            <p>Enter postal code</p>
                         </div>
                         <div className='arrow'>
                             <img src={stepArrow1} width="85" height="23" alt="arrow" />
@@ -71,7 +73,7 @@ const Home = () => {
 
                         <div>
                             <img src={step2} alt="step-2" />
-                            <p>Select your plan</p>
+                            <p>Select desired date</p>
                         </div>
                         <div className='arrow'>
                             <img src={stepArrow1Copy} className='arrow' width="85" height="23" alt="arrow" />
@@ -79,7 +81,7 @@ const Home = () => {
 
                         <div>
                             <img src={step3} alt="step-3" />
-                            <p>Pay securely online</p>
+                            <p>Secure online payment</p>
                         </div>
                         <div className='arrow'>
                             <img src={stepArrow1} width="85" height="23" alt="arrow" />
@@ -87,7 +89,7 @@ const Home = () => {
 
                         <div>
                             <img src={step4} alt="step-4" />
-                            <p>Enjoy amazing service</p>
+                            <p>Feel at home</p>
                         </div>
                     </div>
 
@@ -101,7 +103,7 @@ const Home = () => {
 
             <div className="features" id="features">
                 <Container maxWidth="xl" sx={{ mb: { lg: 13.3, xs: 5 } }}>
-                    <Typography sx={{ my: 10 }} component="h2" textAlign="center" variant="h2">Why Helperland</Typography>
+                    <Typography sx={{ my: 10 }} component="h2" textAlign="center" variant="h2">Convince yourself!</Typography>
                     <Grid container>
                         <Grid item xs={12} lg={4} textAlign='center'>
                             <Card sx={{ maxWidth: 320, boxShadow: 'none', marginX: 'auto' }}>
@@ -113,10 +115,10 @@ const Home = () => {
                                 />
                                 <CardContent sx={{ p: 0 }}>
                                     <Typography gutterBottom variant="h3" component="h3" mt={4} mb={0}>
-                                        Experience & Vetted Professionals
+                                        Friendly & Certified Helpers
                                     </Typography>
                                     <Typography variant="body1" mt={3.6} fontSize='17px'>
-                                        dominate the industry in scale and scope with an adaptable, extensive network that consistently delivers exceptional results.
+                                        We want you to be completely satisfied with our service and feel comfortable at home. In order to guarantee this, our helpers go through a test procedure. Only when the cleaners meet our high standards, they may call themselves Helper.
                                     </Typography>
                                 </CardContent>
                             </Card>
@@ -129,11 +131,11 @@ const Home = () => {
                                     alt="group-22"
                                 />
                                 <CardContent sx={{ p: 0 }}>
-                                    <Typography gutterBottom variant="h3" component="h3" mt={5.8} mb={0}>
-                                        Secure Online Payment
+                                    <Typography gutterBottom variant="h3" component="h3" mt={4} mb={0}>
+                                        Transparent and secure payment
                                     </Typography>
-                                    <Typography variant="body1" mt={6.25} fontSize='17px'>
-                                        Payment is processed securely online. Customers pay safely online and manage the booking.
+                                    <Typography variant="body1" mt={4} fontSize='17px'>
+                                        We have transparent prices, you do not have to scratch money on the sideboard Leave it: Pay your helper easily and secure via the online payment method. You will also receive an invoice for each completed cleaning.
                                     </Typography>
                                 </CardContent>
                             </Card>
@@ -146,11 +148,14 @@ const Home = () => {
                                     alt="group-23"
                                 />
                                 <CardContent sx={{ p: 0 }}>
-                                    <Typography gutterBottom variant="h3" component="h3" mt={4} mb={0}>
-                                        Dedicated Customer Service
+                                    <Typography
+                                        sx={{ lineHeight: '53px' }}
+                                        gutterBottom variant="h3" component="h3" mt={4}
+                                        mb={0}>
+                                        We&apos;re here for you
                                     </Typography>
-                                    <Typography variant="body1" mt={3.3} fontSize='17px'>
-                                        to our customers and are guided in all we do by their needs. The team is always happy to support you and offer all the information.
+                                    <Typography variant="body1" mt={6} fontSize='17px'>
+                                        You have a question or need assistance with the booking process? Our customer service is happy to help and advise you. How you can reach us you will find out when you look under &ldquo;Contact&rdquo;. We look forward to hearing from you or reading.
                                     </Typography>
                                 </CardContent>
                             </Card>
@@ -164,18 +169,10 @@ const Home = () => {
                     <Grid container sx={{ px: 0, display: 'flex', alignItems: 'center' }}>
                         <Grid item xs={12} lg={7} order={{ lg: 1, xs: 2 }} sx={{ px: 'auto' }} className='happy-customer'>
                             <Typography variant="h3" component="h3">
-                                Lorem ipsum dolor sit amet, consectetur
+                                We do not know what makes you happy, but ...
                             </Typography>
                             <Typography variant="body1" sx={{ fontSize: 18, color: '#4F4F4F' }}>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisi sapien, suscipit ut accumsan vitae, pulvinar ac libero.
-                            </Typography>
-                            <br />
-                            <Typography variant='body1' sx={{ fontSize: 18, color: '#4F4F4F' }}>
-                                Aliquam erat volutpat. Nullam quis ex odio. Nam bibendum cursus purus, vel efficitur urna finibus vitae. Nullam finibus aliquet pharetra. Morbi in sem dolor. Integer pretium hendrerit ante quis vehicula.
-                            </Typography>
-                            <br />
-                            <Typography variant="body1" sx={{ fontSize: 18, color: '#4F4F4F' }}>
-                                Mauris consequat ornare enim, sed lobortis quam ultrices sed.
+                                If it&apos;s not dusting off, our friendly helpers will free you from this burdon - do not worry anymore about spending valuable time doing housework, but savor life, you&apos;re well worth your time with beautiful experiences. Free yourself and enjoy the gained time: Go celebrate, relax, play with your children, meet friends or dare to jump on the bungee. Other leisure ideas and exclusive events can be found in our blog - guaranteed free from dust and cleaning tips!
                             </Typography>
                         </Grid>
 

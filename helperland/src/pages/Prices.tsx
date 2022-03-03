@@ -33,7 +33,7 @@ const Prices = () => {
                     <div className='prices-card'>
                         <h1>One Time</h1>
                         <Typography component="h2" variant="h2">
-                            <span className='euro'>€</span> 20<span>/hr</span>
+                            <span className='euro'>€</span> 18<span>/hr</span>
                         </Typography>
                         <ul>
                             <li> <img src={forma1_5} width="24" height="24" alt="tick" />&nbsp;Lower Prices</li>
@@ -108,19 +108,27 @@ const Prices = () => {
                                 <ul>
                                     <li>
                                         <img src={rightArrowGrey} alt="right-arrow" />
-                                        <p>Dust all accessible surfaces</p>
+                                        <p>Included Dust all accessible surfaces</p>
                                     </li>
                                     <li>
                                         <img src={rightArrowGrey} alt="right-arrow" />
-                                        <p>Wipe down all mirrors and glass fixtures</p>
+                                        <p>Included Wipe down all mirrors and glass fixtures</p>
                                     </li>
                                     <li>
                                         <img src={rightArrowGrey} alt="right-arrow" />
-                                        <p>Clean all floor surfaces</p>
+                                        <p>Not Included Clean all floor surfaces</p>
                                     </li>
                                     <li>
                                         <img src={rightArrowGrey} alt="right-arrow" />
-                                        <p>Take out garbage and recycling</p>
+                                        <p>Included Take out garbage and recycling</p>
+                                    </li>
+                                    <li>
+                                        <img src={rightArrowGrey} alt="right-arrow" />
+                                        <p>To clean up</p>
+                                    </li>
+                                    <li>
+                                        <img src={rightArrowGrey} alt="right-arrow" />
+                                        <p>Make beds</p>
                                     </li>
                                 </ul>
                             </div>
@@ -133,23 +141,23 @@ const Prices = () => {
                                 <ul>
                                     <li>
                                         <img src={rightArrowGrey} alt="right-arrow" />
-                                        <p> Wash and sanitize the toilet, shower, tub, sink</p>
+                                        <p>Included Wash and sanitize the toilet, shower, tub, sink</p>
                                     </li>
                                     <li>
                                         <img src={rightArrowGrey} alt="right-arrow" />
-                                        <p> Dust all accessible surfaces</p>
+                                        <p>Not Included Dust all accessible surfaces</p>
                                     </li>
                                     <li>
                                         <img src={rightArrowGrey} alt="right-arrow" />
-                                        <p> Wipe down all mirrors and glass fixtures</p>
+                                        <p>Included Wipe down all mirrors and glass fixtures</p>
                                     </li>
                                     <li>
                                         <img src={rightArrowGrey} alt="right-arrow" />
-                                        <p> Clean all floor surfaces</p>
+                                        <p>Not Included Clean all floor surfaces</p>
                                     </li>
                                     <li>
                                         <img src={rightArrowGrey} alt="right-arrow" />
-                                        <p> Take out garbage and recycling</p>
+                                        <p>Included Take out garbage and recycling</p>
                                     </li>
                                 </ul>
                             </div>
@@ -161,23 +169,27 @@ const Prices = () => {
                                 <ul>
                                     <li>
                                         <img src={rightArrowGrey} alt="right-arrow" />
-                                        <p> Dust all accessible surfaces</p>
+                                        <p>Cleaning the sink</p>
                                     </li>
                                     <li>
                                         <img src={rightArrowGrey} alt="right-arrow" />
-                                        <p> Empty sink and load up dishwasher</p>
+                                        <p>Cleaning the oven (outside)</p>
                                     </li>
                                     <li>
                                         <img src={rightArrowGrey} alt="right-arrow" />
-                                        <p> Wipe down exterior of stove, oven and fridge</p>
+                                        <p>Cleaning the work surfaces</p>
                                     </li>
                                     <li>
                                         <img src={rightArrowGrey} alt="right-arrow" />
-                                        <p> Clean all floor surfaces</p>
+                                        <p>Included Dust all accessible surfaces</p>
                                     </li>
                                     <li>
                                         <img src={rightArrowGrey} alt="right-arrow" />
-                                        <p> Take out garbage and recycling</p>
+                                        <p>Included Clean all floor surfaces</p>
+                                    </li>
+                                    <li>
+                                        <img src={rightArrowGrey} alt="right-arrow" />
+                                        <p>Included Take out garbage and recycling</p>
                                     </li>
                                 </ul>
                             </div>

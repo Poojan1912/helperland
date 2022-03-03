@@ -101,17 +101,16 @@ const Contact = () => {
                 <Grid container className='contact-us'>
                     <Grid item lg={4} xs={12} display='flex' flexDirection='column' alignItems='center' pb={8}>
                         <img src={forma1_2} alt="location icon" />
-                        <p>1111 Lorem ipsum text 100, </p>
-                        <p>Lorem ipsum AB</p>
+                        <p>Konigswinterer Str. 116 </p>
+                        <p>53227 Bonn</p>
                     </Grid>
                     <Grid item lg={4} xs={12} display='flex' flexDirection='column' alignItems='center' pb={8}>
                         <img src={phoneCall} alt="phone icon" />
-                        <a href="tel:+4940123567890"> <p>+49 (40) 123 56 7890</p> </a>
-                        <a href="tel:+4940987560000"> <p>+49 (40) 987 56 0000</p> </a>
+                        <a href="tel:+49(228)28693320"> <p>+49 (228) 28693320</p> </a>
                     </Grid>
                     <Grid item lg={4} xs={12} display='flex' flexDirection='column' alignItems='center' pb={8}>
                         <img src={vectorSmartObject} alt="email icon" />
-                        <a className='contact-us-email' href="mailto:info@helperland.com"> <p>info@helperland.com</p> </a>
+                        <a className='contact-us-email' href="mailto:info@helperland.com"> <p>info@helperland.de</p> </a>
                     </Grid>
                 </Grid>
                 <hr className='prices-hr' />

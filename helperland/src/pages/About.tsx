@@ -25,11 +25,11 @@ const About = () => {
                         <img src={forma1Copy5} alt="star" />
                     </div>
                     <div className='page-top-data'>
-                        <p className='about-page-top'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean molestie convallis tempor. Duis vestibulum vel risus condimentum dictum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus quis enim orci. Fusce risus lacus, sollicitudin eu magna sed, pharetra sodales libero. Proin tincidunt vel erat id porttitor. Donec tristique est arcu, sed dignissim velit vulputate ultricies.</p>
+                        <p className='about-page-top'>We are providers of professional home cleaning services, offering hourly based house cleaning options, which mean that you don&#39;t have to fret about getting your house cleaned anymore. We will handle everything for you, so that you can focus on spending your previous time with your family members.</p>
 
                         <br />
 
-                        <p className='about-page-top'>Interdum et malesuada fames ac ante ipsum primis in faucibus. In hac habitasse platea dictumst. Vivamus eget mauris eget nisl euismod volutpat sed sed libero. Quisque sit amet lectus ex. Ut semper ligula et mauris tincidunt hendrerit. Aenean ut rhoncus orci, vel elementum turpis. Donec tempor aliquet magna eu fringilla. Nam lobortis libero ut odio finibus lobortis. In hac habitasse platea dictumst. Mauris a hendrerit felis. Praesent ac vehicula ipsum, at porta tellus. Sed dolor augue, posuere sed neque eget, aliquam ultricies velit. Sed lacus elit, tincidunt et massa ac, vehicula placerat lorem.</p>
+                        <p className='about-page-top'>We have a number of experienced cleaners to help you make cleaning out or shifting your home an easy affair.</p>
                     </div>
                 </div>
                 <div className='page-top'>
@@ -38,15 +38,7 @@ const About = () => {
                         <img src={forma1Copy5} alt="star" />
                     </div>
                     <div className='page-top-data'>
-                        <p className='about-page-top'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean molestie convallis tempor. Duis vestibulum vel risus condimentum dictum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus quis enim orci. Fusce risus lacus, sollicitudin eu magna sed, pharetra sodales libero. Proin tincidunt vel erat id porttitor. Donec tristique est arcu, sed dignissim velit vulputate ultricies.</p>
-
-                        <br />
-
-                        <p className='about-page-top'>Interdum et malesuada fames ac ante ipsum primis in faucibus. In hac habitasse platea dictumst. Vivamus eget mauris eget nisl euismod volutpat sed sed libero. Quisque sit amet lectus ex. Ut semper ligula et mauris tincidunt hendrerit.</p>
-
-                        <br />
-
-                        <p className='about-page-top'>Aenean ut rhoncus orci, vel elementum turpis. Donec tempor aliquet magna eu fringilla. Nam lobortis libero ut odio finibus lobortis. In hac habitasse platea dictumst. Mauris a hendrerit felis. Praesent ac vehicula ipsum, at porta tellus. Sed dolor augue, posuere sed neque eget, aliquam ultricies velit. Sed lacus elit, tincidunt et massa ac, vehicula placerat lorem.</p>
+                        <p className='about-page-top'>A cleaner is a type of industrial or domestic worker who cleans homes or commercial premises for payment. Cleaners may specialize in cleaning particular things or places, such as window cleaners. Cleaners often work when the people who otherwise occupy the space are not around. They may clean offices at night or houses during the workday.</p>
                     </div>
                 </div>
             </Container>

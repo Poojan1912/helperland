@@ -42,7 +42,7 @@ const Newsletter = () => {
 
     return (
         <div>
-            <Typography mt={3} textAlign="center" variant="h5" component="h5">GET OUR NEWSLETTER</Typography>
+            <Typography mt={3} textAlign="center" variant="h5" component="h5">SUBSCRIBE TO NEWSLETTER</Typography>
             <Box display='flex' justifyContent='center' className='newsletter' pb={6.6} pt={2}>
                 <InputComponent id="outlined-basic" placeholder='YOUR EMAIL' variant="outlined" sx={{ pr: 1 }} />
                 <OrangeButton value="Submit" />
