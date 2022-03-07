@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '../components/Header';
 import ImageBanner from '../components/ImageBanner';
 import Newsletter from '../components/Newsletter';
@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { adminArrow, forma1Copy5, forma1_2, group16, group16_2, phoneCall, vectorSmartObject } from '../assets/images';
 
+import { contactDetails } from '../api'
 
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
@@ -20,17 +21,6 @@ import InputAdornment from '@mui/material/InputAdornment';
 import { OutlinedInput } from '@mui/material';
 import { styled } from '@mui/material/styles'
 import { Helmet } from 'react-helmet';
-
-const style = () => ({
-    notchedOutline: {
-        borderColor: '#FFFFFF',
-        borderWidth: 1,
-        '&:hover': {
-            borderColor: '#FFFFFF',
-            borderWidth: 2
-        },
-    }
-})
 
 const StyledInputAdornment = styled(InputAdornment)({
 
@@ -77,12 +67,57 @@ const values = [
 
 const Contact = () => {
     const [subject, setSubject] = React.useState('');
+    const [contactValues, setContactValues] = React.useState({
+        firstName: "",
+        lastName: "",
+        mobileNumber: "",
+        email: "",
+        message: "",
+        success: ""
+    })
+
+    const { firstName, lastName, mobileNumber, email, message, success } = contactValues;
 
     const handleChange = (event: SelectChangeEvent<typeof subject>) => {
         setSubject(
             event.target.value
         );
     };
+
+    const handleChangeContactValues = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setContactValues({ ...contactValues, [event.target.name]: event.target.value })
+    }
+
+    const isEmpty = () => {
+        let key: keyof typeof contactValues
+        console.log(typeof contactValues.firstName);
+
+        for (key in contactValues) {
+            if (Object.prototype.hasOwnProperty.call(contactValues, key)) {
+                if (contactValues[key] === "") {
+                    return true;
+                }
+            }
+        }
+    }
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const onSubmit = (event: any) => {
+        event.preventDefault()
+        // isEmpty()
+        if (isEmpty()) {
+            alert("All the Fields are required.")
+        }
+        else {
+            contactDetails({ firstName, lastName, mobileNumber, email, message })
+            setContactValues({ ...contactValues, firstName: "", success: "true" })
+            alert("Details submitted successfully!")
+        }
+    }
+
+    useEffect(() => {
+        console.log('rerender');
+    }, [success])
 
     return (
         <div>
@@ -119,20 +154,28 @@ const Contact = () => {
 
                 <Grid container maxWidth='614px' spacing={1.87} pr={2} mx='auto'>
                     <Grid item lg={6} xs={12}>
-                        <StyledTextField fullWidth id="outlined-basic" placeholder='First Name' variant="outlined" />
+                        <StyledTextField name="firstName" fullWidth id="outlined-basic" placeholder='First Name' variant="outlined"
+                            onChange={handleChangeContactValues}
+                        />
                     </Grid>
                     <Grid item lg={6} xs={12}>
-                        <StyledTextField fullWidth id="outlined-basic" placeholder='Last Name' variant="outlined" />
+                        <StyledTextField name="lastName" fullWidth id="outlined-basic" placeholder='Last Name' variant="outlined"
+                            onChange={handleChangeContactValues}
+                        />
                     </Grid>
                     <Grid item lg={6} xs={12}>
                         <StyledTextField
                             InputProps={{
                                 startAdornment: <StyledInputAdornment position="start">+49</StyledInputAdornment>,
                             }}
-                            fullWidth id="outlined-basic" placeholder='Mobile Number' variant="outlined" />
+                            fullWidth name="mobileNumber" id="outlined-basic" placeholder='Mobile Number' variant="outlined"
+                            onChange={handleChangeContactValues}
+                        />
                     </Grid>
                     <Grid item lg={6} xs={12}>
-                        <StyledTextField fullWidth id="outlined-basic" placeholder='Email address' variant="outlined" />
+                        <StyledTextField name="email" fullWidth id="outlined-basic" placeholder='Email address' variant="outlined"
+                            onChange={handleChangeContactValues}
+                        />
                     </Grid>
                     <Grid item lg={12} xs={12}>
                         <FormControl fullWidth>
@@ -163,10 +206,12 @@ const Contact = () => {
                         </FormControl>
                     </Grid>
                     <Grid item lg={12} xs={12}>
-                        <TextField multiline rows={5} fullWidth id="outlined-basic-message" placeholder='Message' variant="outlined" />
+                        <TextField name="message" multiline rows={5} fullWidth id="outlined-basic-message" placeholder='Message' variant="outlined"
+                            onChange={handleChangeContactValues}
+                        />
                     </Grid>
                     <Grid item lg={12} xs={12} display='flex' justifyContent='center' mt={1} mb={10}>
-                        <StyledButton>Submit</StyledButton>
+                        <StyledButton onClick={onSubmit}>Submit</StyledButton>
                     </Grid>
                 </Grid>
             </Container>

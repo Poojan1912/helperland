@@ -8,6 +8,45 @@
   white-space: nowrap;
 }
 
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  padding: 1.5rem 1.5rem;
+  width: 360px;
+  max-width: 360px;
+  color: #646464;
+}
+.modal .login-modal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.modal .login-modal h4 {
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: bold;
+}
+.modal .login-modal div {
+  font-size: 30px;
+  cursor: pointer;
+}
+.modal .forgot-password {
+  font-size: 16px;
+  text-align: center;
+  padding: 10px 0;
+  line-height: 25px;
+}
+.modal .forgot-password a {
+  color: #1d7a8c;
+  font-weight: 500;
+}
+
 .overlay .cover {
   background-color: rgba(0, 0, 0, 0.7);
   position: fixed;
@@ -137,6 +176,8 @@ navbar-list li a {
 
 .book-cleaner {
   background-image: url("./assets/images/Landing-Page-background-image.png");
+  background-repeat: no-repeat;
+  background-size: cover;
   color: #ffffff;
 }
 

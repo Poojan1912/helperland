@@ -1,0 +1,44 @@
+{
+  "ContactUs": [
+    {
+      "firstName": "poojan",
+      "lastName": "pandya",
+      "mobileNumber": "6353",
+      "email": "pandyapoojan2000@gmail.com",
+      "message": "poajdnsdkansd",
+      "id": 1
+    }
+  ],
+  "Signup": [
+    {
+      "firstName": "Poojan",
+      "lastName": "Pandya",
+      "email": "pandyapoojan2000@gmail.com",
+      "mobileNumber": "9898989898",
+      "password": "poojan",
+      "userTypeId": 1,
+      "id": 1
+    },
+    {
+      "firstName": "poojan",
+      "lastName": "pandya",
+      "email": "pandyapoojan2000@gmail.com",
+      "mobileNumber": "9898989898",
+      "password": "poojan",
+      "userTypeId": 0,
+      "id": 2
+    }
+  ],
+  "Login": [
+    {
+      "email": "pandyapoojan2000@gmail.com",
+      "password": "poojan",
+      "id": 1
+    },
+    {
+      "email": "hello@gmail.com",
+      "password": "hello",
+      "id": 2
+    }
+  ]
+}

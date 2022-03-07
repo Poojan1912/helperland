@@ -1,0 +1,5 @@
+{
+    "/api/PublicPages/SaveContactUsDetails": "/ContactUs",
+    "/api/Account/Register" : "/Signup",
+    "/api/Account/Login" : "/Login"
+}

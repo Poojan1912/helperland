@@ -10,12 +10,11 @@ import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container'
 import Button from '@mui/material/Button'
 import InputAdornment from '@mui/material/InputAdornment';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox'
 import { styled } from '@mui/system';
 
 import { group18_5, arrowWhite, registerYourself, getServiceRequest, completeService, rightArrow } from '../assets/images';
 import { Helmet } from 'react-helmet';
+import { Signup } from '../api';
 
 
 
@@ -45,21 +44,6 @@ const StyledButton = styled(Button)({
         backgroundColor: '#0d5968'
     }
 })
-
-// const StyledFormControlLabel = styled(FormControlLabel)({
-//     '& .MuiTypography-root': {
-//         color: '#4F4F4F',
-//     }
-// })
-
-// const StyledCheckbox = styled(Checkbox)({
-//     '&.MuiCheckbox-root': {
-//         color: '#C8C8C8'
-//     },
-//     '&.Mui-checked': {
-//         color: '#1D798C'
-//     }
-// })
 
 const StyledTextField = styled(TextField)(({ theme }) => ({
     '& .MuiInputBase-root': {
@@ -119,6 +103,48 @@ const StyledMiddleGrid = styled(Grid)(({ theme }) => ({
 }))
 
 const BecomeAPro = () => {
+
+    const [loginDetails, setLoginDetails] = React.useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        mobileNumber: "",
+        password: "",
+        confirmPassword: "",
+        // 1 for serviceProvider
+        userTypeId: 1
+    })
+
+    const { firstName, lastName, email, mobileNumber, password, userTypeId } = loginDetails;
+
+    const handleChangeContactValues = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setLoginDetails({ ...loginDetails, [event.target.name]: event.target.value })
+    }
+
+    const isEmpty = () => {
+        let key: keyof typeof loginDetails
+
+        for (key in loginDetails) {
+            if (Object.prototype.hasOwnProperty.call(loginDetails, key)) {
+                if (loginDetails[key] === "") {
+                    return true;
+                }
+            }
+        }
+    }
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const onSubmit = (event: any) => {
+        event.preventDefault()
+        if (isEmpty()) {
+            alert("All the Fields are required.")
+        }
+        else {
+            Signup({ firstName, lastName, email, mobileNumber, password, userTypeId })
+            alert("Details submitted successfully!")
+        }
+    }
+
     return (
         <div>
             <Helmet>
@@ -130,24 +156,36 @@ const BecomeAPro = () => {
                     <Typography component="h4" variant="h4">Register Now!</Typography>
                     <Box
                         component="form">
-                        {/* sx={{
-                            '& .MuiTextField-root': { px: 4.4 },
-                        }}> */}
-                        <StyledTextField fullWidth id="outlined-basic" placeholder='First name' variant="outlined" />
-                        <StyledTextField fullWidth id="outlined-basic" placeholder='Last name' variant="outlined" />
-                        <StyledTextField fullWidth id="outlined-basic" placeholder='Email Address' variant="outlined" />
                         <StyledTextField
+                            onChange={handleChangeContactValues}
+                            name="firstName"
+                            fullWidth id="outlined-basic" placeholder='First name' variant="outlined" />
+                        <StyledTextField
+                            onChange={handleChangeContactValues}
+                            name="lastName"
+                            fullWidth id="outlined-basic" placeholder='Last name' variant="outlined" />
+                        <StyledTextField
+                            onChange={handleChangeContactValues}
+                            name="email"
+                            fullWidth id="outlined-basic" placeholder='Email Address' variant="outlined" />
+                        <StyledTextField
+                            onChange={handleChangeContactValues}
+                            name="mobileNumber"
                             InputProps={{
                                 startAdornment: <StyledInputAdornment position="start">+46</StyledInputAdornment>,
                             }}
                             fullWidth id="outlined-basic" placeholder='Phone Number' variant="outlined" />
                         <StyledTextField
+                            onChange={handleChangeContactValues}
+                            name="password"
                             fullWidth
                             id="outlined-password-input"
                             placeholder="Password"
                             type="password"
                             variant="outlined" />
                         <StyledTextField
+                            onChange={handleChangeContactValues}
+                            name="confirmPassword"
                             fullWidth
                             id="outlined-password-input"
                             placeholder="Confirm Password"
@@ -168,7 +206,7 @@ const BecomeAPro = () => {
                                 </label>
                             </div>
                         </div>
-                        <StyledButton >Get Started <img src={arrowWhite} alt="white arrow" /></StyledButton>
+                        <StyledButton onClick={onSubmit}>Get Started <img src={arrowWhite} alt="white arrow" /></StyledButton>
                     </Box>
                 </div>
                 <Box sx={{ pt: 5.5, pb: 3.75 }} textAlign="center">

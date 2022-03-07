@@ -16,6 +16,7 @@ import ServiceHistory from './pages/ServiceHistory'
 import UserManagement from './pages/UserManagement';
 import ServiceRequest from './pages/ServiceRequest';
 import BookService from './pages/BookService';
+import UserRegistration from './pages/UserRegistration';
 
 function App() {
   const theme = createTheme({
@@ -101,6 +102,7 @@ function App() {
             <Route path="/user-management" element={<UserManagement />} />
             <Route path="/service-request" element={<ServiceRequest />} />
             <Route path="/book-service" element={<BookService />} />
+            <Route path="/user-registration" element={<UserRegistration />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>
