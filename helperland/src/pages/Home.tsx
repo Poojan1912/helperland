@@ -15,6 +15,7 @@ import Footer from '../components/Footer'
 import Newsletter from '../components/Newsletter'
 
 import { forma1Copy, group18_5, group21, group23, group24, group28, group29, group30, group31, group32, group33, group36, icCheck, layer598, rightArrow, step1, step2, step3, step4, stepArrow1, stepArrow1Copy } from '../assets/images'
+import { Link } from 'react-router-dom'
 
 
 
@@ -59,7 +60,7 @@ const Home = () => {
                 </div>
 
                 <Box textAlign="center">
-                    <PurpleButton value="Book a helper!" />
+                    <Link to='/book-service'><PurpleButton value="Book a helper!" /></Link>
                 </Box>
                 <Container sx={{ mt: 20 }} maxWidth="xl">
                     <div className='steps'>

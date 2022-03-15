@@ -8,6 +8,10 @@
   white-space: nowrap;
 }
 
+.error {
+  color: red;
+}
+
 .modal {
   position: absolute;
   top: 50%;
@@ -1439,6 +1443,42 @@ input[type="checkbox"]:checked {
   background-position: 23px;
   background-image: url("./assets/images/1-green.png");
   border: 3px solid #1d7a8c;
+}
+
+.pincode-book h5 {
+  padding-left: 0;
+}
+
+.pincode-textfield {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.address-card {
+  background-color: #f3f3f3;
+  padding: 15px;
+  border-radius: 4px;
+  border: 1px solid #c8c8c8;
+}
+
+.details .title {
+  font-weight: bold;
+  color: #4f4f4f;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.service-booked {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+
+.service-booked h4 {
+  font-weight: normal !important;
+  text-align: center;
 }
 
 /* Book service completes here */

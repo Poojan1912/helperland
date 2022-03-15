@@ -1,5 +1,7 @@
-export const contactDetails = (contactData: object) => {
-    fetch("http://localhost:5000/api/PublicPages/SaveContactUsDetails", {
+import { Navigate } from "react-router-dom"
+
+export const contactDetails = async (contactData: object) => {
+    return fetch("http://localhost:5000/api/PublicPages/SaveContactUsDetails", {
         method: "POST",
         headers: {
             Accept: "application/json",
@@ -7,14 +9,12 @@ export const contactDetails = (contactData: object) => {
         },
         body: JSON.stringify(contactData)
     })
-        .then(response => {
-            return response.json()
-        })
+        .then()
         .catch(err => console.log(err))
 }
 
 export const Signup = (signupData: object) => {
-    fetch("http://localhost:5000/api/Account/Register", {
+    return fetch("http://localhost:5000/api/Account/Register", {
         method: "POST",
         headers: {
             Accept: "application/json",
@@ -29,7 +29,7 @@ export const Signup = (signupData: object) => {
 }
 
 export const Signin = (loginData: object) => {
-    fetch("http://localhost:5000/api/Account/Login", {
+    return fetch("http://localhost:5000/api/Account/Login", {
         method: "POST",
         headers: {
             Accept: "application/json",
@@ -37,14 +37,97 @@ export const Signin = (loginData: object) => {
         },
         body: JSON.stringify(loginData)
     })
+        .then(response => {
+            return response.json()
+        })
+        .catch(err => console.log(err))
+}
 
+export const submitBooking = (data: object) => {
+    return fetch("http://localhost:5000/api/BookService", {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(err => console.log(err))
+}
+
+export const authenticate = (data: object) => {
+    if (typeof window !== undefined) {
+        localStorage.setItem("jwt", JSON.stringify(data));
+    }
+}
+
+export const isAuthenticated = () => {
+    if (typeof window == "undefined") {
+        return false
+    }
+    if (localStorage.getItem("jwt")) {
+        return JSON.parse(localStorage.getItem("jwt") || '{}')
+    } else {
+        return false
+    }
 }
 
 export const ForgotPassword = async (email: string) => {
-    const url = `http://localhost:5000/Signup?email=${email}`
-    const response = await fetch(url, {
-        method: "GET"
+    const url = `http://localhost:5000/api/Account/SendForgotPasswordLink`
+    return fetch(url, {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email })
     })
-    const data = await response.json()
-    return data;
+        .then(response => {
+            return response.json()
+        })
+        .catch(err => console.log(err))
+}
+
+export const sendNewPassword = async (password: string, token: string) => {
+    const url = 'http://localhost:5000/api/Account/ResetPassword'
+    return fetch(url, {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ password, token })
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(err => console.log(err))
+}
+
+export const getPostalCode = async (postalCode: string) => {
+    const url = `http://localhost:5000/api/Account/CheckPostalCode`
+    return fetch(url, {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ postalCode })
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(err => console.log(err))
+}
+
+export const logout = () => {
+    if (typeof window === undefined) {
+        return false;
+    }
+    if (localStorage.getItem("jwt")) {
+        localStorage.removeItem("jwt")
+    }
 }

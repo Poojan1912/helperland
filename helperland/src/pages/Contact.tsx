@@ -1,4 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { useForm } from "react-hook-form";
+
 import Header from '../components/Header';
 import ImageBanner from '../components/ImageBanner';
 import Newsletter from '../components/Newsletter';
@@ -66,58 +68,32 @@ const values = [
 ];
 
 const Contact = () => {
-    const [subject, setSubject] = React.useState('');
-    const [contactValues, setContactValues] = React.useState({
-        firstName: "",
-        lastName: "",
-        mobileNumber: "",
-        email: "",
-        message: "",
-        success: ""
+    const [firstName, setFirstName] = React.useState("")
+    const [lastName, setLastName] = React.useState("")
+    const [mobileNumber, setMobileNumber] = React.useState("")
+    const [email, setEmail] = React.useState("")
+    const [message, setMessage] = React.useState("")
+    const [subject, setSubject] = React.useState("")
+    const [error, setError] = React.useState("")
+    const [success, setSuccess] = React.useState("")
+
+    const { register, handleSubmit, watch, formState: { errors } } = useForm({
+        mode: 'onTouched'
     })
 
-    const { firstName, lastName, mobileNumber, email, message, success } = contactValues;
-
-    const handleChange = (event: SelectChangeEvent<typeof subject>) => {
-        setSubject(
-            event.target.value
-        );
-    };
-
-    const handleChangeContactValues = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setContactValues({ ...contactValues, [event.target.name]: event.target.value })
-    }
-
-    const isEmpty = () => {
-        let key: keyof typeof contactValues
-        console.log(typeof contactValues.firstName);
-
-        for (key in contactValues) {
-            if (Object.prototype.hasOwnProperty.call(contactValues, key)) {
-                if (contactValues[key] === "") {
-                    return true;
-                }
-            }
-        }
-    }
+    const contactData = { firstName, lastName, mobileNumber, email, message, subject }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const onSubmit = (event: any) => {
-        event.preventDefault()
-        // isEmpty()
-        if (isEmpty()) {
-            alert("All the Fields are required.")
-        }
-        else {
-            contactDetails({ firstName, lastName, mobileNumber, email, message })
-            setContactValues({ ...contactValues, firstName: "", success: "true" })
-            alert("Details submitted successfully!")
-        }
+    const onSubmit = async () => {
+        setFirstName("")
+        setLastName("")
+        setMobileNumber("")
+        setEmail("")
+        setMessage("")
+        setError("")
+        setSubject("")
+        contactDetails(contactData)
     }
-
-    useEffect(() => {
-        console.log('rerender');
-    }, [success])
 
     return (
         <div>
@@ -152,68 +128,118 @@ const Contact = () => {
 
                 <Typography pt={9} pb={3} variant='h3' component='h3' textAlign='center' fontSize='28px' color='#4F4F4F'>Get in touch with us</Typography>
 
-                <Grid container maxWidth='614px' spacing={1.87} pr={2} mx='auto'>
-                    <Grid item lg={6} xs={12}>
-                        <StyledTextField name="firstName" fullWidth id="outlined-basic" placeholder='First Name' variant="outlined"
-                            onChange={handleChangeContactValues}
-                        />
-                    </Grid>
-                    <Grid item lg={6} xs={12}>
-                        <StyledTextField name="lastName" fullWidth id="outlined-basic" placeholder='Last Name' variant="outlined"
-                            onChange={handleChangeContactValues}
-                        />
-                    </Grid>
-                    <Grid item lg={6} xs={12}>
-                        <StyledTextField
-                            InputProps={{
-                                startAdornment: <StyledInputAdornment position="start">+49</StyledInputAdornment>,
-                            }}
-                            fullWidth name="mobileNumber" id="outlined-basic" placeholder='Mobile Number' variant="outlined"
-                            onChange={handleChangeContactValues}
-                        />
-                    </Grid>
-                    <Grid item lg={6} xs={12}>
-                        <StyledTextField name="email" fullWidth id="outlined-basic" placeholder='Email address' variant="outlined"
-                            onChange={handleChangeContactValues}
-                        />
-                    </Grid>
-                    <Grid item lg={12} xs={12}>
-                        <FormControl fullWidth>
-                            <Select
-                                sx={{ height: '46px' }}
-                                displayEmpty
-                                value={subject}
-                                input={<OutlinedInput />}
-                                placeholder="Subject"
-                                onChange={handleChange}
-                                inputProps={{ 'aria-label': 'Without label' }}
-                                renderValue={(selected) => {
-                                    if (selected.length === 0) {
-                                        return <p style={{ color: '#A0A0A0' }}>Subject</p>;
-                                    }
-                                    return selected
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <Grid container maxWidth='614px' spacing={1.87} pr={2} mx='auto'>
+
+
+                        <Grid item lg={6} xs={12}>
+                            <StyledTextField value={firstName} fullWidth id="outlined-basic" placeholder='First Name' variant="outlined"
+                                {...register("firstName", { required: "Firstname is required." })}
+                                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                    setFirstName(event.target.value)
                                 }}
-                            >
-                                {values.map((data) => (
-                                    <MenuItem
-                                        key={data}
-                                        value={data}
-                                    >
-                                        {data}
-                                    </MenuItem>
-                                ))}
-                            </Select>
-                        </FormControl>
+                            />
+                            {errors.firstName && <p className='error'>{errors.firstName.message}</p>}
+                        </Grid>
+
+
+                        <Grid item lg={6} xs={12}>
+                            <StyledTextField value={lastName} fullWidth id="outlined-basic" placeholder='Last Name' variant="outlined"
+                                {...register("lastName", { required: "Lastname is required." })}
+                                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                    setLastName(event.target.value)
+                                }}
+                            />
+                            {errors.lastName && <p className='error'>{errors.lastName.message}</p>}
+                        </Grid>
+
+
+                        <Grid item lg={6} xs={12}>
+                            <StyledTextField
+                                value={mobileNumber}
+                                InputProps={{
+                                    startAdornment: <StyledInputAdornment position="start">+49</StyledInputAdornment>,
+                                }}
+                                fullWidth id="outlined-basic" placeholder='Mobile Number' variant="outlined"
+                                {...register("mobileNumber",
+                                    {
+                                        required: "Mobilenumber is required.",
+                                        pattern: {
+                                            value: /^[789]\d{9}$/,
+                                            message: "Mobilenumber is invalid."
+                                        }
+                                    })}
+                                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                    setMobileNumber(event.target.value)
+                                }}
+                            />
+                            {errors.mobileNumber && <p className='error'>{errors.mobileNumber.message}</p>}
+                        </Grid>
+
+
+                        <Grid item lg={6} xs={12}>
+                            <StyledTextField value={email} fullWidth id="outlined-basic" placeholder='Email address' variant="outlined"
+                                {...register("email", {
+                                    required: "Email is required.",
+                                    pattern: {
+                                        value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
+                                        message: 'Email is invalid'
+                                    }
+                                })}
+                                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                    setEmail(event.target.value)
+                                }}
+                            />
+                            {errors.email && <p className='error'>{errors.email.message}</p>}
+                        </Grid>
+                        <Grid item lg={12} xs={12}>
+                            <FormControl fullWidth>
+                                <Select
+                                    sx={{ height: '46px' }}
+                                    displayEmpty
+                                    value={subject}
+                                    input={<OutlinedInput />}
+                                    placeholder="Subject"
+                                    onChange={(event: SelectChangeEvent<typeof subject>) => {
+                                        setSubject(
+                                            event.target.value
+                                        );
+                                    }}
+                                    inputProps={{ 'aria-label': 'Without label' }}
+                                    renderValue={(selected) => {
+                                        if (selected.length === 0) {
+                                            return <p style={{ color: '#A0A0A0' }}>Subject</p>;
+                                        }
+                                        return selected
+                                    }}
+                                >
+                                    {values.map((data) => (
+                                        <MenuItem
+                                            key={data}
+                                            value={data}
+                                        >
+                                            {data}
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>
+                        </Grid>
+                        <Grid item lg={12} xs={12}>
+                            <TextField value={message} multiline rows={5} fullWidth id="outlined-basic-message" placeholder='Message' variant="outlined"
+                                {...register("message", {
+                                    required: "Message is required."
+                                })}
+                                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                    setMessage(event.target.value)
+                                }}
+                            />
+                            {errors.message && <p className='error'>{errors.message.message}</p>}
+                        </Grid>
+                        <Grid item lg={12} xs={12} display='flex' justifyContent='center' mt={1} mb={10}>
+                            <StyledButton type='submit'>Submit</StyledButton>
+                        </Grid>
                     </Grid>
-                    <Grid item lg={12} xs={12}>
-                        <TextField name="message" multiline rows={5} fullWidth id="outlined-basic-message" placeholder='Message' variant="outlined"
-                            onChange={handleChangeContactValues}
-                        />
-                    </Grid>
-                    <Grid item lg={12} xs={12} display='flex' justifyContent='center' mt={1} mb={10}>
-                        <StyledButton onClick={onSubmit}>Submit</StyledButton>
-                    </Grid>
-                </Grid>
+                </form>
             </Container>
             <ImageBanner alt='map image' address={group16} />
             <Newsletter />

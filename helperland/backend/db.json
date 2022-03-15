@@ -1,0 +1,258 @@
+{
+  "users": [
+    {
+      "firstName": "Poojan",
+      "lastName": "Pandya",
+      "email": "pandyapoojan2000@gmail.com",
+      "mobileNumber": "7016544608",
+      "password": "poojan191200",
+      "userTypeId": 0,
+      "address": [
+        {
+          "zipcode": "111116",
+          "streetName": "maniyasa society",
+          "houseNumber": "6",
+          "city": "Ahmedabad",
+          "mobilenumber": "7016544608"
+        },
+        {
+          "zipcode": "111116",
+          "streetName": "Rannapark society",
+          "houseNumber": "23",
+          "city": "Ahmedabad",
+          "mobilenumber": "8354768865"
+        },
+        {
+          "zipcode": "111116",
+          "streetName": "Maniyasa Society",
+          "houseNumber": "6",
+          "city": "Ahmedabad",
+          "mobilenumber": "7016544608"
+        },
+        {
+          "zipcode": "111116",
+          "streetName": "new street",
+          "houseNumber": "4",
+          "city": "Ahmedabad",
+          "mobilenumber": "7016544608"
+        },
+        {
+          "zipcode": "111116",
+          "streetName": "Wall Street",
+          "houseNumber": "5",
+          "city": "Ahmedabad",
+          "mobilenumber": "9898989898"
+        },
+        {
+          "zipcode": "111116",
+          "streetName": "ty street",
+          "houseNumber": "6",
+          "city": "Ahmedabad",
+          "mobilenumber": "9898989898"
+        },
+        {
+          "zipcode": "111116",
+          "streetName": "Wall Street",
+          "houseNumber": "12",
+          "city": "Ahmedabad",
+          "mobilenumber": "9898989898"
+        },
+        {
+          "zipcode": "111116",
+          "streetName": "Maninagar",
+          "houseNumber": "16",
+          "city": "Ahmedabad",
+          "mobilenumber": "9898989898"
+        }
+      ]
+    },
+    {
+      "firstName": "1233",
+      "lastName": "123",
+      "email": "abcd@gmail.com",
+      "mobileNumber": "9898989898",
+      "password": "poojan",
+      "userTypeId": 0
+    }
+  ],
+  "resetPassword": [
+    {
+      "email": "pandyapoojan2000@gmail.com",
+      "token": "f389e61b82afd9418146e0b5433c53ba388a7a8b5411d3c360d69793e6c02ae6"
+    },
+    {
+      "email": "pandyapoojan2000@gmail.com",
+      "token": "f389e61b82afd9418146e0b5433c53ba388a7a8b5411d3c360d69793e6c02ae6"
+    },
+    {
+      "email": "pandyapoojan2000@gmail.com",
+      "token": "ed5390cc7887f71bbadf84284576f0e83daf4687bce2b6aba56440466bd1f762"
+    },
+    {
+      "email": "pandyapoojan2000@gmail.com",
+      "token": "f06d91bfac2a429ad66c8aee9933b845eb0cf5961ec4f63738a86d23746cf3b8"
+    }
+  ],
+  "address": [
+    { "postalCode": "101152" },
+    { "postalCode": "115266" },
+    { "postalCode": "121116" },
+    { "postalCode": "111116" }
+  ],
+  "bookService": [
+    {
+      "email": "pandyapoojan2000@gmail.com",
+      "bed": 1,
+      "bath": 1,
+      "date": "2022-03-14T10:45:44.282Z",
+      "time": "2:00 PM",
+      "duration": 3,
+      "cabinet": false,
+      "fridge": false,
+      "oven": false,
+      "laundry": false,
+      "window": false,
+      "comments": "",
+      "pet": false,
+      "addressData": {
+        "zipcode": "111116",
+        "streetName": "Wall Street",
+        "houseNumber": "5",
+        "city": "Ahmedabad",
+        "mobilenumber": "9898989898"
+      }
+    },
+    {
+      "email": "pandyapoojan2000@gmail.com",
+      "bed": 1,
+      "bath": 1,
+      "date": "2022-03-14T11:23:18.853Z",
+      "time": "2:00 PM",
+      "duration": 3,
+      "cabinet": false,
+      "fridge": false,
+      "oven": false,
+      "laundry": false,
+      "window": false,
+      "comments": "",
+      "pet": false,
+      "addressData": {
+        "zipcode": "111116",
+        "streetName": "maniyasa society",
+        "houseNumber": "6",
+        "city": "Ahmedabad",
+        "mobilenumber": "7016544608"
+      }
+    },
+    {
+      "email": "pandyapoojan2000@gmail.com",
+      "bed": 2,
+      "bath": 3,
+      "date": "2022-03-25T12:20:19.000Z",
+      "time": "10:00 AM",
+      "duration": 1,
+      "cabinet": true,
+      "fridge": true,
+      "oven": true,
+      "laundry": true,
+      "window": false,
+      "comments": "Thanks for this service.",
+      "pet": true,
+      "addressData": {
+        "zipcode": "111116",
+        "streetName": "Maniyasa Society",
+        "houseNumber": "6",
+        "city": "Ahmedabad",
+        "mobilenumber": "7016544608"
+      }
+    },
+    {
+      "email": "pandyapoojan2000@gmail.com",
+      "bed": 2,
+      "bath": 3,
+      "date": "2022-03-25T12:20:19.000Z",
+      "time": "10:00 AM",
+      "duration": 1,
+      "cabinet": true,
+      "fridge": true,
+      "oven": true,
+      "laundry": true,
+      "window": false,
+      "comments": "Thanks for this service.",
+      "pet": true,
+      "addressData": {
+        "zipcode": "111116",
+        "streetName": "Maniyasa Society",
+        "houseNumber": "6",
+        "city": "Ahmedabad",
+        "mobilenumber": "7016544608"
+      }
+    },
+    {
+      "email": "pandyapoojan2000@gmail.com",
+      "bed": 1,
+      "bath": 1,
+      "date": "2022-03-14T12:37:00.660Z",
+      "time": "2:00 PM",
+      "duration": 3,
+      "cabinet": false,
+      "fridge": false,
+      "oven": false,
+      "laundry": false,
+      "windows": false,
+      "comments": "",
+      "pet": false,
+      "addressData": {
+        "zipcode": "111116",
+        "streetName": "Rannapark society",
+        "houseNumber": "23",
+        "city": "Ahmedabad",
+        "mobilenumber": "8354768865"
+      }
+    },
+    {
+      "email": "pandyapoojan2000@gmail.com",
+      "bed": 1,
+      "bath": 1,
+      "date": "2022-03-14T13:14:15.071Z",
+      "time": "2:00 PM",
+      "duration": 3,
+      "cabinet": false,
+      "fridge": false,
+      "oven": false,
+      "laundry": false,
+      "windows": false,
+      "comments": "",
+      "pet": false,
+      "addressData": {
+        "zipcode": "111116",
+        "streetName": "Wall Street",
+        "houseNumber": "12",
+        "city": "Ahmedabad",
+        "mobilenumber": "9898989898"
+      }
+    },
+    {
+      "email": "pandyapoojan2000@gmail.com",
+      "bed": 2,
+      "bath": 3,
+      "date": "2022-03-17T13:53:45.000Z",
+      "time": "10:00 AM",
+      "duration": 3,
+      "cabinet": false,
+      "fridge": false,
+      "oven": true,
+      "laundry": false,
+      "windows": true,
+      "comments": "",
+      "pet": true,
+      "addressData": {
+        "zipcode": "111116",
+        "streetName": "maniyasa society",
+        "houseNumber": "6",
+        "city": "Ahmedabad",
+        "mobilenumber": "7016544608"
+      }
+    }
+  ]
+}

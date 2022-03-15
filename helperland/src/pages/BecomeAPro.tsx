@@ -1,4 +1,6 @@
 import React from 'react';
+import { useForm } from "react-hook-form";
+
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import Newsletter from '../components/Newsletter';
@@ -15,7 +17,7 @@ import { styled } from '@mui/system';
 import { group18_5, arrowWhite, registerYourself, getServiceRequest, completeService, rightArrow } from '../assets/images';
 import { Helmet } from 'react-helmet';
 import { Signup } from '../api';
-
+import { useNavigate } from 'react-router-dom';
 
 
 const StyledInputAdornment = styled(InputAdornment)({
@@ -103,46 +105,25 @@ const StyledMiddleGrid = styled(Grid)(({ theme }) => ({
 }))
 
 const BecomeAPro = () => {
+    const [firstName, setFirstName] = React.useState("")
+    const [lastName, setLastName] = React.useState("")
+    const [email, setEmail] = React.useState("")
+    const [mobileNumber, setMobileNumber] = React.useState("")
+    const [password, setPassword] = React.useState("")
+    const [confirmPassword, setConfirmPassword] = React.useState("")
+    const userTypeId = 1;
+    const navigate = useNavigate()
 
-    const [loginDetails, setLoginDetails] = React.useState({
-        firstName: "",
-        lastName: "",
-        email: "",
-        mobileNumber: "",
-        password: "",
-        confirmPassword: "",
-        // 1 for serviceProvider
-        userTypeId: 1
+    const { register, handleSubmit, watch, formState: { errors } } = useForm({
+        mode: 'onTouched'
     })
 
-    const { firstName, lastName, email, mobileNumber, password, userTypeId } = loginDetails;
-
-    const handleChangeContactValues = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setLoginDetails({ ...loginDetails, [event.target.name]: event.target.value })
-    }
-
-    const isEmpty = () => {
-        let key: keyof typeof loginDetails
-
-        for (key in loginDetails) {
-            if (Object.prototype.hasOwnProperty.call(loginDetails, key)) {
-                if (loginDetails[key] === "") {
-                    return true;
-                }
-            }
-        }
-    }
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const onSubmit = (event: any) => {
-        event.preventDefault()
-        if (isEmpty()) {
-            alert("All the Fields are required.")
-        }
-        else {
-            Signup({ firstName, lastName, email, mobileNumber, password, userTypeId })
-            alert("Details submitted successfully!")
-        }
+    const onSubmit = () => {
+        Signup({ firstName, lastName, email, mobileNumber, password, userTypeId })
+            .then(data => {
+                console.log(data)
+                navigate('/')
+            })
     }
 
     return (
@@ -154,59 +135,108 @@ const BecomeAPro = () => {
                 <Navbar />
                 <div className='sp-registration'>
                     <Typography component="h4" variant="h4">Register Now!</Typography>
-                    <Box
-                        component="form">
-                        <StyledTextField
-                            onChange={handleChangeContactValues}
-                            name="firstName"
-                            fullWidth id="outlined-basic" placeholder='First name' variant="outlined" />
-                        <StyledTextField
-                            onChange={handleChangeContactValues}
-                            name="lastName"
-                            fullWidth id="outlined-basic" placeholder='Last name' variant="outlined" />
-                        <StyledTextField
-                            onChange={handleChangeContactValues}
-                            name="email"
-                            fullWidth id="outlined-basic" placeholder='Email Address' variant="outlined" />
-                        <StyledTextField
-                            onChange={handleChangeContactValues}
-                            name="mobileNumber"
-                            InputProps={{
-                                startAdornment: <StyledInputAdornment position="start">+46</StyledInputAdornment>,
-                            }}
-                            fullWidth id="outlined-basic" placeholder='Phone Number' variant="outlined" />
-                        <StyledTextField
-                            onChange={handleChangeContactValues}
-                            name="password"
-                            fullWidth
-                            id="outlined-password-input"
-                            placeholder="Password"
-                            type="password"
-                            variant="outlined" />
-                        <StyledTextField
-                            onChange={handleChangeContactValues}
-                            name="confirmPassword"
-                            fullWidth
-                            id="outlined-password-input"
-                            placeholder="Confirm Password"
-                            type="password"
-                            variant="outlined" />
-                        <div className='registration-checkbox'>
-                            <div>
-                                <input type="checkbox" id="send" />
-                                <label htmlFor='send'>
-                                    &nbsp;Send me newsletters from Helperland
-                                </label>
-                            </div>
+                    <Box>
+                        <form onSubmit={handleSubmit(onSubmit)}>
+                            {errors.firstName && <p className='error'>{errors.firstName.message}</p>}
+                            <StyledTextField
+                                {...register("firstName", { required: "Firstname is required." })}
+                                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                    setFirstName(event.target.value)
+                                }}
+                                fullWidth id="outlined-basic-5" placeholder='First name' variant="outlined" value={firstName} />
 
-                            <div>
-                                <input type="checkbox" id="terms" />
-                                <label htmlFor="terms">
-                                    &nbsp;I accept <a href="#">terms and conditions</a> & <a href="#">privacy policy</a>
-                                </label>
+                            {errors.lastName && <p className='error'>{errors.lastName.message}</p>}
+                            <StyledTextField
+                                {...register("lastName", { required: "Lastname is required." })}
+                                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                    setLastName(event.target.value)
+                                }}
+                                fullWidth id="outlined-basic-4" placeholder='Last name' variant="outlined" value={lastName} />
+
+                            {errors.email && <p className='error'>{errors.email.message}</p>}
+                            <StyledTextField
+                                value={email}
+                                {...register("email", {
+                                    required: "Email is required.",
+                                    pattern: {
+                                        value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
+                                        message: 'Email is invalid'
+                                    }
+                                })}
+                                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                    setEmail(event.target.value)
+                                }}
+                                fullWidth id="outlined-basic-3" placeholder='Email Address' variant="outlined" />
+
+                            {errors.mobileNumber && <p className='error'>{errors.mobileNumber.message}</p>}
+                            <StyledTextField
+                                InputProps={{
+                                    startAdornment: <StyledInputAdornment position="start">+46</StyledInputAdornment>,
+                                }}
+                                {...register("mobileNumber",
+                                    {
+                                        required: "Mobilenumber is required.",
+                                        pattern: {
+                                            value: /^[789]\d{9}$/,
+                                            message: "Mobilenumber is invalid."
+                                        }
+                                    })}
+                                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                    setMobileNumber(event.target.value)
+                                }}
+                                fullWidth id="outlined-basic-2" placeholder='Phone Number' variant="outlined" />
+
+                            {errors.password && <p className='error'>{errors.password.message}</p>}
+                            <StyledTextField
+                                {...register("password", {
+                                    required: "Password is required.",
+                                    minLength: {
+                                        value: 6,
+                                        message: "Password should be minimum 6 characters."
+                                    }
+                                })}
+                                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                    setPassword(event.target.value)
+                                }}
+                                fullWidth
+                                id="outlined-password-input"
+                                placeholder="Password"
+                                type="password"
+                                variant="outlined" />
+
+                            {errors.confirmPassword && <p className='error'>{errors.confirmPassword.message}</p>}
+                            <StyledTextField
+                                {...register("confirmPassword", {
+                                    required: "Confirm password is required.",
+                                    validate: (value) => value === watch('password') || "Passwords don't match"
+                                })}
+                                value={confirmPassword}
+                                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                    setConfirmPassword(event.target.value)
+                                }}
+                                fullWidth
+                                id="outlined-password-input-2"
+                                placeholder="Confirm Password"
+                                type="password"
+                                variant="outlined" />
+
+                            <div className='registration-checkbox'>
+                                <div>
+                                    <input type="checkbox" id="send" />
+                                    <label htmlFor='send'>
+                                        &nbsp;Send me newsletters from Helperland
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <input type="checkbox" id="terms" />
+                                    <label htmlFor="terms">
+                                        &nbsp;I accept <a href="#">terms and conditions</a> & <a href="#">privacy policy</a>
+                                    </label>
+                                </div>
                             </div>
-                        </div>
-                        <StyledButton onClick={onSubmit}>Get Started <img src={arrowWhite} alt="white arrow" /></StyledButton>
+                            <StyledButton type="submit" >Get Started <img src={arrowWhite} alt="white arrow" /></StyledButton>
+                        </form>
                     </Box>
                 </div>
                 <Box sx={{ pt: 5.5, pb: 3.75 }} textAlign="center">

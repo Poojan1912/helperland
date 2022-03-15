@@ -13,6 +13,8 @@ import { calender2, layer14, layer15, sort } from '../assets/images';
 import { FaCaretDown } from "react-icons/fa";
 import { styled } from '@mui/system';
 import { Helmet } from 'react-helmet';
+import { isAuthenticated } from '../api';
+import { Navigate } from 'react-router-dom';
 
 function createData(
     serviceId: number,
@@ -135,79 +137,83 @@ const ServiceProvider = () => {
     })
 
     return (
-        <div>
-            <Helmet>
-                <title>Service Provider - Helperland</title>
-            </Helmet>
-            <HeaderService />
-            <ul className='service-select'>
-                <li onClick={() => (closeMenu())}>{service} <span><FaCaretDown /></span> </li>
-            </ul>
-            <div className='welcome-msg'>
-                <p>Welcome, <span>Sandip!</span> </p>
-            </div>
-            <Container maxWidth='xl'>
-                <div className='service-row'>
-                    <div className='service-sidebar menu-toggle' id='serviceSidebar'>
-                        <ul>
-                            <li onClick={() => handleChange(sidebarData[0])}>{sidebarData[0]}</li>
-                            <li onClick={() => handleChange(sidebarData[1])}>{sidebarData[1]}</li>
-                            <li onClick={() => handleChange(sidebarData[2])}>{sidebarData[2]}</li>
-                            <li onClick={() => handleChange(sidebarData[3])}>{sidebarData[3]}</li>
-                            <li onClick={() => handleChange(sidebarData[4])}>{sidebarData[4]}</li>
-                            <li onClick={() => handleChange(sidebarData[5])}>{sidebarData[5]}</li>
-                            <li onClick={() => handleChange(sidebarData[6])}>{sidebarData[6]}</li>
-                        </ul>
-                    </div>
-
-                    <div className='service-table'>
-                        <TableContainer>
-                            <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                                <StyledTableHead>
-                                    <StyledTableRowHeader>
-                                        <StyledTableCell sx={{ paddingTop: '12px', paddingBottom: '12px' }} align="left">Service ID &nbsp;<img src={sort} alt="sort icon" /></StyledTableCell>
-                                        <StyledTableCell sx={{ paddingTop: '12px', paddingBottom: '12px' }} align="left">Service date &nbsp;<img src={sort} alt="sort icon" /></StyledTableCell>
-                                        <StyledTableCell sx={{ paddingTop: '12px', paddingBottom: '12px' }} align="left">Customer details &nbsp;<img src={sort} alt="sort icon" /></StyledTableCell>
-                                        <StyledTableCell sx={{ paddingTop: '12px', paddingBottom: '12px' }} align="center">Distance &nbsp;<img src={sort} alt="sort icon" /></StyledTableCell>
-                                        <StyledTableCell sx={{ paddingTop: '12px', paddingBottom: '12px' }} align="center">Actions</StyledTableCell>
-                                    </StyledTableRowHeader>
-                                </StyledTableHead>
-                                <StyledTableBody>
-                                    {rows.map((row) => (
-                                        <StyledTableRow
-                                            key={row.serviceId}
-                                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                        >
-                                            <StyledTableCell align="left">{row.serviceId}</StyledTableCell>
-                                            <StyledTableCell align="left">
-                                                <div className='service-date'>
-                                                    <img src={calender2} alt="Calender icon" />
-                                                    <p>&nbsp;{row.serviceDate}</p>
-                                                </div>
-                                                <div className='service-time'>
-                                                    <img width='17' height='17' src={layer14} alt="clock icon" />
-                                                    <p> {row.serviceTime}</p>
-                                                </div>
-                                            </StyledTableCell>
-                                            <StyledTableCell align="left">
-                                                {row.customerName}
-                                                <div className='customer-address'>
-                                                    <img src={layer15} alt="house icon" />
-                                                    <p>{row.customerAddress}</p>
-                                                </div>
-                                            </StyledTableCell>
-                                            <StyledTableCell align="center">{row.distance}&nbsp;km</StyledTableCell>
-                                            <StyledTableCell align="center"><StyledButton>Cancel</StyledButton></StyledTableCell>
-                                        </StyledTableRow>
-                                    ))}
-                                </StyledTableBody>
-                            </Table>
-                        </TableContainer>
-                    </div>
+        isAuthenticated() ? (
+            <div>
+                <Helmet>
+                    <title>Service Provider - Helperland</title>
+                </Helmet>
+                <HeaderService />
+                <ul className='service-select'>
+                    <li onClick={() => (closeMenu())}>{service} <span><FaCaretDown /></span> </li>
+                </ul>
+                <div className='welcome-msg'>
+                    <p>Welcome, <span>Sandip!</span> </p>
                 </div>
-            </Container>
-            <Footer />
-        </div>
+                <Container maxWidth='xl'>
+                    <div className='service-row'>
+                        <div className='service-sidebar menu-toggle' id='serviceSidebar'>
+                            <ul>
+                                <li onClick={() => handleChange(sidebarData[0])}>{sidebarData[0]}</li>
+                                <li onClick={() => handleChange(sidebarData[1])}>{sidebarData[1]}</li>
+                                <li onClick={() => handleChange(sidebarData[2])}>{sidebarData[2]}</li>
+                                <li onClick={() => handleChange(sidebarData[3])}>{sidebarData[3]}</li>
+                                <li onClick={() => handleChange(sidebarData[4])}>{sidebarData[4]}</li>
+                                <li onClick={() => handleChange(sidebarData[5])}>{sidebarData[5]}</li>
+                                <li onClick={() => handleChange(sidebarData[6])}>{sidebarData[6]}</li>
+                            </ul>
+                        </div>
+
+                        <div className='service-table'>
+                            <TableContainer>
+                                <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                                    <StyledTableHead>
+                                        <StyledTableRowHeader>
+                                            <StyledTableCell sx={{ paddingTop: '12px', paddingBottom: '12px' }} align="left">Service ID &nbsp;<img src={sort} alt="sort icon" /></StyledTableCell>
+                                            <StyledTableCell sx={{ paddingTop: '12px', paddingBottom: '12px' }} align="left">Service date &nbsp;<img src={sort} alt="sort icon" /></StyledTableCell>
+                                            <StyledTableCell sx={{ paddingTop: '12px', paddingBottom: '12px' }} align="left">Customer details &nbsp;<img src={sort} alt="sort icon" /></StyledTableCell>
+                                            <StyledTableCell sx={{ paddingTop: '12px', paddingBottom: '12px' }} align="center">Distance &nbsp;<img src={sort} alt="sort icon" /></StyledTableCell>
+                                            <StyledTableCell sx={{ paddingTop: '12px', paddingBottom: '12px' }} align="center">Actions</StyledTableCell>
+                                        </StyledTableRowHeader>
+                                    </StyledTableHead>
+                                    <StyledTableBody>
+                                        {rows.map((row) => (
+                                            <StyledTableRow
+                                                key={row.serviceId}
+                                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                            >
+                                                <StyledTableCell align="left">{row.serviceId}</StyledTableCell>
+                                                <StyledTableCell align="left">
+                                                    <div className='service-date'>
+                                                        <img src={calender2} alt="Calender icon" />
+                                                        <p>&nbsp;{row.serviceDate}</p>
+                                                    </div>
+                                                    <div className='service-time'>
+                                                        <img width='17' height='17' src={layer14} alt="clock icon" />
+                                                        <p> {row.serviceTime}</p>
+                                                    </div>
+                                                </StyledTableCell>
+                                                <StyledTableCell align="left">
+                                                    {row.customerName}
+                                                    <div className='customer-address'>
+                                                        <img src={layer15} alt="house icon" />
+                                                        <p>{row.customerAddress}</p>
+                                                    </div>
+                                                </StyledTableCell>
+                                                <StyledTableCell align="center">{row.distance}&nbsp;km</StyledTableCell>
+                                                <StyledTableCell align="center"><StyledButton>Cancel</StyledButton></StyledTableCell>
+                                            </StyledTableRow>
+                                        ))}
+                                    </StyledTableBody>
+                                </Table>
+                            </TableContainer>
+                        </div>
+                    </div>
+                </Container>
+                <Footer />
+            </div>
+        ) : (
+            <Navigate to='/' />
+        )
     )
 };
 

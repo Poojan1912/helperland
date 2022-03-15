@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useForm } from "react-hook-form";
 
 import SideMenuForHeader from './SideMenuForHeader';
 import Button from '@mui/material/Button'
@@ -7,7 +8,7 @@ import { styled } from '@mui/system'
 import { logoLarge } from '../assets/images/index'
 import { Link } from 'react-router-dom';
 import { Box, Checkbox, FormControlLabel, InputAdornment, Modal, TextField } from '@mui/material';
-import { ForgotPassword, Signin } from '../api';
+import { authenticate, ForgotPassword, sendNewPassword, Signin } from '../api';
 
 const CustomTextField = styled(TextField)({
     '& .MuiOutlinedInput-root':
@@ -61,6 +62,30 @@ const Header = () => {
         email: "",
         password: ""
     })
+
+    const [open2, setOpen2] = React.useState(false);
+    const handleOpen2 = () => setOpen2(true);
+    const handleClose2 = () => setOpen2(false);
+
+    const [error, setError] = React.useState("")
+    const [success, setSuccess] = React.useState("")
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        mode: "onChange"
+    })
+    const [resetPassword, setResetPassword] = React.useState("")
+    const [resetConfirmPassword, setResetConfirmPassword] = React.useState("")
+
+
+    const {
+        register: register2, formState: { errors: errors2 }, handleSubmit: handleSubmit2 } = useForm({
+            mode: "onChange",
+        });
+
+    const {
+        register: register3, formState: { errors: errors3 }, handleSubmit: handleSubmit3, watch } = useForm({
+            mode: "onTouched"
+        });
+
     const [forgotPasswordEmail, setForgotPasswordEmail] = React.useState('')
 
     const { email, password } = login
@@ -98,31 +123,49 @@ const Header = () => {
         }
     })
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const onSubmit = (event: any) => {
-        event?.preventDefault()
-        if (!forgotPasswordEmail) {
-            alert("All the Fields are required.")
-        } else {
-            Signin({ email, password })
-            alert("Details submitted successfully!")
-        }
+    const onSubmit = () => {
+        Signin({ email, password })
+            .then(data => {
+                if (data.error) {
+                    console.log(data.error);
+                    setError(data.error)
+                    setSuccess("")
+                } else {
+                    console.log("Successful", data);
+                    setSuccess(data.message)
+                    authenticate({ email: data.email, token: data.token })
+                    window.location.href = "http://localhost:3000/service-history"
+                    setError("")
+                }
+            })
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const ForgotPasswordRequest = async (event: any) => {
-        event.preventDefault();
-        if (forgotPasswordEmail === "") {
-            alert("All the Fields are required.")
-        } else {
-            const data = await ForgotPassword(forgotPasswordEmail)
-            if (!data.length) {
-                alert("User not found!")
-            } else {
-                alert("User found successfully!")
-            }
-        }
+    const ForgotPasswordRequest = () => {
+        ForgotPassword(forgotPasswordEmail)
+            .then(data => {
+                if (data.error) {
+                    console.log(data.error);
+                } else {
+                    console.log(data);
+                }
+            })
     }
+
+    const ResetPasswordRequest = () => {
+        sendNewPassword(resetPassword, window.location.pathname.split('/')[2])
+            .then(data => {
+                if (data.error) {
+                    console.log(data.error);
+                }
+                else {
+                    console.log(data);
+                }
+            })
+    }
+
+    useEffect(() => {
+        (window.location.pathname.split('/')[2] !== undefined) && setOpen2(true)
+    }, [])
 
 
     return (
@@ -140,6 +183,50 @@ const Header = () => {
                 </ul>
             </div>
             <Modal
+                open={open2}
+                onClose={handleClose2}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box className="modal">
+                    <div className="login-modal">
+                        <h4>Reset Password</h4>
+                        <div onClick={handleClose2}>&times;</div>
+                    </div>
+                    <form onSubmit={handleSubmit3(ResetPasswordRequest)}>
+
+                        {errors3.resetPassword && <p className='error'>{errors3.resetPassword.message}</p>}
+                        <CustomTextField type="password" id="password2" {...register3("resetPassword",
+                            {
+                                required: "Pasword is required.",
+                                minLength: {
+                                    value: 6,
+                                    message: "Password should be minimum 6 characters."
+                                }
+                            }
+                        )} value={resetPassword} color="primary" placeholder="Enter Password" variant="outlined" fullWidth
+                            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                setResetPassword(event.target.value)
+                            }}
+                        />
+
+                        {errors3.resetConfirmPassword && <p className='error'>{errors3.resetConfirmPassword.message}</p>}
+                        <CustomTextField type="password" id="password3" {...register3("resetConfirmPassword",
+                            {
+                                required: "Confirm Pasword is required.",
+                                validate: (value) => value === watch('resetPassword') || "Passwords don't match"
+                            })}
+                            value={resetConfirmPassword} color="primary" placeholder="Enter Confirm Password" variant="outlined" fullWidth
+                            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                setResetConfirmPassword(event.target.value)
+                            }}
+                        />
+
+                        <CustomButton type="submit">Submit</CustomButton>
+                    </form>
+                </Box>
+            </Modal>
+            <Modal
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
@@ -150,16 +237,21 @@ const Header = () => {
                         <h4>Log In</h4>
                         <div onClick={handleClose}>&times;</div>
                     </div>
-                    <CustomTextField type="text" InputProps={{
-                        endAdornment: (
-                            <InputAdornment position="end">
+                    {<h6>{error}</h6> && error}
+                    {<h6>{success}</h6> && success}
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        {errors.email && <p className='error'>{errors.email.message}</p>}
+                        <CustomTextField type="email" {...register("email",
+                            { required: "Email is required." })}
+                            color="primary" name="email" id="email" value={email} placeholder="Email" variant="outlined" fullWidth onChange={handleLogin} />
 
-                            </InputAdornment>
-                        ),
-                    }} color="primary" name="email" value={login.email} onChange={handleLogin} placeholder="Email" variant="outlined" fullWidth />
-                    <CustomTextField type="password" name="password" value={login.password} onChange={handleLogin} color="primary" placeholder="Password" variant="outlined" fullWidth />
-                    <CustomFormControlLabel control={<Checkbox defaultChecked />} label="Save on Computer" />
-                    <CustomButton onClick={onSubmit}>Log in</CustomButton>
+                        {errors.password && errors.password.type === "required" && <p className='error'>{errors.password.message}</p>}
+                        <CustomTextField type="password" id="password" {...register("password", { required: "Pasword is required." })} value={password} color="primary" placeholder="Password" variant="outlined" fullWidth onChange={handleLogin} />
+
+                        <CustomFormControlLabel control={<Checkbox defaultChecked />} label="Save on Computer" />
+
+                        <CustomButton type='submit'>Log in</CustomButton>
+                    </form>
                     <div className="forgot-password">
                         <Link to="" onClick={handleOpen1}>Forgot Password?</Link>
                         <p>Don&apos;t have an account yet?</p>
@@ -178,15 +270,18 @@ const Header = () => {
                         <h4>Forgot Password</h4>
                         <div onClick={handleClose1}>&times;</div>
                     </div>
-                    <CustomTextField type="email" InputProps={{
-                        endAdornment: (
-                            <InputAdornment position="end">
+                    <form onSubmit={handleSubmit2(ForgotPasswordRequest)}>
+                        {errors2.forgotPasswordEmail && <p className='error'>{errors2.forgotPasswordEmail.message}</p>}
+                        <CustomTextField type="email"
+                            {...register2("forgotPasswordEmail", { required: "Email is required." })}
+                            value={forgotPasswordEmail}
+                            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                setForgotPasswordEmail(event.target.value)
+                            }}
+                            color="primary" placeholder="Email-Address" variant="outlined" fullWidth />
 
-                            </InputAdornment>
-                        ),
-                    }} name="forgotPasswordEmail" onChange={handleChange} color="primary" placeholder="Email-Address" variant="outlined" fullWidth />
-
-                    <CustomButton onClick={ForgotPasswordRequest}>Send</CustomButton>
+                        <CustomButton type="submit">Send</CustomButton>
+                    </form>
                     <div className="forgot-password">
                         <Link to="" onClick={handleOpen}>log in now</Link>
                     </div>

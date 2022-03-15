@@ -4,6 +4,8 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
 import { forma1, adminUser } from '../assets/images';
+import { logout } from '../api';
+import { Navigate } from 'react-router-dom';
 
 export default function BasicMenu() {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -14,6 +16,12 @@ export default function BasicMenu() {
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    const logoutUser = () => {
+        logout()
+        handleClose()
+        window.location.href = window.location.origin
+    }
 
     return (
         <div>
@@ -37,7 +45,7 @@ export default function BasicMenu() {
                 }}
             >
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                <MenuItem onClick={logoutUser}>Logout</MenuItem>
             </Menu>
         </div>
     );

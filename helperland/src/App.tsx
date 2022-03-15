@@ -85,6 +85,8 @@ function App() {
       }
     }
   })
+  // console.log(typeof Contact);
+
 
   return (
     <>
@@ -103,6 +105,7 @@ function App() {
             <Route path="/service-request" element={<ServiceRequest />} />
             <Route path="/book-service" element={<BookService />} />
             <Route path="/user-registration" element={<UserRegistration />} />
+            <Route path="/resetPassword/:id" element={<Home />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>
