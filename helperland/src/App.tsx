@@ -1,4 +1,5 @@
 import React from 'react';
+import { ToastProvider } from 'react-toast-notifications';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {
   BrowserRouter,
@@ -12,11 +13,15 @@ import Contact from './pages/Contact';
 import About from './pages/About';
 import BecomeAPro from './pages/BecomeAPro';
 import ServiceProvider from './pages/ServiceProvider';
-import ServiceHistory from './pages/ServiceHistory'
+// import ServiceHistory from './pages/ServiceHistory'
 import UserManagement from './pages/UserManagement';
 import ServiceRequest from './pages/ServiceRequest';
 import BookService from './pages/BookService';
 import UserRegistration from './pages/UserRegistration';
+import CustomerDashboard from './pages/Customer/CustomerDashboard';
+import Dashboard from './pages/Customer/subpages/Dashboard'
+import ServiceHistory from './pages/Customer/subpages/ServiceHistory'
+import MySettings from './pages/Customer/subpages/MySettings';
 
 function App() {
   const theme = createTheme({
@@ -91,23 +96,30 @@ function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/faq" element={<Faq />} />
-            <Route path="/prices" element={<Prices />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/become-a-pro" element={<BecomeAPro />} />
-            <Route path="/service-provider" element={<ServiceProvider />} />
-            <Route path="/service-history" element={<ServiceHistory />} />
-            <Route path="/user-management" element={<UserManagement />} />
-            <Route path="/service-request" element={<ServiceRequest />} />
-            <Route path="/book-service" element={<BookService />} />
-            <Route path="/user-registration" element={<UserRegistration />} />
-            <Route path="/resetPassword/:id" element={<Home />} />
-          </Routes>
-        </BrowserRouter>
+        <ToastProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/faq" element={<Faq />} />
+              <Route path="/prices" element={<Prices />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/become-a-pro" element={<BecomeAPro />} />
+              <Route path="/service-provider" element={<ServiceProvider />} />
+              {/* <Route path="/service-history" element={<ServiceHistory />} /> */}
+              <Route path="/user-management" element={<UserManagement />} />
+              <Route path="/service-request" element={<ServiceRequest />} />
+              <Route path="/book-service" element={<BookService />} />
+              <Route path="/user-registration" element={<UserRegistration />} />
+              <Route path="/resetPassword/:id" element={<Home />} />
+              <Route path="/customer-dashboard" element={<CustomerDashboard />} >
+                <Route path="" element={<Dashboard />} />
+                <Route path="service-history" element={<ServiceHistory />} />
+                <Route path="my-settings" element={<MySettings />} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </ToastProvider>
       </ThemeProvider>
     </>
   );

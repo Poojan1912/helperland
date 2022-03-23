@@ -60,6 +60,9 @@ export const submitBooking = (data: object) => {
 
 export const authenticate = (data: object) => {
     if (typeof window !== undefined) {
+        if (localStorage.getItem("jwt")) {
+            localStorage.removeItem("jwt")
+        }
         localStorage.setItem("jwt", JSON.stringify(data));
     }
 }

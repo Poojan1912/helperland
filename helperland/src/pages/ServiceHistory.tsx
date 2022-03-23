@@ -226,16 +226,6 @@ const ServiceHistory = () => {
         isAuthenticated() ? (
 
             <div>
-                <Helmet>
-                    <title>Service History - Helperland</title>
-                </Helmet>
-                <HeaderService />
-                <ul className='service-select'>
-                    <li onClick={() => (closeMenu())}>{service} <span><FaCaretDown /></span> </li>
-                </ul>
-                <div className='welcome-msg'>
-                    <p>Welcome, <span>Gaurang!</span> </p>
-                </div>
                 <Container maxWidth='xl'>
                     <div className='service-row'>
                         <div className='service-sidebar menu-toggle' id='serviceSidebar'>

@@ -8,7 +8,10 @@ const middlewares = jsonServer.defaults()
 const { createHmac } = require('crypto');
 var crypto = require("crypto");
 const jwt = require('jsonwebtoken');
+const { log } = require('console')
 const port = 5000
+const { v4: uuidv4 } = require('uuid');
+const { el } = require('date-fns/locale')
 
 server.use(middlewares)
 server.use(bodyParser.json())
@@ -27,18 +30,6 @@ server.post("/api/PublicPages/SaveContactUsDetails", (req, res) => {
   catch (err) {
     console.log("Error: ", err)
   }
-
-  // fs.readFile('db.json', 'utf8', (err, data) => {
-  //   if (err) throw err
-  //   let db = JSON.parse(data)
-  //   let newContact = req.body
-  //   var data = db;
-  //   data.ContactUs.push(newContact)
-  //   fs.writeFile('./db.json', JSON.stringify(data), 'utf8', (err) => {
-  //     if (err) throw err
-  //     res.json(newContact)
-  //   })
-  // })
 })
 
 server.post("/api/Account/Register", (req, res) => {
@@ -51,6 +42,8 @@ server.post("/api/Account/Register", (req, res) => {
     if (user) {
       res.status(400).send({ message: "Email already exist" });
     }
+    let randomNumber = Math.floor(1000 + Math.random() * 9000);
+    obj.customerId = randomNumber;
     data.users.push(obj);
     fs.writeFile("./db.json", JSON.stringify(data), (err, result) => {
       if (err) {
@@ -79,7 +72,7 @@ server.post("/api/Account/Login", (req, res) => {
           res.status(401).json({ error: err });
           return;
         }
-        res.status(200).json({ token: token, email: obj.email, message: "Login Successful." });
+        res.status(200).json({ token: token, email: obj.email, firstName: user.firstName, userType: user.userTypeId, message: "Login Successful." });
       })
     }
     else {
@@ -188,6 +181,7 @@ server.post("/api/Account/Address", async function (req, res) {
     const db = JSON.parse(fs.readFileSync("./db.json", "utf-8"));
     let data = db;
     const obj = req.body;
+    obj.addressId = uuidv4();
     console.log(obj);
     const userObj = db.users.find((user) => user.email === "pandyapoojan2000@gmail.com");
     const userIndex = db.users.findIndex((user) => user.email === "pandyapoojan2000@gmail.com");
@@ -218,6 +212,8 @@ server.post("/api/BookService", async function (req, res) {
     let data = db;
     const obj = req.body;
     console.log(obj);
+    const randomNumber = Math.floor(1000 + Math.random() * 9000);
+    obj.serviceId = randomNumber;
     data.bookService.push(obj);
     fs.writeFile("./db.json", JSON.stringify(data), (err, result) => {
       if (err) {
@@ -233,6 +229,342 @@ server.post("/api/BookService", async function (req, res) {
     console.log(error);
   }
 })
+
+// get all book service from db
+server.post("/api/CustomerDashboard", (req, res) => {
+  try {
+    const obj = req.body;
+    const db = JSON.parse(fs.readFileSync("./db.json", "utf-8"));
+    let data = db.bookService;
+    console.log(obj.email);
+    data = data.filter((x) => x.email === obj.email);
+    data = data.filter((x) => x.status === "Remaining");
+    // data.map((x) => {
+    //   x.date = new Date(x.date).toLocaleDateString('en-GB');
+    //   console.log(typeof x.date)
+    // })
+    res.status(200).json(data);
+  }
+  catch (error) {
+    console.log(error);
+  }
+})
+
+server.post("/api/ServiceHistory", (req, res) => {
+  try {
+    const obj = req.body;
+    const db = JSON.parse(fs.readFileSync("./db.json", "utf-8"));
+    let data = db.bookService;
+    data = data.filter((x) => x.email === obj.email);
+    data = data.filter((x) => x.status !== "Remaining");
+    //return only serviceId and status from the data
+    data = data.map((x) => {
+      x.date = new Date(x.date).toLocaleDateString('en-GB');
+      return { serviceId: x.serviceId, date: x.date, time: x.time, finalPrice: x.finalPrice, status: x.status }
+    })
+
+    res.status(200).json(data);
+  }
+  catch (error) {
+    console.log(error);
+  }
+})
+
+// update date and time of the service
+server.post("/api/RescheduleService", (req, res) => {
+  try {
+    const obj = req.body;
+    const db = JSON.parse(fs.readFileSync("./db.json", "utf-8"));
+    let data = db;
+
+    if (data.bookService) {
+      const reschedule = data.bookService.find(x => (x.email === obj.email && x.serviceId === obj.serviceId))
+      reschedule.time = obj.time;
+      reschedule.date = obj.date;
+      fs.writeFile("./db.json", JSON.stringify(data), (err, result) => {
+        if (err) {
+          res.status(401).json({ error: err });
+          return;
+        }
+        else {
+          res.status(200).json({ message: "date and time updated", obj });
+        }
+      })
+    }
+    else {
+      res.status(401).json({ error: "user not found" });
+    }
+  }
+  catch (error) {
+    console.log(error);
+  }
+})
+server.post("/api/RescheduleService", (req, res) => {
+  try {
+    const obj = req.body;
+    const db = JSON.parse(fs.readFileSync("./db.json", "utf-8"));
+    let data = db;
+
+    if (data.bookService) {
+      const reschedule = data.bookService.find(x => (x.email === obj.email && x.serviceId === obj.serviceId))
+      reschedule.time = obj.time;
+      reschedule.date = obj.date;
+      fs.writeFile("./db.json", JSON.stringify(data), (err, result) => {
+        if (err) {
+          res.status(401).json({ error: err });
+          return;
+        }
+        else {
+          res.status(200).json({ message: "date and time updated", obj });
+        }
+      })
+    }
+    else {
+      res.status(401).json({ error: "user not found" });
+    }
+  }
+  catch (error) {
+    console.log(error);
+  }
+})
+
+// cancel request for the service
+server.post("/api/CancelRequest", (req, res) => {
+  try {
+    const obj = req.body;
+    const db = JSON.parse(fs.readFileSync("./db.json", "utf-8"));
+    let data = db;
+
+    if (data.bookService) {
+      const requestItem = data.bookService.find(x => (x.email === obj.email && x.serviceId === obj.serviceId))
+      requestItem.status = "Cancelled";
+      data.cancelRequest.push({ serviceId: obj.serviceId, reason: obj.reason });
+      fs.writeFile("./db.json", JSON.stringify(data), (err, result) => {
+        if (err) {
+          res.status(401).json({ error: err });
+          return;
+        }
+        else {
+          res.status(200).json({ message: "Request cancelled Successfully.", obj });
+        }
+      })
+    }
+    else {
+      res.status(401).json({ error: "user not found" });
+    }
+  }
+  catch (error) {
+    console.log(error);
+  }
+})
+
+// get user details
+server.post("/api/getCustomerDetails", (req, res) => {
+  try {
+    const obj = req.body;
+    const db = JSON.parse(fs.readFileSync("./db.json", "utf-8"));
+    let data = db;
+    data = data.users.filter((x) => x.email === obj.email);
+    const user = data[0];
+    const userDetails = {
+      firstName: user.firstName,
+      lastName: user.lastName,
+      mobileNumber: user.mobileNumber,
+      language: user.preferredLanguage,
+      date: user.dateOfBirth
+    }
+    res.status(200).json(userDetails);
+  }
+  catch (error) {
+    console.log(error);
+  }
+})
+
+
+server.post("/api/updateCustomerDetails", (req, res) => {
+  try {
+    const obj = req.body;
+    const db = JSON.parse(fs.readFileSync("./db.json", "utf-8"));
+    let data = db;
+    let user = data.users.find(x => x.email === obj.email);
+    if (user) {
+      user.firstName = obj.firstName;
+      user.lastName = obj.lastName;
+      user.mobileNumber = obj.mobileNumber;
+      user.dateOfBirth = obj.date;
+      user.preferredLanguage = obj.language;
+
+      fs.writeFile("./db.json", JSON.stringify(data), (err, result) => {
+        if (err) {
+          res.status(401).json({ error: err });
+          return;
+        }
+        else {
+          res.status(200).json({ message: "User details updated successfully.", obj });
+        }
+      })
+    } else {
+      res.status(401).json({ error: "user not found" });
+    }
+  }
+  catch (error) {
+    console.log(error);
+  }
+})
+
+// check if old password is matching and update the password
+server.post("/api/updatePassword", (req, res) => {
+  try {
+    const obj = req.body;
+    const db = JSON.parse(fs.readFileSync("./db.json", "utf-8"));
+    let data = db;
+    let user = data.users.find(x => x.email === obj.email);
+    if (user) {
+      if (user.password === obj.oldPassword) {
+        user.password = obj.newPassword;
+        fs.writeFile("./db.json", JSON.stringify(data), (err, result) => {
+          if (err) {
+            res.status(401).json({ error: err });
+            return;
+          }
+          else {
+            res.status(200).json({ message: "Password updated successfully.", obj });
+          }
+        })
+      }
+      else {
+        res.status(401).json({ error: "Old password is incorrect" });
+      }
+    }
+    else {
+      res.status(401).json({ error: "user not found" });
+    }
+  }
+  catch (error) {
+    console.log(error);
+  }
+})
+
+//get all the addresses of user
+server.post("/api/getAddresses", (req, res) => {
+  try {
+    const obj = req.body;
+    const db = JSON.parse(fs.readFileSync("./db.json", "utf-8"));
+    let data = db;
+    data = data.users.filter((x) => x.email === obj.email);
+    const user = data[0];
+    const userAddresses = user.address;
+    res.status(200).json({ address: userAddresses });
+  }
+  catch (error) {
+    console.log(error);
+  }
+})
+
+// delete an address of user
+server.post("/api/deleteAddress", function (req, res) {
+  try {
+    const db = JSON.parse(fs.readFileSync("./db.json", "utf-8"));
+    let data = db;
+    const obj = req.body;
+    const userObj = data.users.find((user) => user.email === obj.email);
+    userObj.address.splice(obj.addressId - 1, 1)
+
+    fs.writeFile("./db.json", JSON.stringify(data), (err, result) => {
+      if (err) {
+        res.status(401).json({ error: err });
+        return;
+      }
+      else {
+        res.status(200).json({ message: "deleted Successfully", userObj });
+      }
+    })
+  }
+  catch (error) {
+    console.log(error);
+  }
+})
+
+server.post("/api/updateAddress", (req, res) => {
+  try {
+    const db = JSON.parse(fs.readFileSync("./db.json", "utf-8"));
+    let data = db;
+    const obj = req.body;
+    const userObj = data.users.find((user) => user.email === obj.email);
+    if (userObj) {
+      const addressForUpdate = userObj.address.find((x) => x.addressId === obj.addressId);
+
+      if (addressForUpdate) {
+        addressForUpdate.streetName = obj.streetName;
+        addressForUpdate.houseNumber = obj.houseNumber;
+        addressForUpdate.zipCode = obj.zipCode;
+        addressForUpdate.city = obj.city;
+        addressForUpdate.mobilenumber = obj.mobilenumber;
+        fs.writeFile("./db.json", JSON.stringify(data), (err, result) => {
+          if (err) {
+            res.status(401).json({ error: err });
+            return;
+          }
+          else {
+            res.status(200).json({ message: "address added", userObj });
+          }
+        })
+      } else {
+        console.log("coming here");
+        delete obj.email
+        obj.addressId = uuidv4();
+        console.log(obj);
+        if (!(userObj.hasOwnProperty('address'))) {
+          userObj.address = [];
+        }
+        userObj.address.push(obj);
+        fs.writeFile("./db.json", JSON.stringify(data), (err, result) => {
+          if (err) {
+            res.status(401).json({ error: err });
+            return;
+          }
+          else {
+            res.status(200).json({ message: "address added", userObj });
+            return;
+          }
+        })
+      }
+    } else {
+      console.log("user not found");
+    }
+  }
+  catch (error) {
+    console.log(error);
+  }
+})
+
+// push ratings to the array
+server.post("/api/addRating", (req, res) => {
+  try {
+    const db = JSON.parse(fs.readFileSync("./db.json", "utf-8"));
+    let data = db;
+    const obj = req.body;
+    const userObj = data.users.find((user) => user.email === obj.email);
+    if (userObj) {
+      data.ratings.push(obj);
+      fs.writeFile("./db.json", JSON.stringify(data), (err, result) => {
+        if (err) {
+          res.status(401).json({ error: err });
+          return;
+        }
+        else {
+          res.status(200).json({ message: "ratings added", userObj });
+        }
+      })
+    } else {
+      res.status(401).json({ error: "user not found" });
+    }
+  }
+  catch (error) {
+    console.log(error);
+  }
+})
+
 
 
 server.use(router)

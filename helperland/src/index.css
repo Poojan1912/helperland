@@ -9,7 +9,7 @@
 }
 
 .error {
-  color: red;
+  color: red !important;
 }
 
 .modal {
@@ -31,12 +31,22 @@
   justify-content: space-between;
   margin-bottom: 20px;
 }
+.modal .modal-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
 .modal .login-modal h4 {
   font-size: 24px;
   line-height: 24px;
   font-weight: bold;
 }
 .modal .login-modal div {
+  font-size: 30px;
+  cursor: pointer;
+}
+.modal .modal-top div {
   font-size: 30px;
   cursor: pointer;
 }
@@ -878,6 +888,10 @@ input[type="checkbox"]:checked {
   font-size: 18px;
 }
 
+.service-sidebar a {
+  color: #ffffff;
+}
+
 .service-sidebar li {
   padding: 15px 0 15px 15px;
   border-bottom: 0.5px solid #4995a4;
@@ -885,10 +899,19 @@ input[type="checkbox"]:checked {
 }
 
 .service-sidebar li:hover {
-  background-color: #1c6f80;
+  background-color: #176270;
 }
 
 .service-table {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: calc(100% - 293px);
+  max-width: calc(100% - 293px);
+  margin-bottom: 31px;
+  margin-left: 31px;
+}
+
+.service-component {
   flex-grow: 0;
   flex-shrink: 0;
   flex-basis: calc(100% - 293px);
@@ -955,9 +978,20 @@ input[type="checkbox"]:checked {
   font-size: 13px;
 }
 
+.service-component h4 {
+  font-size: 22px;
+  color: #646464;
+}
 .service-table h4 {
   font-size: 22px;
   color: #646464;
+}
+
+.service-component-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
 }
 
 .service-history-top {
@@ -1483,6 +1517,49 @@ input[type="checkbox"]:checked {
 
 /* Book service completes here */
 
+/* customer dashboard starts here */
+
+.active-link li {
+  background-color: #176270;
+}
+
+.update-customer-details p {
+  color: #646464;
+  font-weight: 700;
+}
+
+.address-details {
+  font-size: 16px;
+  display: flex;
+}
+
+.service-details-modal {
+  width: 720px;
+  max-width: 720px;
+}
+
+.service-details-modal h4 {
+  font-size: 22px !important;
+}
+
+.service-details-modal .modal-data-item {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.service-details-modal .modal-data {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.service-details-modal .modal-title {
+  font-weight: 700;
+  color: #4f4f4f;
+  font-size: 16px;
+}
+
+/* customer dashboard completes here */
+
 @media screen and (max-width: 1140px) {
   .navbar .logo {
     width: 73px;
@@ -1723,6 +1800,12 @@ input[type="checkbox"]:checked {
     width: 100%;
     height: 100%;
     overflow: auto;
+  }
+
+  .service-component {
+    max-width: 100%;
+    flex-basis: 100%;
+    margin-left: 0;
   }
 
   .service-table {

@@ -133,7 +133,7 @@ const Header = () => {
                 } else {
                     console.log("Successful", data);
                     setSuccess(data.message)
-                    authenticate({ email: data.email, token: data.token })
+                    authenticate({ email: data.email, firstName: data.firstName, token: data.token })
                     window.location.href = "http://localhost:3000/service-history"
                     setError("")
                 }

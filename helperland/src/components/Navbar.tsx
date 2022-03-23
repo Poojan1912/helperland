@@ -155,8 +155,10 @@ const Navbar = () => {
                 } else {
                     console.log("Successful", data);
                     setSuccess(data.message)
-                    authenticate({ email: data.email, token: data.token })
-                    window.location.href = "http://localhost:3000/service-history"
+                    authenticate({ email: data.email, firstName: data.firstName, token: data.token, userType: data.userType })
+                    { data.userType === 0 ? navigate("/customer-dashboard") : navigate("/service-provider") }
+                    // navigate("/customer-dashboard")
+                    // window.location.href = "http://localhost:3000/service-history"
                     setError("")
                 }
             })

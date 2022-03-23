@@ -4,12 +4,14 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
 import { forma1, adminUser } from '../assets/images';
-import { logout } from '../api';
-import { Navigate } from 'react-router-dom';
+import { isAuthenticated, logout } from '../api';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 export default function BasicMenu() {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
+    const navigate = useNavigate()
+
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
     };
@@ -20,7 +22,7 @@ export default function BasicMenu() {
     const logoutUser = () => {
         logout()
         handleClose()
-        window.location.href = window.location.origin
+        navigate("/")
     }
 
     return (
@@ -44,7 +46,15 @@ export default function BasicMenu() {
                     'aria-labelledby': 'basic-button',
                 }}
             >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                {isAuthenticated().userType === 0 ? (
+                    <Link to="/customer-dashboard/my-settings">
+                        <MenuItem onClick={handleClose}>Profile</MenuItem>
+                    </Link>
+                )
+                    :
+                    (
+                        <MenuItem onClick={handleClose}>Profile</MenuItem>
+                    )}
                 <MenuItem onClick={logoutUser}>Logout</MenuItem>
             </Menu>
         </div>

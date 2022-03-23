@@ -486,7 +486,7 @@ interface customer {
     city: string,
     houseNumber: string,
     mobilenumber: string,
-    zipcode: string
+    zipCode: string
 }
 
 let labal: customer[];
@@ -521,6 +521,7 @@ const BookService = () => {
     const [city, setCity] = React.useState("");
     const [mobileNumber, setMobileNumber] = React.useState("");
     const [open, setOpen] = React.useState(false);
+    // const [finalPrice, setFinalPrice] = React.useState<number>(0)
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const handleStreetName = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -564,7 +565,7 @@ const BookService = () => {
     const saveAddress = async () => {
         const object =
         {
-            zipcode: postalCode,
+            zipCode: postalCode,
             streetName: streetName,
             houseNumber: houseNumber,
             city: city,
@@ -667,8 +668,8 @@ const BookService = () => {
         console.log(isAuthenticated());
     }
 
-    const getPaymentTotal = () => {
-        let sum = duration;
+    const getPaymentTotal = (): number => {
+        let sum: number = duration;
         if (cabinet) {
             sum += 0.5
         }
@@ -687,13 +688,30 @@ const BookService = () => {
         return sum
     }
 
+    const perCleaning = (): number => {
+        const hourlyPrice = 18;
+        const finalRate: number = Math.round(getPaymentTotal() * hourlyPrice)
+        return finalRate;
+    }
+
+    const discount = (): number => Math.round(perCleaning() * 0.1);
+
+    const totalPayment = (): number => Math.round(perCleaning() - discount())
+
+    const effectivePrice = (): number => {
+        const ePrice: number = Math.round(totalPayment() - totalPayment() * 0.2)
+        return ePrice;
+    }
+
     const submitForm = () => {
         const index = parseInt(radio)
         const addressData = addressObj[index]
         const email = isAuthenticated().email
+        const finalPrice = effectivePrice()
+        const status = "Remaining"
 
-        console.log({ email, bed, bath, date, time, duration, cabinet, fridge, oven, laundry, windows, comments, pet, addressData })
-        submitBooking({ email, bed, bath, date, time, duration, cabinet, fridge, oven, laundry, windows, comments, pet, addressData })
+        console.log({ email, bed, bath, date, time, duration, cabinet, fridge, oven, laundry, windows, finalPrice, status, comments, pet, addressData })
+        submitBooking({ email, bed, bath, date, time, duration, cabinet, fridge, oven, laundry, windows, finalPrice, status, comments, pet, addressData })
             .then(data => {
                 if (data.error) {
                     console.log(data.error);
@@ -738,7 +756,7 @@ const BookService = () => {
                     <Box className="modal">
                         <div className="login-modal service-booked">
                             <h4>Booking has been successfully submitted</h4>
-                            <SuccessButton onClick={() => window.location.href = "http://localhost:3000/service-history"}>Ok</SuccessButton>
+                            <Link to='/customer-dashboard'><SuccessButton>Ok</SuccessButton></Link>
                         </div>
                     </Box>
                 </Modal>
@@ -971,7 +989,7 @@ const BookService = () => {
                                         >
                                             {addressObj &&
                                                 addressObj.map((user, i) => (
-                                                    <CustomFormControlRadio key={i} value={i++} control={<Radio />} label={`Address : ${user.streetName} ${user.houseNumber} , ${user.city}  ${user.zipcode}     
+                                                    <CustomFormControlRadio key={i} value={i++} control={<Radio />} label={`Address : ${user.streetName} ${user.houseNumber} , ${user.city}  ${user.zipCode}     
                                                 Phone number : ${user.mobilenumber}`} />
                                                 ))
                                             }
@@ -1108,22 +1126,22 @@ const BookService = () => {
                                         <hr className='prices-hr' />
                                         <div className='payment-duration-details per-cleaning-discount'>
                                             <p>Per cleaning</p>
-                                            <p className='payment-pricing'>${isSecondActive ? (getPaymentTotal() * 18).toFixed(2) : 0}</p>
+                                            <p className='payment-pricing'>${isSecondActive ? perCleaning() : 0}</p>
                                         </div>
                                         {isSecondActive && <div className='payment-duration-details per-cleaning-discount'>
                                             <p>Discount</p>
-                                            <p className='payment-pricing'>-${(getPaymentTotal() * 18 * 0.1).toFixed(2)}</p>
+                                            <p className='payment-pricing'>-${discount()}</p>
                                         </div>}
                                         <hr className='prices-hr' />
                                         <div className='payment-duration-details total-payment'>
                                             <Typography component='h4' variant='h4' className='pay-title'>Total Payment</Typography>
-                                            <Typography component='h4' variant='h2' className='pay'>${isSecondActive ? ((getPaymentTotal() * 18) - (getPaymentTotal() * 18 * 0.1)).toFixed(2) : 0}</Typography>
+                                            <Typography component='h4' variant='h2' className='pay'>${isSecondActive ? totalPayment() : 0}</Typography>
                                         </div>
 
                                         {isSecondActive && <>
                                             <div className='payment-duration-details effective-price'>
                                                 <p>Effective Price</p>
-                                                <Typography component='h4' variant='h4'>${(((getPaymentTotal() * 18) - (getPaymentTotal() * 18 * 0.1)) - ((getPaymentTotal() * 18) - (getPaymentTotal() * 18 * 0.1)) * 0.2).toFixed(2)}</Typography>
+                                                <Typography component='h4' variant='h4'>${effectivePrice()}</Typography>
                                             </div>
                                             <p className='discount-line'>*You will save 20% according to §35a EStG.</p>
                                         </>}
